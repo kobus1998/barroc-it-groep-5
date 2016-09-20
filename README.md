@@ -17,6 +17,7 @@ Startfase
 - Globale planning (MSProject)
 - Gedetailleerde planning voor het hele project
 - Use-case diagrammen
+- Use-case templates
 - Activiteiten diagrammen
 
 Uitwerkings fase
