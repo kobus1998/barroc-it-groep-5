@@ -5,10 +5,10 @@
 
 Startfase
 
-- Interviews
-- Interview terugkoppeling
-- Hernieuwde opdracht
-- Prototype schermen gebasseert op de interviews
+ - √ Interviews                                 
+-  √ Interview terugkoppeling
+-  Hernieuwde opdracht
+-  Prototype schermen gebasseert op de interviews
 
 
 - Offerte uitbrengen
