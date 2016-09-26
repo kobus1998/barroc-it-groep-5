@@ -5,8 +5,8 @@
 
 Startfase
 
- - √ Interviews                                 
--  √ Interview terugkoppeling
+- √ Interviews                                 
+- √ Interview terugkoppeling
 -  Hernieuwde opdracht
 -  Prototype schermen gebasseert op de interviews
 
