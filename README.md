@@ -14,7 +14,7 @@ Startfase
 - Offerte uitbrengen
 - Agenda en notulen van elke vergadering
 - Plan van aanpak
-- Globale planning (MSProject)
+- √ Globale planning (MSProject)
 - Gedetailleerde planning voor het hele project
 - Use-case diagrammen
 - Use-case templates
