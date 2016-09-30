@@ -7,15 +7,15 @@ Startfase
 
 - √ Interviews                                 
 - √ Interview terugkoppeling
--  Hernieuwde opdracht
--  Prototype schermen gebasseert op de interviews
+- √ Hernieuwde opdracht
+- √ Prototype schermen gebasseert op de interviews
 
 
-- Offerte uitbrengen
+- √ Offerte uitbrengen
 - Agenda en notulen van elke vergadering
-- Plan van aanpak
-- Globale planning (MSProject)
-- Gedetailleerde planning voor het hele project
+- √ Plan van aanpak
+- √ Globale planning (MSProject)
+- √ Gedetailleerde planning voor het hele project
 - Use-case diagrammen
 - Use-case templates
 - Activiteiten diagrammen
