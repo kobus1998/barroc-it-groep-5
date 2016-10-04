@@ -16,7 +16,7 @@ Startfase
 - √ Plan van aanpak
 - √ Globale planning (MSProject)
 - √ Gedetailleerde planning voor het hele project
-- Use-case diagrammen
+- √ Use-case diagrammen
 - Use-case templates
 - Activiteiten diagrammen
 
