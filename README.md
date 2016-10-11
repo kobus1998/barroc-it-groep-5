@@ -12,25 +12,25 @@ Startfase
 
 
 - √ Offerte uitbrengen
-- Agenda en notulen van elke vergadering
+- √ Agenda en notulen van elke vergadering
 - √ Plan van aanpak
 - √ Globale planning (MSProject)
 - √ Gedetailleerde planning voor het hele project
 - √ Use-case diagrammen
-- Use-case templates
+- √ Use-case templates
 - Activiteiten diagrammen
 
 Uitwerkings fase
 
-- Gedetailleerde taakverdeeling (MSProject)
+- √ Gedetailleerde taakverdeeling (MSProject)
 - Modeldictionary (optioneel)
 - Klassendiagram (optioneel)
 
 
-- Ontwerp datadictionairy
-- Sequentiediagrammen
-- Overzicht taakverdeeling inrichting van de ontwikkel omgeving
-- overzicht van de gebruikte hard/soft-ware
+- √ Ontwerp datadictionairy
+- √ Sequentiediagrammen
+- √ Overzicht taakverdeeling inrichting van de ontwikkel omgeving
+- √ overzicht van de gebruikte hard/soft-ware
 
 Bouwfase
 
