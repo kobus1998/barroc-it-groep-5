@@ -18,7 +18,7 @@ Startfase
 - √ Gedetailleerde planning voor het hele project
 - √ Use-case diagrammen
 - √ Use-case templates
-- Activiteiten diagrammen
+- √ Activiteiten diagrammen
 
 Uitwerkings fase
 
