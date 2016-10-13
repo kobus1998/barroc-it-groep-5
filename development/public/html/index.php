@@ -1,5 +1,5 @@
 <?php
-require PUBLIC_PATH . 'html/parts/header.php';
+require realpath(__dir__ . '/parts/header.php');
 ?>
 
 <title>Home</title>
@@ -18,6 +18,6 @@ require PUBLIC_PATH . 'html/parts/header.php';
         
         ?>
     </header>
-    
+
 </body>
 </html>
