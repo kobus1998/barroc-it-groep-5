@@ -12,9 +12,9 @@ require realpath(__dir__ . '/parts/header.php');
         // require PUBLIC_PATH . 'html/parts/header_admin.php';
         // else if session role = sales
         // require PUBLIC_PATH . 'html/parts/header_sales.php';
-        
+
         //etc.
-        
+
         
         ?>
     </header>
