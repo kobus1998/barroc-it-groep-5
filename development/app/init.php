@@ -3,7 +3,7 @@
 require_once realpath(__DIR__ . '/config.php');
 
 //requires all vendor classes
-//require_once realpath(__DIR__ . '/../vendor/respect/');
+require_once realpath(__DIR__ . '/../vendor/autoload.php');
 
 //require all classes
 spl_autoload_register( function($class) {
