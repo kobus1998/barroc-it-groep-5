@@ -38,10 +38,10 @@ require realpath(__dir__ . '/parts/header.php');
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password" class="form-control">
+                        <input type="password" name="login" id="password" class="form-control">
                     </div>
 
-                    <input type="submit" name="login" value="login">
+                    <input type="submit" name="type" value="login">
                 </form>
             </div>
         </div>
