@@ -1,5 +1,4 @@
-<?php
-require realpath(__DIR__ . '/../../../app/init.php'); ?>
+<?php require realpath(__DIR__ . '/../../../app/init.php'); ?>
 
 <!DOCTYPE html>
 <html>

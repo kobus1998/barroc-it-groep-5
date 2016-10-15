@@ -18,7 +18,7 @@ require realpath(__dir__ . '/parts/header.php');
         
         ?>
     </header>
-    <main-content>
+    <main>
         <div class="login">
             <div class="container">
                 <h1 class="text-center">Login</h1>
@@ -27,7 +27,13 @@ require realpath(__dir__ . '/parts/header.php');
 
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" name="username" id="username" class="form-control">
+                        <select>
+                            <option></option>
+                            <option value="1">Sales</option>
+                            <option value="2">Finance</option>
+                            <option value="3">Development</option>
+                            <option value="4">Admin</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
@@ -39,7 +45,7 @@ require realpath(__dir__ . '/parts/header.php');
                 </form>
             </div>
         </div>
-    </main-content>
+    </main>
 
 </body>
 </html>
