@@ -10,7 +10,24 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST') {
         
         if(empty($username) || empty($password)) 
         {
-            $user->redirect('index.php');
+            $message = 'Some fields are empty';
+            $user->redirectMessage("index.php", $message);
+        }
+    }
+
+    if($_POST['type'] == 'register' )
+    {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $passwordRepeat = $_POST['password-repeat'];
+
+        if(empty($username) || empty($password) || empty($passwordRepeat))
+        {
+            $message = 'Some fields are empty';
+            $user->redirectMessage("admin/register.php", $message);
+        } else if( $password != $passwordRepeat) {
+            $message = 'Password does not match with repeat password';
+            $user->redirectMessage("admin/register.php", $message);
         }
     }
 }

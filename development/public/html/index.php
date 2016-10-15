@@ -6,7 +6,7 @@ require realpath(__dir__ . '/parts/header.php');
 </head>
 
 <body>
-    <header>
+    <div class="header">
         <?php  
         // if session role = admin
         // require PUBLIC_PATH . 'html/parts/header_admin.php';
@@ -17,8 +17,8 @@ require realpath(__dir__ . '/parts/header.php');
 
         
         ?>
-    </header>
-    <main>
+    </div>
+    <div class="main-content">
         <div class="login">
             <div class="container">
                 <h1 class="text-center">Login</h1>
@@ -45,7 +45,7 @@ require realpath(__dir__ . '/parts/header.php');
                 </form>
             </div>
         </div>
-    </main>
+    </div>
 
 </body>
 </html>
