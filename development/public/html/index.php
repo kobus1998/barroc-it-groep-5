@@ -23,11 +23,11 @@ require realpath(__dir__ . '/parts/header.php');
             <div class="container">
                 <h1 class="text-center">Login</h1>
 
-                <form action="">
+                <form action="<?php echo BASE_URL ?>/development/app/controller/authController.php" method="post">
 
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <select>
+                        <select name="username" id="username" class="form-control">
                             <option></option>
                             <option value="1">Sales</option>
                             <option value="2">Finance</option>

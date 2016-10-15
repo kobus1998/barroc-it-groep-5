@@ -3,5 +3,5 @@
 <!DOCTYPE html>
 <html>
     <head>
-       <link rel="stylesheet" href="<?php realpath(__DIR__ . '../../css/stylesheet.css') ?>">
+       <link rel="stylesheet" href="<?php echo realpath(__DIR__ . '../../css/stylesheet.css') ?>">
     </head>
