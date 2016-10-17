@@ -25,15 +25,15 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST')
         if(empty($username) || empty($password) || empty($passwordRepeat)) 
         {
             $message = 'Some fields are empty';
-            $user->redirectMessage("admin/register.php", $message);
+            $user->redirectMessage("register.php", $message);
         } else if(strlen($password) < 5)
         {
             $message = "password too short";
-            $user->redirectMessage('admin/regiser.php', $message);
+            $user->redirectMessage('register.php', $message);
         } else if( $password != $passwordRepeat) 
         {
             $message = 'Password does not match with repeat password';
-            $user->redirectMessage("admin/register.php", $message);
+            $user->redirectMessage("register.php", $message);
         }
 
 

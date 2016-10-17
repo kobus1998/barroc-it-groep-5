@@ -1,4 +1,4 @@
-<?php require realpath(__DIR__ . '/../parts/header.php') ?>
+<?php require realpath(__DIR__ . '/parts/header.php') ?>
 
 <title>Home</title>
 </head>
