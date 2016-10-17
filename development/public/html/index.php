@@ -14,16 +14,24 @@ require realpath(__dir__ . '/parts/header.php');
         // require PUBLIC_PATH . 'html/parts/header_sales.php';
 
         //etc.
-
-        
         ?>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                       <p>Barroc IT</p>
+                    </a>
+                </div>
+            </div>
+        </nav>
     </div>
+
     <div class="main-content">
         <div class="login">
             <div class="container">
                 <h1 class="text-center">Login</h1>
 
-                <form action="<?php echo BASE_URL ?>/development/app/controller/authController.php" method="post">
+                <form class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>/development/app/controller/authController.php" method="post">
 
                     <div class="form-group">
                         <label for="department">Department</label>
