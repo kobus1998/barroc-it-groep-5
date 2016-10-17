@@ -26,8 +26,8 @@ require realpath(__dir__ . '/parts/header.php');
                 <form action="<?php echo BASE_URL ?>/development/app/controller/authController.php" method="post">
 
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <select name="username" id="username" class="form-control">
+                        <label for="department">Department</label>
+                        <select name="department" id="department" class="form-control">
                             <option></option>
                             <option value="1">Sales</option>
                             <option value="2">Finance</option>
