@@ -22,11 +22,18 @@ class User {
          *  When department isn't created
          *  Make new row
          */
+
+        if($this->uniqueUser($username) == 0)
+        {
+            $sql = "INSERT INTO /*`table`*/ (`username`, `password`) VALUES (:username, :password)";
+        } else {
+            $sql = "UPDATE /*`table`*/ SET `username` = :username, `password` = :password";
+        }
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(":username", $username);
+        $stmt->bindParam(":password", $password);
+        $stmt->execute();
         
-        // this->uniqueUser();
-            // insert into database
-        
-            // update password of the selected row
     
     }
 
@@ -39,14 +46,13 @@ class User {
         $this->redirect('index.php');
     }
     
-    public function uniqueUser($userName) 
+    public function uniqueUser($username) 
     {
-        $sql = "SELECT * FROM /*table*/ WHERE name = :userName";
-        $stmt = $this->db->pdo->prepare($sql)
-        ->bindParam(":userName", $userName)
-        ->execute();
-        
-        $result = $stmt->rowCount();
+        $sql = "SELECT * FROM /*table*/ WHERE name = :username";
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(":username", $username);
+        $stmt->execute();
+        $stmt->rowCount();
     }
     
     public function redirect($path) 
