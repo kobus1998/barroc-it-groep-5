@@ -20,38 +20,33 @@
         <div class="container">
             <h1>Register</h1>
             <form method="post" action="<?php echo BASE_URL ?>/development/app/controller/authController.php">
+                <p>* is required</p>
                 <div class="form-group">
-                    <label for="username">
+                    * <label for="username">
                         Department
                     </label>
                     <select  name="username">
                         <option></option>
-                        <option value="1">Sales</option>
-                        <option value="2">Finance</option>
-                        <option value="3">Development</option>
-                        <option value="4">Admin</option>
+                        <option value="sales">Sales</option>
+                        <option value="finance">Finance</option>
+                        <option value="development">Development</option>
+                        <option value="admin">Admin</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="password">
+                    * <label for="password">
                         Password
                     </label>
                     <input type="password" name="password">
                 </div>
                 <div class="form-group">
-                    <label for="password-repeat">
+                    * <label for="password-repeat">
                         Repeat Password
                     </label>
                     <input type="password" name="password-repeat">
                 </div>
+
                 <input type="submit" name="type" value="register">
-                <?php
-                if(isset($_GET['message']))
-                {
-                    echo $_GET['message'];
-                }
-                ?>
-                <div class="form-group"></div>
             </form>
         </div>
     </div>

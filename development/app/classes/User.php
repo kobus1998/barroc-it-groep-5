@@ -10,11 +10,13 @@ class User {
         $this->db = Database::getInstance();
     }
 
-    public function login($data) {
+    public function login($data) 
+    {
 
     }
 
-    public function register($username, $password) {
+    public function register($username, $password) 
+    {
         /*  When department is already created,
          *  Only change Password
          *  When department isn't created
@@ -28,7 +30,8 @@ class User {
     
     }
 
-    public function logout() {
+    public function logout() 
+    {
         if( isset($_SESSION))
         {
             session_destroy();
@@ -36,7 +39,8 @@ class User {
         $this->redirect('index.php');
     }
     
-    public function uniqueUser($userName) {
+    public function uniqueUser($userName) 
+    {
         $sql = "SELECT * FROM /*table*/ WHERE name = :userName";
         $stmt = $this->db->pdo->prepare($sql)
         ->bindParam(":userName", $userName)
@@ -45,11 +49,13 @@ class User {
         $result = $stmt->rowCount();
     }
     
-    public function redirect($path) {
+    public function redirect($path) 
+    {
         header('location: ' . BASE_URL . '/development/public/html/' . $path);
     }
     
-    public function redirectMessage($path, $message) {
+    public function redirectMessage($path, $message) 
+    {
         header('location: ' . BASE_URL . '/development/public/html/' . $path . '?message=' . $message);
     }
 
