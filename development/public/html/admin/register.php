@@ -44,14 +44,8 @@
                     </label>
                     <input type="password" name="password-repeat">
                 </div>
+
                 <input type="submit" name="type" value="register">
-                <?php
-                if(isset($_GET['message']))
-                {
-                    echo $_GET['message'];
-                }
-                ?>
-                <div class="form-group"></div>
             </form>
         </div>
     </div>
