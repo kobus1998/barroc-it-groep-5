@@ -1,4 +1,8 @@
 <?php
+define('DBHOST', 'localhost');
+define('DBNAME', '');
+define('DBUSER', 'root');
+define('DBPASS', '');
 
 class Database {
 
@@ -7,7 +11,7 @@ class Database {
     public $pdo;
 
     private function __construct() {
-        $this->pdo = new PDO("mysql:host=localhost;dbname=loginsysteem","root", "");
+        $this->pdo = new PDO("mysql:host=" . DBHOST . ";dbname=" . DBNAME ,DBUSER, DBPASS);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
