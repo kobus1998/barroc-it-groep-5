@@ -28,6 +28,9 @@ require realpath(__dir__ . '/parts/header.php');
                             </ul>
                         </li>
                     </ul>
+                    <ul class="nav navbar-right">
+                        <li><a href="#"><button class="btn btn-warning">Logout</button></a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
