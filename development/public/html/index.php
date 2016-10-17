@@ -49,7 +49,7 @@ require realpath(__dir__ . '/parts/header.php');
                         <input type="password" name="login" id="password" class="form-control">
                     </div>
 
-                    <input type="submit" name="type" value="login">
+                    <input type="submit" name="type" value="login" class="btn btn-primary">
                 </form>
             </div>
         </div>

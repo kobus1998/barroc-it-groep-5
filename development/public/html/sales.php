@@ -13,7 +13,7 @@ require realpath(__dir__ . '/parts/header.php');
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customers <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customers<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Customer list</a></li>
                                 <li><a href="#">Add customer</a></li>
@@ -21,7 +21,7 @@ require realpath(__dir__ . '/parts/header.php');
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quotation <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quotation<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Quotation list</a></li>
                                 <li><a href="#">Add quotation</a></li>
@@ -33,7 +33,7 @@ require realpath(__dir__ . '/parts/header.php');
         </nav>
     </div>
     <div class="main-content">
-
+        
     </div>
 </body>
 </html>
