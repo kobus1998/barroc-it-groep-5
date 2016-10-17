@@ -13,3 +13,4 @@ define('BASE_URL', 'http://localhost/barroc-it-groep-5');
  * */
 define('APP_PATH', realpath(__DIR__));
 define('PUBLIC_PATH', realpath(__DIR__ . '/../public'));
+define('VENDOR_PATH'), realpath(__DIR__ . '/../vendor');
