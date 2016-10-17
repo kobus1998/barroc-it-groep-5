@@ -3,6 +3,7 @@
 class User {
 
     private $db;
+    public $username;
 
     public function __construct()
     {
