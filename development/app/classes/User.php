@@ -21,26 +21,11 @@ class User {
          *  Make new row
          */
         
-        // select all with username, count rows
-        $this->db->pdo->
-            query("")->
-            fetchAll(PDO::FETCH_ASSOC);
-
-        $rows = '';
-        if($rows < 1 ) {
+        // this->uniqueUser();
             // insert into database
-
-            $this->db->pdo->
-                query("")->
-                execute();
-
-        } else {
+        
             // update password of the selected row
-
-            $this->db->pdo->
-                query("")->
-                execute();
-        }
+    
     }
 
     public function logout() {
@@ -50,7 +35,16 @@ class User {
         }
         $this->redirect('index.php');
     }
-
+    
+    public function uniqueUser($userName) {
+        $sql = "SELECT * FROM /*table*/ WHERE name = :userName";
+        $stmt = $this->db->pdo->prepare($sql)
+        ->bindParam(":userName", $userName)
+        ->execute();
+        
+        $result = $stmt->rowCount();
+    }
+    
     public function redirect($path) {
         header('location: ' . BASE_URL . '/development/public/html/' . $path);
     }
