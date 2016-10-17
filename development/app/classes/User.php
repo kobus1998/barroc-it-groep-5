@@ -13,7 +13,9 @@ class User {
 
     public function login($data) 
     {
-
+        $_SESSION['id'] = $data['id'];
+        
+        $this->redirect(BASE_URL . 'development/app/router');
     }
 
     public function register($username, $password) 
