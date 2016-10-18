@@ -29,17 +29,12 @@ class User {
          *  Make new row
          */
 
-        $sql = "SELECT * FROM `tbl_users` WHERE :username = `username`";
-        $stmt = $this->db->pdo->prepare($sql);
-        $stmt->bindParam(":username", $username);
-        $stmt->execute();
-        $data = $stmt->rowCount();
 
-        if($data > 0)
+        if($this->uniqueUser($username) == 0)
         {
-            $sql = "UPDATE `tbl_users` SET `password` = :password Where :username = `username`";
-        } else {
             $sql = "INSERT INTO `tbl_users` (`username`, `password`) VALUES (:username, :password)";
+        } else {
+            $sql = "UPDATE `tbl_users` SET `password` = :password Where :username = `username`";
         }
         $stmt = $this->db->pdo->prepare($sql);
         $stmt->bindParam(":username", $username);
@@ -56,6 +51,24 @@ class User {
             session_destroy();
         }
         $this->redirect('index.php');
+    }
+
+    public function uniqueUser($username)
+    {
+        $sql = "SELECT * FROM `tbl_users` WHERE :username = `username`";
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(":username", $username);
+        $stmt->execute();
+        $data = $stmt->rowCount();
+
+        if($data == 0)
+        {
+            return false;
+            die;
+        } else {
+            return true;
+            die;
+        }
     }
     
     public function redirect($path) 
