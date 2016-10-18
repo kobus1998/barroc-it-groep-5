@@ -1,5 +1,11 @@
 <?php require realpath(__DIR__ . '/../init.php');
 
+if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
+    if ($_GET['type'] == 'logout') {
+        $user->logout();
+        $user->redirect('index.php');
+    }
+}
 
 if( $_SERVER['REQUEST_METHOD'] == 'POST')
 {
