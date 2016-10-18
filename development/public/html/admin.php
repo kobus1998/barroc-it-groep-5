@@ -54,7 +54,7 @@ require realpath(__dir__ . '/parts/header.php');
 <div class="main-content">
     <div class="register">
         <div class="container">
-            <h1 class="text-center">Register</h1>
+            <h1 class="text-center">Register new user</h1>
 
             <form class="col-md-6 col-md-offset-3" action="" method="post">
 
