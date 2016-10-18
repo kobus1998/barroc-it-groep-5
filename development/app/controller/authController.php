@@ -45,6 +45,8 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST')
         $password = password_hash($password, PASSWORD_DEFAULT);
         
         $user->register($username, $password);
+        $message = 'success';
+        $user->redirectMessage('index.php', $message);
         
     }
 }

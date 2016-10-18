@@ -18,7 +18,7 @@ class User {
         $this->redirect(BASE_URL . 'development/app/router');
     }
 
-    public function register($username, $password) 
+    public function register($username, $password)
     {
         /*  When department is already created,
          *  Only change Password
@@ -28,9 +28,9 @@ class User {
 
         if($this->uniqueUser($username) == 0)
         {
-            $sql = "INSERT INTO /*`table`*/ (`username`, `password`) VALUES (:username, :password)";
+            $sql = "INSERT INTO `tbl_users` (`username`, `password`) VALUES (:username, :password)";
         } else {
-            $sql = "UPDATE /*`table`*/ SET `username` = :username, `password` = :password";
+            $sql = "UPDATE `tbl_users` SET password` = :password";
         }
         $stmt = $this->db->pdo->prepare($sql);
         $stmt->bindParam(":username", $username);
@@ -51,7 +51,7 @@ class User {
     
     public function uniqueUser($username) 
     {
-        $sql = "SELECT * FROM /*table*/ WHERE name = :username";
+        $sql = "SELECT * FROM `tbl_users` WHERE name = :username";
         $stmt = $this->db->pdo->prepare($sql);
         $stmt->bindParam(":username", $username);
         $stmt->execute();

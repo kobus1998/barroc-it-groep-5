@@ -1,6 +1,6 @@
 <?php
 define('DBHOST', 'localhost');
-define('DBNAME', '');
+define('DBNAME', 'db_barroc-it');
 define('DBUSER', 'root');
 define('DBPASS', '');
 
