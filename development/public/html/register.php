@@ -1,4 +1,9 @@
-<?php require realpath(__DIR__ . '/parts/header.php') ?>
+<?php require realpath(__DIR__ . '/parts/header.php');
+
+$users = Database::getInstance()->pdo->
+query("SELECT * FROM `tbl_users`")
+    ->fetchAll(PDO::FETCH_ASSOC);
+?>
 
 <title>Home</title>
 </head>
@@ -17,10 +22,17 @@
                     </label>
                     <select  name="username" class="form-control">
                         <option></option>
-                        <option value="sales">Sales</option>
-                        <option value="finance">Finance</option>
-                        <option value="development">Development</option>
-                        <option value="admin">Admin</option>
+                        <?php
+
+                        foreach ($users as $items)
+                        {
+                            echo '<option value="' . $items["username"] .'">';
+                            echo $items['username'];
+                            echo "</option>";
+
+                        }
+
+                        ?>
                     </select>
                 </div>
                 <div class="form-group">
@@ -36,7 +48,7 @@
                     <input type="password" name="password-repeat" class="form-control">
                 </div>
 
-                <input class="btn-primary" type="submit" name="type" value="register">
+                <input class="btn btn-primary" type="submit" name="type" value="register">
                 
             </form>
         </div>

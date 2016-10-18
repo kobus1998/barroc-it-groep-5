@@ -1,5 +1,8 @@
 <?php
 require realpath(__dir__ . '/parts/header.php');
+$users = Database::getInstance()->pdo->
+query("SELECT * FROM `tbl_users`")
+    ->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <title>Home</title>
@@ -37,10 +40,17 @@ require realpath(__dir__ . '/parts/header.php');
                         <label for="department">Department</label>
                         <select name="username" id="department" class="form-control">
                             <option></option>
-                            <option value="sales">Sales</option>
-                            <option value="finance">Finance</option>
-                            <option value="development">Development</option>
-                            <option value="admin">Admin</option>
+                            <?php
+
+                            foreach ($users as $items)
+                            {
+                                echo '<option value="' . $items["username"] .'">';
+                                echo $items['username'];
+                                echo "</option>";
+
+                            }
+
+                            ?>
                         </select>
                     </div>
 
