@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once realpath(__DIR__ . '/config.php');
 
 //requires all vendor classes
@@ -17,15 +19,9 @@ spl_autoload_register( function($class) {
 
 $user = new User();
 
-if(isset($_SESSION['id']))
+if(isset($_SESSION['user_id']))
 {
-    
-    $id = $_SESSION['id'];
-    $userData = Database::getInstance()->pdo->query("SELECT * FROM `db_barroc-it` WHERE id = $id")
-        ->fetchALL(PDO::FETCH_ASSOC);
-
-    $user->username = $userData['username'];
-
-
+    $id = $_SESSION['user_id'];
+    $sql = "SELECT * FROM `tbl_users` WHERE :id = `user_id`";
 }
 ?>

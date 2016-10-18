@@ -35,18 +35,18 @@ require realpath(__dir__ . '/parts/header.php');
 
                     <div class="form-group">
                         <label for="department">Department</label>
-                        <select name="department" id="department" class="form-control">
+                        <select name="username" id="department" class="form-control">
                             <option></option>
-                            <option value="1">Sales</option>
-                            <option value="2">Finance</option>
-                            <option value="3">Development</option>
-                            <option value="4">Admin</option>
+                            <option value="sales">Sales</option>
+                            <option value="finance">Finance</option>
+                            <option value="development">Development</option>
+                            <option value="admin">Admin</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="login" id="password" class="form-control">
+                        <input type="password" name="password" id="password" class="form-control">
                     </div>
 
                     <input type="submit" name="type" value="login" class="btn btn-primary">

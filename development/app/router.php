@@ -1,21 +1,24 @@
 <?php require realpath(__DIR__ . '/init.php');
 
 $username = $user->username;
+var_dump($userData);
+var_dump($_SESSION);
+var_dump($user);
 
 switch($username) {
-    case 'sales':
+    case 'Sales':
         $message = 'Succesfully redirected to sales';
         $user->redirectMessage('sales.php', $message);
         break;
-    case 'finance':
+    case 'Finance':
         $message = 'Succesfully redirected to finance';
         $user->redirectMessage('finance.php', $message);
         break;
-    case 'development':
+    case 'Development':
         $message = 'Succesfully redirected to development';
         $user->redirectMessage('development.php', $message);
         break;
-    case 'admin':
+    case 'Admin':
         $message = 'Succesfully redirected to admin';
         $user->redirectMessage('admin.php', $message);
         break;

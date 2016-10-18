@@ -47,6 +47,7 @@
                 </div>
 
                 <input type="submit" name="type" value="register">
+                
             </form>
         </div>
     </div>

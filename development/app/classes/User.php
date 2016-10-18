@@ -4,6 +4,7 @@ class User {
 
     private $db;
     public $username;
+    public $user_id;
 
     public function __construct()
     {
@@ -11,14 +12,15 @@ class User {
         $this->db = Database::getInstance();
     }
 
-    public function login($data) 
+    public function login($info)
     {
-        $_SESSION['id'] = $data['id'];
+        $_SESSION['user_id'] = $info['user_id'];
+        $_SESSION['username'] = $info['username'];
         
-        $this->redirect(BASE_URL . 'development/app/router');
+        $this->redirect('../../app/router.php');
     }
 
-    public function register($username, $password) 
+    public function register($username, $password)
     {
         /*  When department is already created,
          *  Only change Password
@@ -26,11 +28,17 @@ class User {
          *  Make new row
          */
 
-        if($this->uniqueUser($username) == 0)
+        $sql = "SELECT * FROM `tbl_users` WHERE :username = `username`";
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(":username", $username);
+        $stmt->execute();
+        $data = $stmt->rowCount();
+
+        if($data > 0)
         {
-            $sql = "INSERT INTO /*`table`*/ (`username`, `password`) VALUES (:username, :password)";
+            $sql = "UPDATE `tbl_users` SET `password` = :password Where :username = `username`";
         } else {
-            $sql = "UPDATE /*`table`*/ SET `username` = :username, `password` = :password";
+            $sql = "INSERT INTO `tbl_users` (`username`, `password`) VALUES (:username, :password)";
         }
         $stmt = $this->db->pdo->prepare($sql);
         $stmt->bindParam(":username", $username);
@@ -47,15 +55,6 @@ class User {
             session_destroy();
         }
         $this->redirect('index.php');
-    }
-    
-    public function uniqueUser($username) 
-    {
-        $sql = "SELECT * FROM /*table*/ WHERE name = :username";
-        $stmt = $this->db->pdo->prepare($sql);
-        $stmt->bindParam(":username", $username);
-        $stmt->execute();
-        $stmt->rowCount();
     }
     
     public function redirect($path) 
