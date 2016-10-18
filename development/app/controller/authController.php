@@ -3,7 +3,6 @@
 if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
     if ($_GET['type'] == 'logout') {
         $user->logout();
-        $user->redirect('index.php');
     }
 }
 
