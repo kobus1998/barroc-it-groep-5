@@ -1,9 +1,6 @@
 <?php require realpath(__DIR__ . '/init.php');
 
 $username = $user->username;
-var_dump($userData);
-var_dump($_SESSION);
-var_dump($user);
 
 switch($username) {
     case 'Sales':

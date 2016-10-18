@@ -21,7 +21,13 @@ $user = new User();
 
 if(isset($_SESSION['user_id']))
 {
+    $db = Database::getInstance();
     $id = $_SESSION['user_id'];
-    $sql = "SELECT * FROM `tbl_users` WHERE :id = `user_id`";
+    $userData = $db->pdo->query("SELECT `username`, `user_id` FROM `tbl_users` WHERE $id = `user_id`")
+        ->fetch(PDO::FETCH_ASSOC);
+
+    $user->setUser_ID($userData['user_id']);
+    $user->setUsername($userData['username']);
+
 }
 ?>

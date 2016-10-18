@@ -5,7 +5,8 @@ class User {
     private $db;
     public $username;
     public $user_id;
-
+        
+    
     public function __construct()
     {
         // Start database instance when new user is created
@@ -67,4 +68,24 @@ class User {
         header('location: ' . BASE_URL . '/development/public/html/' . $path . '?message=' . $message);
     }
 
+    
+    public function setUser_ID($user_ID)
+    {
+        $this->user_id = $user_ID;
+    }
+    
+    public function getUser_ID()
+    {
+        return $this->user_id;
+    }
+    
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+    
+    public function getUsername()
+    {
+        return $this->username;
+    }
 }
