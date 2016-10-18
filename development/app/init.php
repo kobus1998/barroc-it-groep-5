@@ -21,7 +21,7 @@ if(isset($_SESSION['id']))
 {
     
     $id = $_SESSION['id'];
-    $userData = Database::getInstance()->pdo->query("SELECT * FROM /*`table`*/ WHERE id = $id")
+    $userData = Database::getInstance()->pdo->query("SELECT * FROM `db_barroc-it` WHERE id = $id")
         ->fetchALL(PDO::FETCH_ASSOC);
 
     $user->username = $userData['username'];

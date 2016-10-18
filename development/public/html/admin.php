@@ -43,6 +43,9 @@ require realpath(__dir__ . '/parts/header.php');
                             <li><a href="#">Add project</a></li>
                         </ul>
                     </li>
+
+                    <li><a href="#">Register</a></li>
+
                 </ul>
                 <ul class="nav navbar-right">
                     <li><a href="#"><button class="btn btn-warning">Logout</button></a></li>
@@ -52,7 +55,7 @@ require realpath(__dir__ . '/parts/header.php');
     </nav>
 </div>
 <div class="main-content">
-
+    
 </div>
 </body>
 </html>
