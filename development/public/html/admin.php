@@ -43,9 +43,6 @@ require realpath(__dir__ . '/parts/header.php');
                             <li><a href="#">Add project</a></li>
                         </ul>
                     </li>
-
-                    <li><a href="#">Register</a></li>
-
                 </ul>
                 <ul class="nav navbar-right">
                     <li><a href="<?php echo BASE_URL;?>/development/app/controller/authController.php?type=logout"><button class="btn btn-warning">Logout</button></a></li>
@@ -55,7 +52,42 @@ require realpath(__dir__ . '/parts/header.php');
     </nav>
 </div>
 <div class="main-content">
-    
+    <div class="register">
+        <div class="container">
+            <h1 class="text-center">Register</h1>
+
+            <form class="col-md-6 col-md-offset-3" action="" method="post">
+
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <select name="department" id="department" class="form-control">
+                        <option></option>
+                        <option value="1">Sales</option>
+                        <option value="2">Finance</option>
+                        <option value="3">Development</option>
+                        <option value="4">Admin</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="password-confirm">Password confirm</label>
+                    <input type="password" name="password-confirm" id="password-confirm" class="form-control">
+                </div>
+
+                <input type="submit" name="register" value="register" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>
