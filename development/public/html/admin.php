@@ -79,7 +79,7 @@ require realpath(__dir__ . '/parts/header.php');
                     <input type="password" name="password-confirm" id="password-confirm" class="form-control">
                 </div>
 
-                <input type="submit" name="register" value="register" class="btn btn-primary">
+                <input type="submit" name="type" value="register" class="btn btn-primary">
             </form>
         </div>
     </div>
