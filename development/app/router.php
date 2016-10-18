@@ -4,19 +4,19 @@ $username = $user->username;
 
 switch($username) {
     case 'Sales':
-        $message = 'Succesfully redirected to sales';
+        $message = 'You have been redirected to Sales';
         $user->redirectMessage('sales.php', $message);
         break;
     case 'Finance':
-        $message = 'Succesfully redirected to finance';
+        $message = 'You have been redirected to Finance';
         $user->redirectMessage('finance.php', $message);
         break;
     case 'Development':
-        $message = 'Succesfully redirected to development';
+        $message = 'You have been redirected to Development';
         $user->redirectMessage('development.php', $message);
         break;
     case 'Admin':
-        $message = 'Succesfully redirected to admin';
+        $message = 'You have been redirected to Admin';
         $user->redirectMessage('admin.php', $message);
         break;
 }?>
