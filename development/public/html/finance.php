@@ -28,7 +28,7 @@ require realpath(__dir__ . '/parts/header.php');
                     </li>
                 </ul>
                 <ul class="nav navbar-right">
-                    <li><a href="#"><button class="btn btn-warning">Logout</button></a></li>
+                    <li><a href="<?php echo BASE_URL;?>/development/app/controller/authController.php?type=logout"><button class="btn btn-warning">Logout</button></a></li>
                 </ul>
             </div>
         </div>
