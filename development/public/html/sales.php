@@ -36,7 +36,7 @@ require realpath(__dir__ . '/parts/header.php');
         </nav>
     </div>
     <div class="main-content">
-        .
+        
     </div>
 </body>
 </html>
