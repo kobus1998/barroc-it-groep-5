@@ -73,4 +73,27 @@ class Customers {
 
 
     }
+
+   public function search($db, $input)    {
+
+        $sql = "
+      SELECT * 
+      FROM `customers` 
+      WHERE 
+        tags LIKE '%$input%' 
+        OR 
+        url LIKE '%$input%'
+        
+      ORDER BY url ASC;    
+    ";
+
+        $results = ($db->query($sql));
+
+        if ($results != false) {
+            return $results->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        return false;
+
+    }
 }

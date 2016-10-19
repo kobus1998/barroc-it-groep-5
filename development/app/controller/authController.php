@@ -83,6 +83,20 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST')
          */
         $user->login($info);
     }
+    //if type = search
+
+    if ($_POST['type'] == 'search') {
+
+        if (!empty($_POST['search'])) {
+
+            $output = $customers->search($db, $input);
+
+            if ($output == false) {
+                $user->redirectMessage('customer_list.php', 'something went wrong ');
+            }
+        }
+    }    
+        
     /*
      * if type is register
      */

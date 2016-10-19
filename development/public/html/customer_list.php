@@ -1,58 +1,49 @@
 <?php
+require realpath(__DIR__ . '/parts/header.php');
+
 $db = Database::getInstance();
 
 $customers = $db->pdo->
              query("SELECT * FROM `tbl_customers`")
              ->fetchAll(PDO::FETCH_ASSOC);
+?>
 
+<?php
 if($user->username == 'Sales') {
-
+    include 'parts/header_sales.php';
     ?>
-        <section class="customers">
-            <div class="container">
-                <table class="table table-striped">
-                    <tr class="row">
-                    <th>Company name</th>
-                    <th>Adress 1</th>
-                    <th>Housenumber 1</th>
-                    <th>Zip code 1</th>
-                    <th>City 1</th>
-                    <th>Housenumber 2</th>
-                    <th>Zipcode 2</th>
-                    <th>City 2</th>
-                    <th>Contact person</th>
-                    <th>Initials</th>
-                    <th>Phone number 1</th>
-                    <th>Phone number 2</th>
-                    <th>Fax</th>
-                    <th>Email</th>
-                    <th>Invoicenumber</th>
-                    <th>Offer status</th>
-                    <th>Potential customer y/n</th>
-                    <th>Appointment day</th>
-                    <th>Next action</th>
-                    </tr>
-                </table>
-            </div>
-        </section>
+
+    <form class="col-md-6 col-md-offset-3" action="" method="post">
+
+        <div class="form-group">
+            <label for="searchfield">search</label>
+            <input type="text" name="input" id="searchfield" class="form-control">
+        </div>
+
+        <input type="submit" name="search" value="Search" class="btn btn-primary">
+    </form>
+
+    <div class="searchresults">
+        <?php
+        include "searchresults.php";
+        ?>
+    </div>
 
 
     <?php
 }
 
 if($user->username == 'Finance') {
+    include 'parts/header_finance.php';
     ?>
     <!--html-->
-
-    <?php
-
-    ?>
-
+    
 
     <?php
 }
 
 if($user->username == 'Admin') {
+    include 'parts/header_admin.php';
     ?>
     <!--html-->
 
@@ -61,6 +52,7 @@ if($user->username == 'Admin') {
 }
 
 if($user->username == 'Development') {
+    include 'parts/header_development.php';
     ?>
     <!--html-->
 
