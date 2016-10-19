@@ -75,17 +75,8 @@ class Customers {
     }
 
    public function search($db, $input)    {
-
-        $sql = "
-      SELECT * 
-      FROM `customers` 
-      WHERE 
-        tags LIKE '%$input%' 
-        OR 
-        url LIKE '%$input%'
-        
-      ORDER BY url ASC;    
-    ";
+           $query = $db->query("SELECT * FROM tbl_customers WHERE `company_name` like  %$input% ORDER BY url ASC");
+           return $query->fetchALL(PDO::FETCH_ASSOC);
 
         $results = ($db->query($sql));
 
