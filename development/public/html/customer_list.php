@@ -5,7 +5,11 @@ $customers = $db->pdo->
              query("SELECT * FROM `tbl_customers`")
              ->fetchAll(PDO::FETCH_ASSOC);
 
-$tableHeader = $db->pdo->query("SHOW COLUMNS FROM `tbl_customers`")->fetchAll(PDO::FETCH_ASSOC);
+$stmt = $db->pdo->
+query("SELECT * FROM `tbl_customers`");
+$stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$colheader = current($stmt);
 ?>
 <?php
 if($user->username == 'Sales') {
@@ -16,9 +20,9 @@ if($user->username == 'Sales') {
                 <table class="table table-striped">
                     <tr class="row">
                         <?php
-                        foreach ($tableHeader as $item)
+                        foreach ($colheader as $item)
                         {
-                            echo '<th>' . $item['Field'] . '</th>';
+                            echo '<th>' . $item['customer_id'] . '</th>';
                         }
                         ?>
                     <!--<th>Company name</th>

@@ -13,7 +13,9 @@ if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Sales'){
         ?>
     </div>
     <div class="main-content">
-        
+        <?php
+        include 'customer_list.php';
+        ?>
     </div>
 </body>
 </html>
