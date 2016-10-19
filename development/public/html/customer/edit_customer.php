@@ -1,7 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kobus
- * Date: 10/19/2016
- * Time: 4:15 PM
- */
+$customer_id = $_get['editcustomer'];
+$sql = "SELECT * FROM `tbl_customers` WHERE id = $customer_id";
+$stmt->execute()->fetchALL(PDO::FETCH_ASSOC);
+
