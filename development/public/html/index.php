@@ -10,14 +10,6 @@ query("SELECT * FROM `tbl_users`")
 
 <body>
     <div class="header">
-        <?php  
-        // if session role = admin
-        // require PUBLIC_PATH . 'html/parts/header_admin.php';
-        // else if session role = sales
-        // require PUBLIC_PATH . 'html/parts/header_sales.php';
-
-        //etc.
-        ?>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
