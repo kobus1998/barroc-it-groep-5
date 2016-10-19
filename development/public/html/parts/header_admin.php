@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand">Barroc IT</a>
+                <a href="<?php echo BASE_URL ?>/development/public/html/admin.php" class="navbar-brand">Barroc IT</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -38,6 +38,10 @@
                             <li><a href="#">Add project</a></li>
                         </ul>
                     </li>
+
+                    <ul class="nav navbar-nav">
+                        <li><a href="<?php echo BASE_URL ?>/development/public/html/register.php">Register</a></li>
+                    </ul>
                 </ul>
                 <ul class="nav navbar-right">
                     <li><a href="<?php echo BASE_URL;?>/development/app/controller/authController.php?type=logout"><button class="btn btn-warning">Logout</button></a></li>
