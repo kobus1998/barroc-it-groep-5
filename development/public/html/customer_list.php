@@ -6,7 +6,8 @@ $customers = $db->pdo->
              ->fetchAll(PDO::FETCH_ASSOC);
 
 $tableHeader = $db->pdo->query("SHOW COLUMNS FROM `tbl_customers`")->fetchAll(PDO::FETCH_ASSOC);
-
+?>
+<?php
 if($user->username == 'Sales') {
 
     ?>
@@ -84,10 +85,6 @@ if($user->username == 'Finance') {
             </table>
         </div>
     </section>
-    <?php
-
-    ?>
-
 
     <?php
 }
