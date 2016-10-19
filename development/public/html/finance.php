@@ -1,5 +1,9 @@
 <?php
 require realpath(__dir__ . '/parts/header.php');
+
+if(isset($_SESSION['username']) != 'Finance'){
+    $user->redirectMessage('index.php', 'Not logged in');
+}
 ?>
 
 <body>
@@ -9,7 +13,7 @@ require realpath(__dir__ . '/parts/header.php');
         ?>
     </div>
     <div class="main-content">
-    
+
     </div>
 </body>
 </html>

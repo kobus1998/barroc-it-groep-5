@@ -11,7 +11,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'GET' ) {
         $user->logout();
     }
 }
-
 /*
  * When request method is POST
  */
