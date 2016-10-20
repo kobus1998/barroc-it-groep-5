@@ -23,7 +23,7 @@ if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Finance'){
 		<section class="col-md-12">
 			<h2 class="col-md-offset-3">Add some invoices</h2>
 			<br>
-		    <form action="" class="col-md-4 col-md-offset-3">
+		    <form action="<?php BASE_URL ?>/app/controller/invoiceController.php" method="POST" class="col-md-4 col-md-offset-3">
 		    	<h4>Document details:</h4>
 				<div class="form-group">
 		    		<label for="date">Date:</label>
