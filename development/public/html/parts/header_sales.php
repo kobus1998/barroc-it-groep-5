@@ -10,7 +10,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customers<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Customer list</a></li>
-                        <li><a href="#">Add customer</a></li>
+                        <li><a href="add_customer.php">Add customer</a></li>
                     </ul>
                 </li>
 
