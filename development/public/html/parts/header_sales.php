@@ -15,10 +15,18 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quotation<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quotations<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Quotation list</a></li>
                         <li><a href="#">Add quotation</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Project list</a></li>
+                        <li><a href="#">Add project</a></li>
                     </ul>
                 </li>
             </ul>

@@ -18,6 +18,8 @@ if($user->username == 'Sales') {
                             <th>Contact person</th>
                             <th>Phone number 1</th>
                             <th>Email</th>
+                            <th>Limit</th>
+                            <th>Potential customer</th>
                             <th>Customer info</th>
                             <th>Edit customer</th>
 
@@ -34,6 +36,8 @@ if($user->username == 'Sales') {
                                 echo '<td>' . $item['contact_person'] . '</td>';
                                 echo '<td>' . $item['phone_number_1'] . '</td>';
                                 echo '<td>' . $item['email'] . '</td>';
+                                echo '<td>' . $item['limit'] . '</td>';
+                                echo '<td>' . $item['potential_customer'] . '</td>';
                                 echo '<td><a href=?customerinfo="' . $item["customer_id"] .'">Customer info</a></td>';
                                 echo '<td><a href="?editcustomer=' . $item ["customer_id"] . '">Edit Customer</a></td> ';
                                 echo '</tr>';
