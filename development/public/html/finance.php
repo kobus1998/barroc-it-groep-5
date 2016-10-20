@@ -13,7 +13,6 @@ if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Finance'){
         ?>
     </div>
     <div class="main-content">
-        <?php require 'customer_list.php'; ?>
     </div>
 </body>
 </html>
