@@ -3,27 +3,8 @@ require_once realpath(__DIR__ . '/../init.php');
 
 $db = Database::getInstance();
 
-//url customer id
-$customerID = $_GET['customerid'];
+require_once realpath(__DIR__ . '/../variable/variableEditCustomer.phpd');
 
-//tbl customer
-$editCompanyName = $_POST['edit-company-name'];
-$editContactPerson = $_POST['edit-contact-person'];
-$editAdress = $_POST['edit-adress'];
-$editZipcode = $_POST['edit-zipcode'];
-$editPhone = $_POST['edit-phone-number'];
-$editFax = $_POST['edit-fax'];
-$editEmail = $_POST['edit-email'];
-$editPotentialCustomer = $_POST['edit-potential-customer'];
-$editLastContact = $_POST['edit-last-contact-date'];
-
-//tbl invoices
-$editInvoiceNumber = $_POST['edit-invoice-number'];
-$editOfferStatus = $_POST['edit-offer-status'];
-
-//tbl appointments
-$editAppointmentDay = $_POST['edit-appointment-day'];
-$editNextAction = $_POST['edit-next-action'];
 
 if( $_POST['type'] == 'edit customer') {
     if( $user->getUsername() == 'Sales')
@@ -99,4 +80,8 @@ if( $_POST['type'] == 'edit customer') {
         $stmt->bindParam(":invoiceNr", $editInvoiceNumber);
         $stmt->execute();
     }
+    if($user->getUsername() == 'Finance')
+    {
+
     }
+}

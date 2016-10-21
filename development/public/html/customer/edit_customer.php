@@ -171,7 +171,7 @@ if($user->username == 'Finance') {
         <div class="edit-customer">
             <div class="container">
                 <h1 class="text-center">Edit customer</h1>
-                <form class="col-md-6 col-md-offset-3" method="post" action="">
+                <form class="col-md-6 col-md-offset-3" method="post" action="<?php echo BASE_URL ?>/development/app/controller/customerController.php?customerid=<?php echo $customerID ?>">
                     <?php
                     foreach ($finance as $item) {
                         ?>
@@ -228,7 +228,7 @@ if($user->username == 'Finance') {
                         <?php
                     }
                     ?>
-
+                    <input type="submit" name="type" value="edit-customer" class="btn btn-primary">
                 </form>
             </div>
         </div>
