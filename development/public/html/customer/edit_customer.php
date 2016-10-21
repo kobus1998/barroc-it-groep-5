@@ -40,10 +40,14 @@ if($user->username == 'Sales') {
     ?>
 
     <script>
-
+        var customer = <?php echo $item['potential_customer'] ?>;
         $(document).ready(function(){
-                $('#potential-custom-check').prop('checked')
-                });
+            if( customer == 1) {
+                $('#potential-custom-check').prop('checked', true);
+            } else {
+                $('#potential-custom-check').prop('checked', false);
+            }
+        });
     </script>
 
     <div class="header">
