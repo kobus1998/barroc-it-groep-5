@@ -14,37 +14,28 @@ $customerID = $_GET['editcustomer'];
  * Query
  */
 $db = Database::getInstance();
-/*$sql ="SELECT `tbl_projects`.* , `tbl_customers`.*, `tbl_invoices`.* , `tbl_appointments`.*
 
-                          FROM `tbl_projects`
-                          
-                          INNER JOIN `tbl_customers`
-                              on `tbl_projects`.`project_id` = `tbl_customers`.`project_id`
-                              
-                          INNER JOIN `tbl_invoices`
-                              on `tbl_invoices`.`project_id` = `tbl_projects`.`project_id`
-                              
-                          INNER JOIN `tbl_appointments`
-                              on `tbl_appointments`.`project_id` = `tbl_projects`.`project_id`
-                              
-                          WHERE `tbl_customers`.`customer_id` = $customerID";*/
-
-$sql = "SELECT `tbl_projects`.* , `tbl_customers`.*, `tbl_invoices`.* , `tbl_appointments`.* 
-        FROM `tbl_projects`, `tbl_appointments`, `tbl_customers`, `tbl_invoices`
-        where `tbl_customers`.customer_id = $customerID AND `tbl_projects`.project_id = $customerID";
-$stmt = $db->pdo->prepare($sql);
-$stmt->execute();
+$stmt = $db->pdo->query("SELECT *
+        FROM `tbl_customers`
+            left join `tbl_projects`
+                on `tbl_projects`.`customer_id` = `tbl_customers`.`customer_id`
+            left join `tbl_appointments`
+                on `tbl_appointments`.`project_id` = `tbl_projects`.`project_id`
+            left join `tbl_invoices`
+                on `tbl_invoices`.`project_id` = `tbl_projects`.`project_id`
+        where `tbl_customers`.customer_id = $customerID");
 $sales = $stmt->fetchALL(PDO::FETCH_ASSOC);
+
 if($user->username == 'Sales') {
-    foreach ($sales as $item):
+
     ?>
 
     <script>
-        var customer = <?php echo $item['potential_customer'] ?>;
         $(document).ready(function(){
-            if( customer == 1) {
+
+            if( $('#potential-custom-check').val(1)) {
                 $('#potential-custom-check').prop('checked', true);
-            } else {
+            } else if( $('#potential-custom-check').val(0)) {
                 $('#potential-custom-check').prop('checked', false);
             }
         });
@@ -58,6 +49,8 @@ if($user->username == 'Sales') {
             <div class="container">
                 <h1 class="text-center">Edit customer</h1>
                 <form class="col-md-6 col-md-offset-3" method="post" action="">
+
+                    <?php foreach ($sales as $item){ ?>
 
                     <div class="form-group">
 
@@ -151,7 +144,7 @@ if($user->username == 'Sales') {
                     <input type="submit" name="type" class="btn btn-primary">
                     <br>
                     <br>
-                    <?php endforeach; ?>
+                    <?php } ?>
                 </form>
             </div>
         </div>
