@@ -3,6 +3,10 @@
 //url customer id
 $customerID = $_GET['customerid'];
 
+/*
+ *  Sales
+ */
+
 //tbl customer
 if(isset($_POST['edit-company-name'])) {
     $editCompanyName = $_POST['edit-company-name'];
@@ -58,4 +62,36 @@ if(isset($_POST['edit-appointment-day'])) {
 
 if(isset($_POST['edit-next-action'])) {
     $editNextAction = $_POST['edit-next-action'];
+}
+
+/*
+ *  finance
+ */
+
+if(isset($_POST['edit-bank-account-number'])) {
+    $editBankAccountNr = $_POST['edit-bank-account-number'];
+}
+
+if(isset($_POST['edit-credit-balance'])) {
+    $editCreditBalance = $_POST['edit-credit-balance'];
+}
+
+if(isset($_POST['edit-number-invoices'])) {
+    $editNumberInvoices = $_POST['edit-number-invoices'];
+}
+
+if(isset($_POST['edit-gross-revenue'])) {
+    $editGrossRevenue = $_POST['edit-gross-revenue'];
+}
+
+if(isset($_POST['edit-limit'])) {
+    $editLimit = $_POST['edit-limit'];
+}
+
+if(isset($_POST['edit-ledger-account-number'])) {
+    $editLedgerAccountNr = $_POST['edit-ledger-account-number'];
+}
+
+if(isset($_POST['edit-tax-code'])) {
+    $editTax = $_POST['edit-tax-code'];
 }

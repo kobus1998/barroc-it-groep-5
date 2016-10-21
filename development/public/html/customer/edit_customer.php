@@ -176,10 +176,12 @@ if($user->username == 'Finance') {
                     foreach ($finance as $item) {
                         ?>
 
-                        <div class="form-group">
+                            <div class="form-group">
 
-                            <label for="edit-bank-account-number">Bank account number</label>
-                            <input type="text" name="edit-bank-account-number" value="<?php echo $item['bank_nr'] ?>" class="form-control">
+                                <label for="edit-bank-account-number">Bank account number</label>
+                                <input type="text" name="edit-bank-account-number" value="<?php echo $item['bank_nr'] ?>" class="form-control">
+
+                             </div>
 
                             <div class="form-group">
 
@@ -190,7 +192,7 @@ if($user->username == 'Finance') {
 
                             <div class="form-group">
 
-                                <label for="edit-number-invoices"></label>
+                                <label for="edit-number-invoices">Number of invoices</label>
                                 <input type="text" name="edit-number-invoices" value="<?php echo $item['number_of_invoices'] ?>" class="form-control">
 
                             </div>
@@ -222,8 +224,6 @@ if($user->username == 'Finance') {
                                 <input type="text" name="edit-tax-code" value="<?php echo $item['tax'] ?>" class="form-control">
 
                             </div>
-
-                        </div>
 
                         <?php
                     }
