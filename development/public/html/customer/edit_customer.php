@@ -48,7 +48,7 @@ if($user->username == 'Sales') {
         <div class="edit-customer">
             <div class="container">
                 <h1 class="text-center">Edit customer</h1>
-                <form class="col-md-6 col-md-offset-3" method="post" action="">
+                <form class="col-md-6 col-md-offset-3" method="post" action="<?php echo BASE_URL ?>/development/app/controller/customerController.php?customerid=<?php echo $customerID ?>">
 
                     <?php foreach ($sales as $item){ ?>
 
@@ -138,10 +138,10 @@ if($user->username == 'Sales') {
                     <div class="form-group">
 
                         <label for="edit-next-action">Next action</label>
-                        <textarea name="edit-last-action" class="form-control"><?php echo $item['next_action'] ?></textarea>
+                        <textarea name="edit-next-action" class="form-control"><?php echo $item['next_action'] ?></textarea>
 
                     </div>
-                    <input type="submit" name="type" class="btn btn-primary">
+                    <input type="submit" name="type" value="edit customer" class="btn btn-primary">
                     <br>
                     <br>
                     <?php } ?>
