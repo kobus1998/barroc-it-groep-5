@@ -1,5 +1,5 @@
 <?php
-require realpath(__dir__ . '/parts/header.php');
+require realpath(__dir__ . '/../parts/header.php');
 
 if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Sales'){
     $user->redirectMessage('index.php', 'Not logged in');
@@ -15,7 +15,7 @@ if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Sales'){
 <body>
 	<div class="header">
         <?php
-        include 'parts/header_sales.php';
+        include '../parts/header_sales.php';
         ?>
     </div>
     <div class="main-content">
