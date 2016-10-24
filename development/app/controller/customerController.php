@@ -1,10 +1,9 @@
 <?php
 require_once realpath(__DIR__ . '/../init.php');
-
+require_once realpath(__DIR__ . '/../variable/variableEditCustomer.php');
 $db = Database::getInstance();
 
-require_once realpath(__DIR__ . '/../variable/variableEditCustomer.phpd');
-
+$customerID = $_GET['customerid'];
 
 if( $_POST['type'] == 'edit customer') {
     if( $user->getUsername() == 'Sales')
@@ -18,8 +17,8 @@ if( $_POST['type'] == 'edit customer') {
             empty($editFax) ||
             empty($editEmail) )
         {
-            $message = '';
-            $user->redirectMessage();
+            $message = 'Some required fields are empty';
+            $user->redirectMessage("../customer/editcustomer.php?editcustomer=$customerID", $message);
             die;
         }
 
@@ -80,8 +79,48 @@ if( $_POST['type'] == 'edit customer') {
         $stmt->bindParam(":invoiceNr", $editInvoiceNumber);
         $stmt->execute();
     }
-    if($user->getUsername() == 'Finance')
+    if($user->getUsername() === 'Finance')
     {
+        if(
+            empty($editBankAccountNr) ||
+            empty($editCreditBalance) ||
+            empty($editNumberInvoices) ||
+            empty($editGrossRevenue) ||
+            empty($editLimit) ||
+            empty($editLedgerAccountNr) ||
+            empty($editTax)
+        ) {
+            $message = 'some required fields are empty';
+            $user->redirectMessage("customer_list.php", $message);
+        }
+        $sql = "
+        UPDATE `tbl_customers`
+        LEFT JOIN `tbl_projects`
+	        on `tbl_customers`.customer_id = `tbl_projects`.customer_id
+        left join `tbl_invoices`
+            on `tbl_invoices`.project_id = `tbl_projects`.project_id
+        set 
+            `tbl_customers`.bank_nr = :bankNr,
+            `tbl_customers`.credit_balance = :creditBalance,
+            `tbl_customers`.number_of_invoices = :nrInvoices,
+            `tbl_customers`.gross_revenue = :grossRevenue,
+            `tbl_customers`.limit = :limit,
+            `tbl_customers`.ledger_account_number = :ledgerNr,
+            `tbl_invoices`.tax = :tax
+        WHERE `tbl_customers`.customer_id = $customerID
+        ";
+        $stmt = $db->pdo->prepare($sql);
+        $stmt->bindParam(':bankNr', $editBankAccountNr);
+        $stmt->bindParam(':creditBalance', $editCreditBalance);
+        $stmt->bindParam(':nrInvoices', $editNumberInvoices);
+        $stmt->bindParam(':grossRevenue', $editGrossRevenue);
+        $stmt->bindParam(':limit', $editLimit);
+        $stmt->bindParam(':ledgerNr', $editLedgerAccountNr);
+        $stmt->bindParam(':tax', $editTax);
+        $stmt->execute();
+
+        $message = 'Succesfull edited';
+        $user->redirectMessage('customer_list.php', $message);
 
     }
 }

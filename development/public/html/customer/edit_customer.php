@@ -228,7 +228,7 @@ if($user->username == 'Finance') {
                         <?php
                     }
                     ?>
-                    <input type="submit" name="type" value="edit-customer" class="btn btn-primary">
+                    <input type="submit" name="type" value="edit customer" class="btn btn-primary">
                 </form>
             </div>
         </div>

@@ -95,3 +95,6 @@ if(isset($_POST['edit-ledger-account-number'])) {
 if(isset($_POST['edit-tax-code'])) {
     $editTax = $_POST['edit-tax-code'];
 }
+
+
+var_dump($_POST);
