@@ -9,10 +9,12 @@ require '../parts/header.php';
  * $_GET['edit customer'] is id of the selected customer
  *
  */
-$customerID = $_GET['editcustomer'];
+$customerID = $_GET['customerid'];
 /*
  * Query
  */
+
+
 $db = Database::getInstance();
 
 $stmt = $db->pdo->query("SELECT *
@@ -23,7 +25,7 @@ $stmt = $db->pdo->query("SELECT *
                 on `tbl_appointments`.`project_id` = `tbl_projects`.`project_id`
             left join `tbl_invoices`
                 on `tbl_invoices`.`project_id` = `tbl_projects`.`project_id`
-        where `tbl_customers`.customer_id = $customerID");
+        where `tbl_customers`.customer_id = " . $customerID);
 $sales = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
 if($user->username == 'Sales') {
