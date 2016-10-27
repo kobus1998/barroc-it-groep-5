@@ -25,7 +25,7 @@ if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Sales'){
 	        	<div class="form-group">
 
 	        		<label for="company_name">company name</label>
-	        		<input class="form-control" class="form-control" type="text" name="company_name" id="company_name">
+	        		<input class="form-control" type="text" name="company_name" id="company_name">
 
 	        	</div>
 	        	
