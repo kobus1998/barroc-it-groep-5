@@ -49,18 +49,13 @@ if($user->username == 'Sales') {
     <div class="main-content">
         <div class="edit-customer">
             <div class="container">
-                <?php foreach ($sales as $item){
-                echo '<b>Company name</b>';
-                echo ' ';
-                echo $item['company_name'];
-                echo '<br>';
-                echo '<b>Contact person</b>';
-                echo ' ';
-                echo $item['contact_person'];
-                ?>
+                <?php foreach ($sales as $item) ?>
             </div>
             <div class="container">
                 <h1 class="text-center">Edit customer</h1>
+
+                <h3>Company name <?php echo $item['company_name']; ?></h3>
+
                 <form class="col-md-6 col-md-offset-3" method="post" action="<?php echo BASE_URL ?>/development/app/controller/customerController.php?customerid=<?php echo $customerID ?>">
 
 
@@ -157,7 +152,6 @@ if($user->username == 'Sales') {
                     <input type="submit" name="type" value="edit customer" class="btn btn-primary">
                     <br>
                     <br>
-                    <?php } ?>
                 </form>
             </div>
         </div>
