@@ -6,9 +6,12 @@ require realpath(__dir__ . '/../parts/header.php');
  * Alleen met de aangegeven customer ID
  *
  * */
+$customerId = $_GET["customerid"];
+
 $customer = $db->pdo->
-query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $_GET["customerid"])
+query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
     ->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!doctype html>
@@ -25,6 +28,11 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $_GET["customerid"])
 </div>
 <div class="main-content">
     <div class="container">
+        <?php if($user->username == 'Sales' || $user->username == 'Admin' || $user->username == 'Finance'){ ?>
+        <div class="container">
+            <?php echo "<a href='edit_customer.php?customerid=$customerId'>Edit this customer</a>" ?>
+        </div>
+        <?php } ?>
         <h1 style="text-align:center;font-size:6rem">Customer details</h1>
         <div class="col-md-6">
             <ul class="pull-right" style="text-align:right;list-style:none;font-weight:bold;font-size:2rem">
