@@ -6,8 +6,7 @@ require realpath(__dir__ . '/../parts/header.php');
  * Alleen met de aangegeven customer ID
  *
  * */
-$customerId = $_GET["customerid"];
-
+$customerId = $_GET['customerid'];
 $customer = $db->pdo->
 query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
     ->fetchAll(PDO::FETCH_ASSOC);
