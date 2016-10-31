@@ -30,7 +30,6 @@ class User {
          *  Make new row
          */
 
-
         if($this->uniqueUser($username) == 0)
         {
             $sql = "INSERT INTO `tbl_users` (`username`, `password`) VALUES (:username, :password)";
@@ -41,8 +40,6 @@ class User {
         $stmt->bindParam(":username", $username);
         $stmt->bindParam(":password", $password);
         $stmt->execute();
-        
-    
     }
 
     public function logout() 
@@ -88,7 +85,11 @@ class User {
             $this->redirectMessage('index.php', 'Not logged in');
         }
     }
-    
+
+    /*
+     * Get's & Set's
+     */
+
     public function setUser_ID($user_ID)
     {
         $this->user_id = $user_ID;
@@ -98,7 +99,9 @@ class User {
     {
         return $this->user_id;
     }
-    
+
+
+
     public function setUsername($username)
     {
         $this->username = $username;
@@ -108,6 +111,8 @@ class User {
     {
         return $this->username;
     }
+
+
     
     public function setLoggedIn($value)
     {
