@@ -1,9 +1,7 @@
 <?php
 require realpath(__dir__ . '/parts/header.php');
 
-if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Finance'){
-    $user->redirectMessage('index.php', 'Not logged in');
-}
+$user->checkPage('Finance');
 ?>
 
 <body>

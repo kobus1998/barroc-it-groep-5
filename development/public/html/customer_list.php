@@ -2,7 +2,7 @@
 require realpath(__DIR__. '/parts/header.php');
 $db = Database::getInstance();
 
-
+$user->checkPage($user->username);
 
 if($user->username == 'Sales') {
     include realpath(__DIR__. '/parts/header_sales.php');

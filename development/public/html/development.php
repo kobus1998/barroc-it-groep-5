@@ -2,9 +2,7 @@
 require realpath(__dir__ . '/parts/header.php');
 
 
-if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Development'){
-    $user->redirectMessage('index.php', 'Not logged in');
-}
+$user->checkPage('Development');
 ?>
 
 <body>
