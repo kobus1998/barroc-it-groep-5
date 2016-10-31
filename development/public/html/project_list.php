@@ -31,7 +31,7 @@ if($user->username == 'Sales') {
                     echo '<tr>';
                     echo '<td>' . $item['project_id'] . '</td>';
                     echo '<td>' . $item['customer_id'] . '</td>';
-                    echo '<td>' . $item['Project_name'] . '</td>';
+                    echo '<td>' . $item['project_name'] . '</td>';
                     echo '<td>' . $item['deadline'] . '</td>';
                     echo '<td><a href=customer/edit_customer.php?customerid="' . $item["project_id"] .'">Project info</a></td>';
                     echo '</tr>';
@@ -74,7 +74,7 @@ if($user->username == 'Admin') {
                     echo '<tr>';
                     echo '<td>' . $item['project_id'] . '</td>';
                     echo '<td>' . $item['customer_id'] . '</td>';
-                    echo '<td>' . $item['Project_name'] . '</td>';
+                    echo '<td>' . $item['project_name'] . '</td>';
                     echo '<td>' . $item['deadline'] . '</td>';
                     echo '<td><a href=customer/edit_customer.php?customerid="' . $item["project_id"] .'">Project info</a></td>';
                     echo '</tr>';
@@ -120,7 +120,7 @@ if($user->username == 'Development') {
                     echo '<tr>';
                     echo '<td>' . $item['project_id'] . '</td>';
                     echo '<td>' . $item['customer_id'] . '</td>';
-                    echo '<td>' . $item['Project_name'] . '</td>';
+                    echo '<td>' . $item['project_name'] . '</td>';
                     echo '<td>' . $item['deadline'] . '</td>';
                     echo '<td><a href=customer/edit_customer.php?customerid="' . $item["project_id"] .'">Project info</a></td>';
                     echo '</tr>';
