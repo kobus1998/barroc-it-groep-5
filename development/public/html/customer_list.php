@@ -61,8 +61,8 @@ if($user->username == 'Sales') {
                         echo '<td>' . $item['limit'] . '</td>';
                         echo '<td>' . $item['potential_customer'] . '</td>';
                         echo '<td>' . $item['credit_worthy'] . '</td>';
-                        echo '<td><a href=customer/info_customer.php?customerid="' . $item["customer_id"] .'">Customer info</a></td>';
-                        echo '<td><a href=customer/edit_customer.php?customerid="' . $item["customer_id"] .'">Edit customer</a></td>';
+                        echo '<td><a href=customer/info_customer.php?customerid="' . $item["customer_id"] .'" class="btn btn-info glyphicon glyphicon-zoom-in"></a></td>';
+                        echo '<td><a href=customer/edit_customer.php?customerid="' . $item["customer_id"] .'" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '</tr>';
                         }
                 }
@@ -78,8 +78,8 @@ if($user->username == 'Sales') {
                         echo '<td>' . $item['limit'] . '</td>';
                         echo '<td>' . $item['potential_customer'] . '</td>';
                         echo '<td>' . $item['credit_worthy'] . '</td>';
-                        echo '<td><a href=customer/info_customer.php?customerid="' . $item["customer_id"] .'">Customer info</a></td>';
-                        echo '<td><a href=customer/edit_customer.php?customerid="' . $item["customer_id"] .'">Edit customer</a></td>';
+                        echo '<td><a href=customer/info_customer.php?customerid="' . $item["customer_id"] .'" class="btn btn-info glyphicon glyphicon-zoom-in"></a></td>';
+                        echo '<td><a href=customer/edit_customer.php?customerid="' . $item["customer_id"] .'" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '</tr>';
                     }
                 }
