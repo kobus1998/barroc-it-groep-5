@@ -2,15 +2,5 @@
 require realpath(__dir__ . '/parts/header.php');
 
 $user->checkPage('Finance');
+$user->redirectMessage('invoice_list.php', $message);
 ?>
-
-<body>
-    <div class="header">
-        <?php 
-        include 'parts/header_finance.php';
-        ?>
-    </div>
-    <div class="main-content">
-    </div>
-</body>
-</html>
