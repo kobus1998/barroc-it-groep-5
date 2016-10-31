@@ -12,6 +12,7 @@ if($user->username == 'Sales') {
     ?>
     <section class="invoices">
         <div class="container">
+            <h2 class="text-center">Invoice list</h2>
             <table class="table ">
                 <thead>
                 <tr>
@@ -55,6 +56,7 @@ if($user->username == 'Finance') {
     ?>
     <section class="invoices">
         <div class="container">
+            <h2 class="text-center">Invoice list</h2>
             <table class="table ">
                 <thead>
                 <tr>
@@ -99,6 +101,7 @@ if($user->username == 'Admin') {
     ?>
     <section class="invoices">
         <div class="container">
+            <h2 class="text-center">Invoice list</h2>
             <table class="table ">
                 <thead>
                 <tr>

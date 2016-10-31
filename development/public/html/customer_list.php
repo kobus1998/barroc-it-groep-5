@@ -17,6 +17,7 @@ if($user->username == 'Sales') {
     ?>
     <section class="customers">
         <div class="container">
+            <h2 class="text-center">Customer list</h2>
             <div class="search-customer col-md-5 col-md-offset-8">
                 <form method="get" action="">
                     <div class="form-group row">
@@ -109,6 +110,7 @@ if($user->username == 'Finance') {
     <!--html-->
     <section class="customers">
         <div class="container">
+            <h2 class="text-center">Customer list</h2>
             <div class="search-customer col-md-5 col-md-offset-8">
                 <form method="get" action="">
                     <div class="form-group row">
@@ -200,6 +202,7 @@ if($user->username == 'Admin') {
     ?>
     <section class="customers">
         <div class="container">
+            <h2 class="text-center">Customer list</h2>
             <div class="search-customer col-md-5 col-md-offset-8">
                 <form method="get" action="">
                     <div class="form-group row">
@@ -283,6 +286,7 @@ if($user->username == 'Development') {
     <!--html-->
     <section class="customers">
         <div class="container">
+            <h2 class="text-center">Customer list</h2>
             <div class="search-customer col-md-5 col-md-offset-8">
                 <form method="get" action="">
                     <div class="form-group row">
