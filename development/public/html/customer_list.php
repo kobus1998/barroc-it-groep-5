@@ -66,7 +66,7 @@ if($user->username == 'Sales') {
                         }
                 }
                 if($_GET['type'] == 'search') {
-                    foreach ($searchSales as $item)
+                    foreach ($search as $item)
                     {
                         echo '<tr>';
                         echo '<td>' . $item['customer_id'] . '</td>';
@@ -241,7 +241,7 @@ if($user->username == 'Admin') {
                         echo '</tr>';
                     }
                 }
-                if($_GET['type'] == 'search') {
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
                     foreach ($searchAdmin as $item) {
                         echo '<tr>';
                         echo '<td>' . $item['customer_id'] . '</td>';
@@ -253,6 +253,8 @@ if($user->username == 'Admin') {
                         echo '<td><a href=customer/edit_customer.php?customerid="' . $item["customer_id"] . '">Edit customer</a></td>';
                         echo '</tr>';
                     }
+                } else {
+                    return false;
                 }
                 ?>
 
@@ -268,9 +270,7 @@ if($user->username == 'Admin') {
 if($user->username == 'Development') {
     include realpath(__DIR__. '/parts/header_development.php');
     $customers = $db->pdo->
-    query("SELECT * 
-           from tbl_customers 
-            ")
+    query("SELECT * from tbl_customers ")
         ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-customer-list'])) {
@@ -326,7 +326,6 @@ if($user->username == 'Development') {
                         echo '</tr>';
                     }
                 }
-
                 if($_GET['type'] == 'search') {
                     foreach ($searchDevelopment as $item) {
                         echo '<tr>';
