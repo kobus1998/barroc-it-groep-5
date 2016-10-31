@@ -17,7 +17,9 @@ $customerID = $_GET['customerid'];
 
 $db = Database::getInstance();
 
-$stmt = $db->pdo->query("SELECT *
+if($user->username == 'Sales') {
+
+    $stmt = $db->pdo->query("SELECT *
         FROM `tbl_customers`
             left join `tbl_projects`
                 on `tbl_projects`.`customer_id` = `tbl_customers`.`customer_id`
@@ -26,11 +28,8 @@ $stmt = $db->pdo->query("SELECT *
             left join `tbl_invoices`
                 on `tbl_invoices`.`project_id` = `tbl_projects`.`project_id`
         where `tbl_customers`.customer_id = " . $customerID);
-$sales = $stmt->fetchALL(PDO::FETCH_ASSOC);
-
-if($user->username == 'Sales') {
-
-    ?>
+    $sales = $stmt->fetchALL(PDO::FETCH_ASSOC);
+?>
 
     <script>
         $(document).ready(function(){
@@ -49,12 +48,12 @@ if($user->username == 'Sales') {
     <div class="main-content">
         <div class="edit-customer">
             <div class="container">
-                <?php foreach ($sales as $item) ?>
+
             </div>
             <div class="container">
                 <h1 class="text-center">Edit customer</h1>
 
-                <h3>Company name <?php echo $item['company_name']; ?></h3>
+                <h3>Company name <?php echo $sales[0]['company_name']; ?></h3>
 
                 <form class="col-md-6 col-md-offset-3" method="post" action="<?php echo BASE_URL ?>/development/app/controller/customerController.php?customerid=<?php echo $customerID ?>">
 
@@ -63,55 +62,55 @@ if($user->username == 'Sales') {
                     <div class="form-group">
 
                         <label for="edit-company-name">Company name</label>
-                        <input type="text" name="edit-company-name" value="<?php echo $item['company_name'] ?>" class="form-control">
+                        <input type="text" name="edit-company-name" value="<?php echo $sales[0]['company_name'] ?>" class="form-control">
 
                     </div>
 
                     <div class="form-group">
 
                         <label for="edit-contact-person">Contact person</label>
-                        <input type="text" name="edit-contact-person" value="<?php echo $item['contact_person'] ?>" class="form-control">
+                        <input type="text" name="edit-contact-person" value="<?php echo $sales[0]['contact_person'] ?>" class="form-control">
 
                     </div>
                     <br>
                     <div class="form-group">
 
                         <label for="edit-adress">Adress</label>
-                        <input type="text" name="edit-adress" value="<?php echo $item['address_1'] ?>" class="form-control">
+                        <input type="text" name="edit-adress" value="<?php echo $sales[0]['address_1'] ?>" class="form-control">
 
                     </div>
 
                     <div class="form-group">
 
                         <label for="edit-zipcode">Zip-code</label>
-                        <input type="text" name="edit-zipcode" value="<?php echo $item['zipcode'] ?>" class="form-control">
+                        <input type="text" name="edit-zipcode" value="<?php echo $sales[0]['zipcode'] ?>" class="form-control">
 
                     </div>
 
                     <br>
                     <div class="form-group">
                         <label for="edit-phone-number">Phone number</label>
-                        <input type="tel" name="edit-phone-number" value="<?php echo $item['phone_number_1'] ?>" class="form-control">
+                        <input type="tel" name="edit-phone-number" value="<?php echo $sales[0]['phone_number_1'] ?>" class="form-control">
                     </div>
 
                     <div class="form-group">
 
                         <label for="edit-fax">Fax</label>
-                        <input type="text" name="edit-fax" value="<?php echo $item['fax'] ?>" class="form-control">
+                        <input type="text" name="edit-fax" value="<?php echo $sales[0]['fax'] ?>" class="form-control">
 
                     </div>
 
                     <div class="form-group">
 
                         <label for="edit-email">Email</label>
-                        <input type="email" name="edit-email" value="<?php echo $item['email'] ?>" class="form-control">
+                        <input type="email" name="edit-email" value="<?php echo $sales[0]['email'] ?>" class="form-control">
 
                     </div>
                     <br>
                     <div class="form-group">
 
                         <label for="edit-invoice-number">Invoice number</label>
-                        <input type="text" name="edit-invoice-number" value="<?php echo $item['invoice_nr'] ?>" class="form-control">
+                        <input type="text" name="edit-invoice-number" value="<?php echo $sales[0]['invoice_nr'] ?>" class="form-control">
 
                     </div>
 
@@ -125,28 +124,28 @@ if($user->username == 'Sales') {
                     <div class="form-group">
 
                         <label for="edit-potential-customer">Potential customer</label>
-                        <input type="checkbox" id="potential-custom-check" name="edit-potential-customer" value="<?php echo $item['potential_customer'] ?>" class="form-control">
+                        <input type="checkbox" id="potential-custom-check" name="edit-potential-customer" value="<?php echo $sales[0]['potential_customer'] ?>" class="form-control">
 
                     </div>
                     <br>
                     <div class="form-group">
 
                         <label for="edit-appointment-day">Appointment day</label>
-                        <input type="date" name="edit-appointment-day" value="<?php echo $item['appointment_day'] ?>" class="form-control">
+                        <input type="date" name="edit-appointment-day" value="<?php echo $sales[0]['appointment_day'] ?>" class="form-control">
 
                     </div>
 
                     <div class="form-group">
 
                         <label for="edit-last-contact-date">Last contact date</label>
-                        <input type="date" name="edit-last-contact-date" value="<?php echo $item['last_contact_date'] ?>" class="form-control">
+                        <input type="date" name="edit-last-contact-date" value="<?php echo $sales[0]['last_contact_date'] ?>" class="form-control">
 
                     </div>
 
                     <div class="form-group">
 
                         <label for="edit-next-action">Next action</label>
-                        <textarea name="edit-next-action" class="form-control"><?php echo $item['next_action'] ?></textarea>
+                        <textarea name="edit-next-action" class="form-control"><?php echo $sales[0]['next_action'] ?></textarea>
 
                     </div>
                     <input type="submit" name="type" value="edit customer" class="btn btn-primary">
@@ -177,14 +176,14 @@ if($user->username == 'Finance') {
     <div class="main-content">
     <div class="edit-customer">
     <div class="container">
-        <?php foreach ($finance as $item) {
+        <?php
         echo '<b>Company name</b>';
         echo ' ';
-        echo $item['company_name'];
+        echo $finance[0]['company_name'];
         echo '<br>';
         echo '<b>Contact person</b>';
         echo ' ';
-        echo $item['contact_person'];
+        echo $finance[0]['contact_person'];
         ?>
         </div>
         <div class="container">
@@ -196,7 +195,7 @@ if($user->username == 'Finance') {
                     <div class="form-group">
 
                         <label for="edit-bank-account-number">Bank account number</label>
-                        <input type="text" name="edit-bank-account-number" value="<?php echo $item['bank_nr'] ?>"
+                        <input type="text" name="edit-bank-account-number" value="<?php echo $finance[0]['bank_nr'] ?>"
                                class="form-control">
 
                     </div>
@@ -204,7 +203,7 @@ if($user->username == 'Finance') {
                     <div class="form-group">
 
                         <label for="edit-credit-balance">Credit balance</label>
-                        <input type="text" name="edit-credit-balance" value="<?php echo $item['credit_balance'] ?>"
+                        <input type="text" name="edit-credit-balance" value="<?php echo $finance[0]['credit_balance'] ?>"
                                class="form-control">
 
                     </div>
@@ -213,14 +212,14 @@ if($user->username == 'Finance') {
 
                         <label for="edit-number-invoices">Number of invoices</label>
                         <input type="text" name="edit-number-invoices"
-                               value="<?php echo $item['number_of_invoices'] ?>" class="form-control">
+                               value="<?php echo $finance[0]['number_of_invoices'] ?>" class="form-control">
 
                     </div>
 
                     <div class="form-group">
 
                         <label for="edit-gross-revenue">Gross revenue</label>
-                        <input type="text" name="edit-gross-revenue" value="<?php echo $item['gross_revenue'] ?>"
+                        <input type="text" name="edit-gross-revenue" value="<?php echo $finance[0]['gross_revenue'] ?>"
                                class="form-control">
 
                     </div>
@@ -228,7 +227,7 @@ if($user->username == 'Finance') {
                     <div class="form-group">
 
                         <label for="edit-limit">Limit</label>
-                        <input type="text" name="edit-limit" value="<?php echo $item['limit'] ?>"
+                        <input type="text" name="edit-limit" value="<?php echo $finance[0]['limit'] ?>"
                                class="form-control">
 
                     </div>
@@ -237,21 +236,18 @@ if($user->username == 'Finance') {
 
                         <label for="edit-ledger-account-number">Ledger account number</label>
                         <input type="text" name="edit-ledger-account-number"
-                               value="<?php echo $item['ledger_account_number'] ?>" class="form-control">
+                               value="<?php echo $finance[0]['ledger_account_number'] ?>" class="form-control">
 
                     </div>
 
                     <div class="form-group">
 
                         <label for="edit-tax-code">Tax code</label>
-                        <input type="text" name="edit-tax-code" value="<?php echo $item['tax'] ?>"
+                        <input type="text" name="edit-tax-code" value="<?php echo $finance[0]['tax'] ?>"
                                class="form-control">
 
                     </div>
 
-                    <?php
-                }
-                ?>
                 <input type="submit" name="type" value="edit customer" class="btn btn-primary">
             </form>
         </div>
@@ -295,14 +291,14 @@ if($user->username == 'Finance') {
         <div class="main-content">
             <div class="edit-customer">
                 <div class="container">
-                    <?php foreach ($adminSQL as $item) {
+                    <?php
                     echo '<b>Company name</b>';
                     echo ' ';
-                    echo $item['company_name'];
+                    echo $sales[0]['company_name'];
                     echo '<br>';
                     echo '<b>Contact person</b>';
                     echo ' ';
-                    echo $item['contact_person'];
+                    echo $sales[0]['contact_person'];
                     ?>
                 </div>
                 <div class="container">
@@ -313,7 +309,7 @@ if($user->username == 'Finance') {
                         <div class="form-group">
 
                             <label for="edit-company-name">Company name</label>
-                            <input type="text" name="edit-company-name" value="<?php echo $item['company_name'] ?>"
+                            <input type="text" name="edit-company-name" value="<?php echo $sales[0]['company_name'] ?>"
                                    class="form-control">
 
                         </div>
@@ -322,7 +318,7 @@ if($user->username == 'Finance') {
 
                             <label for="edit-contact-person">Contact person</label>
                             <input type="text" name="edit-contact-person"
-                                   value="<?php echo $item['contact_person'] ?>"
+                                   value="<?php echo $sales[0]['contact_person'] ?>"
                                    class="form-control">
 
                         </div>
@@ -330,7 +326,7 @@ if($user->username == 'Finance') {
                         <div class="form-group">
 
                             <label for="edit-adress">Adress</label>
-                            <input type="text" name="edit-adress" value="<?php echo $item['address_1'] ?>"
+                            <input type="text" name="edit-adress" value="<?php echo $sales[0]['address_1'] ?>"
                                    class="form-control">
 
                         </div>
@@ -338,7 +334,7 @@ if($user->username == 'Finance') {
                         <div class="form-group">
 
                             <label for="edit-zipcode">Zip-code</label>
-                            <input type="text" name="edit-zipcode" value="<?php echo $item['zipcode'] ?>"
+                            <input type="text" name="edit-zipcode" value="<?php echo $sales[0]['zipcode'] ?>"
                                    class="form-control">
 
                         </div>
@@ -346,14 +342,14 @@ if($user->username == 'Finance') {
                         <br>
                         <div class="form-group">
                             <label for="edit-phone-number">Phone number</label>
-                            <input type="tel" name="edit-phone-number" value="<?php echo $item['phone_number_1'] ?>"
+                            <input type="tel" name="edit-phone-number" value="<?php echo $sales[0]['phone_number_1'] ?>"
                                    class="form-control">
                         </div>
 
                         <div class="form-group">
 
                             <label for="edit-fax">Fax</label>
-                            <input type="text" name="edit-fax" value="<?php echo $item['fax'] ?>"
+                            <input type="text" name="edit-fax" value="<?php echo $sales[0]['fax'] ?>"
                                    class="form-control">
 
                         </div>
@@ -361,7 +357,7 @@ if($user->username == 'Finance') {
                         <div class="form-group">
 
                             <label for="edit-email">Email</label>
-                            <input type="email" name="edit-email" value="<?php echo $item['email'] ?>"
+                            <input type="email" name="edit-email" value="<?php echo $sales[0]['email'] ?>"
                                    class="form-control">
 
                         </div>
@@ -369,7 +365,7 @@ if($user->username == 'Finance') {
                         <div class="form-group">
 
                             <label for="edit-invoice-number">Invoice number</label>
-                            <input type="text" name="edit-invoice-number" value="<?php echo $item['invoice_nr'] ?>"
+                            <input type="text" name="edit-invoice-number" value="<?php echo $sales[0]['invoice_nr'] ?>"
                                    class="form-control">
 
                         </div>
@@ -385,7 +381,7 @@ if($user->username == 'Finance') {
 
                             <label for="edit-potential-customer">Potential customer</label>
                             <input type="checkbox" id="potential-custom-check" name="edit-potential-customer"
-                                   value="<?php echo $item['potential_customer'] ?>" class="form-control">
+                                   value="<?php echo $sales[0]['potential_customer'] ?>" class="form-control">
 
                         </div>
                         <br>
@@ -393,7 +389,7 @@ if($user->username == 'Finance') {
 
                             <label for="edit-appointment-day">Appointment day</label>
                             <input type="date" name="edit-appointment-day"
-                                   value="<?php echo $item['appointment_day'] ?>" class="form-control">
+                                   value="<?php echo $sales[0]['appointment_day'] ?>" class="form-control">
 
                         </div>
 
@@ -401,7 +397,7 @@ if($user->username == 'Finance') {
 
                             <label for="edit-last-contact-date">Last contact date</label>
                             <input type="date" name="edit-last-contact-date"
-                                   value="<?php echo $item['last_contact_date'] ?>" class="form-control">
+                                   value="<?php echo $sales[0]['last_contact_date'] ?>" class="form-control">
 
                         </div>
 
@@ -409,7 +405,7 @@ if($user->username == 'Finance') {
 
                             <label for="edit-next-action">Next action</label>
                             <textarea name="edit-next-action"
-                                      class="form-control"><?php echo $item['next_action'] ?></textarea>
+                                      class="form-control"><?php echo $sales[0]['next_action'] ?></textarea>
 
                         </div>
 
@@ -419,7 +415,7 @@ if($user->username == 'Finance') {
 
                             <label for="edit-bank-account-number">Bank account number</label>
                             <input type="text" name="edit-bank-account-number"
-                                   value="<?php echo $item['bank_nr'] ?>"
+                                   value="<?php echo $finance[0]['bank_nr'] ?>"
                                    class="form-control">
 
                         </div>
@@ -428,7 +424,7 @@ if($user->username == 'Finance') {
 
                             <label for="edit-credit-balance">Credit balance</label>
                             <input type="text" name="edit-credit-balance"
-                                   value="<?php echo $item['credit_balance'] ?>"
+                                   value="<?php echo $finance[0]['credit_balance'] ?>"
                                    class="form-control">
 
                         </div>
@@ -437,7 +433,7 @@ if($user->username == 'Finance') {
 
                             <label for="edit-number-invoices">Number of invoices</label>
                             <input type="text" name="edit-number-invoices"
-                                   value="<?php echo $item['number_of_invoices'] ?>" class="form-control">
+                                   value="<?php echo $finance[0]['number_of_invoices'] ?>" class="form-control">
 
                         </div>
 
@@ -445,7 +441,7 @@ if($user->username == 'Finance') {
 
                             <label for="edit-gross-revenue">Gross revenue</label>
                             <input type="text" name="edit-gross-revenue"
-                                   value="<?php echo $item['gross_revenue'] ?>"
+                                   value="<?php echo $finance[0]['gross_revenue'] ?>"
                                    class="form-control">
 
                         </div>
@@ -453,7 +449,7 @@ if($user->username == 'Finance') {
                         <div class="form-group">
 
                             <label for="edit-limit">Limit</label>
-                            <input type="text" name="edit-limit" value="<?php echo $item['limit'] ?>"
+                            <input type="text" name="edit-limit" value="<?php echo $finance[0]['limit'] ?>"
                                    class="form-control">
 
                         </div>
@@ -462,18 +458,17 @@ if($user->username == 'Finance') {
 
                             <label for="edit-ledger-account-number">Ledger account number</label>
                             <input type="text" name="edit-ledger-account-number"
-                                   value="<?php echo $item['ledger_account_number'] ?>" class="form-control">
+                                   value="<?php echo $finance[0]['ledger_account_number'] ?>" class="form-control">
 
                         </div>
 
                         <div class="form-group">
 
                             <label for="edit-tax-code">Tax code</label>
-                            <input type="text" name="edit-tax-code" value="<?php echo $item['tax'] ?>"
+                            <input type="text" name="edit-tax-code" value="<?php echo $finance[0]['tax'] ?>"
                                    class="form-control">
 
                         </div>
-                        <?php } ?>
 
                         <input type="submit" name="type" value="edit customer" class="btn btn-primary">
 
