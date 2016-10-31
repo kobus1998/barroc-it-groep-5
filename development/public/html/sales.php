@@ -2,17 +2,5 @@
 require realpath(__dir__ . '/parts/header.php');
 
 $user->checkPage('Sales');
+$user->redirectMessage('customer_list.php', $message);
 ?>
-
-<body>
-    <div class="header">
-        <?php
-        include 'parts/header_sales.php';
-        ?>
-    </div>
-    <div class="main-content">
-        <?php
-        ?>
-    </div>
-</body>
-</html>
