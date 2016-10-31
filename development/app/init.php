@@ -28,6 +28,7 @@ if(isset($_SESSION['user_id']))
 
     $user->setUser_ID($userData['user_id']);
     $user->setUsername($userData['username']);
+    $user->setLoggedIn(true);
 
 }
 ?>

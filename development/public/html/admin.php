@@ -2,9 +2,7 @@
 require realpath(__dir__ . '/parts/header.php');
 
 // Only let people in with the username of the given department
-if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Admin'){
-    $user->redirectMessage('index.php', 'Not logged in');
-}
+$user->checkPage('Admin');
 ?>
 
 <body>

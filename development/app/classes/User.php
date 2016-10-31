@@ -5,6 +5,7 @@ class User {
     private $db;
     public $username;
     public $user_id;
+    public $isLoggedIn = false;
         
     
     public function __construct()
@@ -80,7 +81,13 @@ class User {
     {
         header('location: ' . BASE_URL . '/development/public/html/' . $path . '?message=' . $message);
     }
-
+    
+    public function checkPage($departments)
+    {
+        if($this->getLoggedIn() != true || $this->username != "$departments"){
+            $this->redirectMessage('index.php', 'Not logged in');
+        }
+    }
     
     public function setUser_ID($user_ID)
     {
@@ -100,5 +107,15 @@ class User {
     public function getUsername()
     {
         return $this->username;
+    }
+    
+    public function setLoggedIn($value)
+    {
+        $this->isLoggedIn = $value;
+    }
+    
+    public function getLoggedIn()
+    {
+        return $this->isLoggedIn;
     }
 }
