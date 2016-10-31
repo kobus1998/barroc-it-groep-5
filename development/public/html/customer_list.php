@@ -24,7 +24,7 @@ if($user->username == 'Sales') {
                         <label>Search Customer
                             <input type="search" name="search-customer-list">
                         </label>
-                        <input class="btn btn-primary" type="submit" name="type" value="search">
+                        <button class="btn btn-warning glyphicon glyphicon-search" type="submit" name="type" value="search"></button>
                     </div>
                 </form>
             </div>
