@@ -30,7 +30,8 @@ if($user->username == 'Sales') {
                 {
                     echo '<tr>';
                     echo '<td>' . $item['invoice_id'] . '</td>';
-                    echo '<td>' . $item['project_name'] . '</td>';
+                    echo '<td>' . $item['invoice_nr'] . '</td>';
+                    echo '<td>' . $item['project_id'] . '</td>';
                     echo '<td>' . $item['paid'] . '</td>';
                     echo '<td><a href=customer/edit_customer.php?customerid="' . $item["invoice_id"] .'">Invoice info</a></td>';
                     echo '</tr>';
@@ -73,7 +74,8 @@ if($user->username == 'Finance') {
                 {
                     echo '<tr>';
                     echo '<td>' . $item['invoice_id'] . '</td>';
-                    echo '<td>' . $item['project_name'] . '</td>';
+                    echo '<td>' . $item['invoice_nr'] . '</td>';
+                    echo '<td>' . $item['project_id'] . '</td>';
                     echo '<td>' . $item['paid'] . '</td>';
                     echo '<td><a href=customer/edit_customer.php?customerid="' . $item["invoice_id"] .'">Invoice info</a></td>';
                     echo '<td><a href=customer/edit_customer.php?customerid="' . $item["invoice_id"] .'">Edit invoice</a></td>';
@@ -116,7 +118,8 @@ if($user->username == 'Admin') {
                 {
                     echo '<tr>';
                     echo '<td>' . $item['invoice_id'] . '</td>';
-                    echo '<td>' . $item['project_name'] . '</td>';
+                    echo '<td>' . $item['invoice_nr'] . '</td>';
+                    echo '<td>' . $item['project_id'] . '</td>';
                     echo '<td>' . $item['paid'] . '</td>';
                     echo '<td><a href=customer/edit_customer.php?customerid="' . $item["invoice_id"] .'">Invoice info</a></td>';
                     echo '<td><a href=customer/edit_customer.php?customerid="' . $item["invoice_id"] .'">Edit invoice</a></td>';
@@ -162,7 +165,8 @@ if($user->username == 'Development') {
                 {
                     echo '<tr>';
                     echo '<td>' . $item['invoice_id'] . '</td>';
-                    echo '<td>' . $item['project_name'] . '</td>';
+                    echo '<td>' . $item['invoice_nr'] . '</td>';
+                    echo '<td>' . $item['project_id'] . '</td>';
                     echo '<td>' . $item['paid'] . '</td>';
                     echo '<td><a href=customer/edit_customer.php?customerid="' . $item["invoice_id"] .'">Invoice info</a></td>';
                     echo '</tr>';
