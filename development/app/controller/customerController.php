@@ -1,11 +1,27 @@
 <?php
 require_once realpath(__DIR__ . '/../init.php');
-require_once realpath(__DIR__ . '/../variable/variableEditCustomer.php');
+
 $db = Database::getInstance();
 
-$customerID = $_GET['customerid'];
+$customer = new Customers();
+
+if ($_POST['type'] == 'add customer') {
+    
+    if($customer->addCustomer($_POST)) {
+        $user->redirect('customer_list.php?message=klant toegevoegt');
+    }
+    
+}
 
 if( $_POST['type'] == 'edit customer') {
+
+    if (!isset($_GET['customerid'])) {
+        die("redirect to add_customer");
+    }
+
+    require_once realpath(__DIR__ . '/../variable/variableEditCustomer.php');
+
+    $customerID = $_GET['customerid'];
     if( $user->getUsername() == 'Sales')
     {
         if (

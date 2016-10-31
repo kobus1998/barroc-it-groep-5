@@ -21,7 +21,7 @@ if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Sales'){
     <div class="main-content">
     	<div class="container">
     		<h1 class="col-md-6 col-md-offset-3">Add customer</h1>
-	        <form class="col-md-6 col-md-offset-3" action="">
+	        <form class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>\development\app\controller\customerController.php" method="POST">
 	        	<div class="form-group">
 
 	        		<label for="company_name">company name</label>
@@ -99,7 +99,7 @@ if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Sales'){
 
 	        	</div>
 
-	        	<input type="submit" class="btn btn-primary pull-right" value="Submit" name="add_customer" style="margin-bottom:15px">
+	        	<input type="submit" class="btn btn-primary pull-right" value="add customer" name="type" style="margin-bottom:15px">
 
 	        </form>
 	    </div>
