@@ -50,15 +50,17 @@ if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Sales'){
 
             <div class="form-group">
 
-                <label for="zipcode">Active maintenance contract</label>
-                <input class="form-control" type="text" name="zipcode" id="zipcode">
+                <label for="maintenance_contract">Active maintenance contract</label>
+                <input class="form-control" type="checkbox" name="maintenance_contract" id="maintenance_contract">
 
             </div>
 
             <div class="form-group">
 
-                <label for="phone_number_1">Deadline</label>
-                <input class="form-control" type="text" name="phone_number_1" id="phone_number_1">
+                <p style="font-weight:bold">Deadline</p>
+                <input style="width:33%" class="form-control col-md-2" type="text" placeholder="dd" name="day" id="deadline">
+                <input style="width:33%" class="form-control col-md-2" type="text" placeholder="mm" name="month" id="deadline">
+                <input style="width:33%" class="form-control" type="text" placeholder="yyyy" name="year" id="deadline">
 
             </div>
 
