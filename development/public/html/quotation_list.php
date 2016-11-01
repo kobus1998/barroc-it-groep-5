@@ -30,7 +30,7 @@ if($user->username == 'Sales') {
                 {
                     echo '<tr>';
                     echo '<td>' . $item['quotation_id'] . '</td>';
-                    echo '<td>' . $item['quotation_nr'] . '</td>';
+                    echo '<td>' . $item['quotation_number'] . '</td>';
                     echo '<td>' . $item['order_type'] . '</td>';
                     echo '<td><a href=customer/edit_customer.php?customerid="' . $item["quotation_id"] .'">Quotation info</a></td>';
                     echo '</tr>';
@@ -72,7 +72,7 @@ if($user->username == 'Finance') {
                 {
                     echo '<tr>';
                     echo '<td>' . $item['quotation_id'] . '</td>';
-                    echo '<td>' . $item['quotation_nr'] . '</td>';
+                    echo '<td>' . $item['quotation_number'] . '</td>';
                     echo '<td>' . $item['order_type'] . '</td>';
                     echo '<td><a href=customer/edit_customer.php?customerid="' . $item["quotation_id"] .'">Quotation info</a></td>';
                     echo '</tr>';
@@ -113,7 +113,7 @@ if($user->username == 'Admin') {
                 {
                     echo '<tr>';
                     echo '<td>' . $item['quotation_id'] . '</td>';
-                    echo '<td>' . $item['quotation_nr'] . '</td>';
+                    echo '<td>' . $item['quotation_number'] . '</td>';
                     echo '<td>' . $item['order_type'] . '</td>';
                     echo '<td><a href=customer/edit_customer.php?customerid="' . $item["quotation_id"] .'">Quotation info</a></td>';
                     echo '</tr>';
