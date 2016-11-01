@@ -43,18 +43,19 @@ if($user->username == 'Sales') {
                 <tbody>
 
                 <?php
-                foreach ($projects as $item)
-                {
-                    echo '<tr>';
-                    echo '<td>' . $item['project_id'] . '</td>';
-                    echo '<td>' . $item['customer_id'] . '</td>';
-                    echo '<td>' . $item['project_name'] . '</td>';
-                    echo '<td>' . $item['deadline'] . '</td>';
-                    echo '<td><a href=customer/edit_customer.php?customerid="' . $item["project_id"] .'" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
-                    echo '</tr>';
+                if(!isset($_GET['type'])) {
+                    foreach ($projects as $item) {
+                        echo '<tr>';
+                        echo '<td>' . $item['project_id'] . '</td>';
+                        echo '<td>' . $item['customer_id'] . '</td>';
+                        echo '<td>' . $item['project_name'] . '</td>';
+                        echo '<td>' . $item['deadline'] . '</td>';
+                        echo '<td><a href=customer/edit_customer.php?customerid="' . $item["project_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
+                        echo '</tr>';
+                    }
                 }
 
-                if($_GET['type'] == 'search') {
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
                     foreach ($search as $item)
                     {
                         echo '<tr>';
@@ -117,18 +118,19 @@ if($user->username == 'Admin') {
                 <tbody>
 
                 <?php
-                foreach ($projects as $item)
-                {
-                    echo '<tr>';
-                    echo '<td>' . $item['project_id'] . '</td>';
-                    echo '<td>' . $item['customer_id'] . '</td>';
-                    echo '<td>' . $item['project_name'] . '</td>';
-                    echo '<td>' . $item['deadline'] . '</td>';
-                    echo '<td><a href=customer/edit_customer.php?customerid="' . $item["project_id"] .'">Project info</a></td>';
-                    echo '</tr>';
+                if(!isset($_GET['type'])) {
+                    foreach ($projects as $item) {
+                        echo '<tr>';
+                        echo '<td>' . $item['project_id'] . '</td>';
+                        echo '<td>' . $item['customer_id'] . '</td>';
+                        echo '<td>' . $item['project_name'] . '</td>';
+                        echo '<td>' . $item['deadline'] . '</td>';
+                        echo '<td><a href=customer/edit_customer.php?customerid="' . $item["project_id"] . '">Project info</a></td>';
+                        echo '</tr>';
+                    }
                 }
 
-                if($_GET['type'] == 'search') {
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
                     foreach ($search as $item)
                     {
                         echo '<tr>';
@@ -194,18 +196,19 @@ if($user->username == 'Development') {
                 <tbody>
 
                 <?php
-                foreach ($projects as $item)
-                {
-                    echo '<tr>';
-                    echo '<td>' . $item['project_id'] . '</td>';
-                    echo '<td>' . $item['customer_id'] . '</td>';
-                    echo '<td>' . $item['project_name'] . '</td>';
-                    echo '<td>' . $item['deadline'] . '</td>';
-                    echo '<td><a href=customer/edit_customer.php?customerid="' . $item["project_id"] .'">Project info</a></td>';
-                    echo '</tr>';
+                if(!isset($_GET['type'])) {
+                    foreach ($projects as $item) {
+                        echo '<tr>';
+                        echo '<td>' . $item['project_id'] . '</td>';
+                        echo '<td>' . $item['customer_id'] . '</td>';
+                        echo '<td>' . $item['project_name'] . '</td>';
+                        echo '<td>' . $item['deadline'] . '</td>';
+                        echo '<td><a href=customer/edit_customer.php?customerid="' . $item["project_id"] . '">Project info</a></td>';
+                        echo '</tr>';
+                    }
                 }
 
-                if($_GET['type'] == 'search') {
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
                     foreach ($search as $item)
                     {
                         echo '<tr>';

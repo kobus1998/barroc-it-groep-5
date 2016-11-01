@@ -43,17 +43,18 @@ if($user->username == 'Sales') {
                 <tbody>
 
                 <?php
-                foreach ($quotations as $item)
-                {
-                    echo '<tr>';
-                    echo '<td>' . $item['quotation_id'] . '</td>';
-                    echo '<td>' . $item['quotation_number'] . '</td>';
-                    echo '<td>' . $item['order_type'] . '</td>';
-                    echo '<td><a href=customer/edit_customer.php?customerid="' . $item["quotation_id"] .'" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
-                    echo '</tr>';
+                if(!isset($_GET['type'])) {
+                    foreach ($quotations as $item) {
+                        echo '<tr>';
+                        echo '<td>' . $item['quotation_id'] . '</td>';
+                        echo '<td>' . $item['quotation_number'] . '</td>';
+                        echo '<td>' . $item['order_type'] . '</td>';
+                        echo '<td><a href=customer/edit_customer.php?customerid="' . $item["quotation_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
+                        echo '</tr>';
+                    }
                 }
 
-                if($_GET['type'] == 'search') {
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
                     foreach ($search as $item)
                     {
                         echo '<tr>';
@@ -114,17 +115,18 @@ if(isset($_GET['search-quotation-list'])) {
                 <tbody>
 
                 <?php
-                foreach ($quotations as $item)
-                {
-                    echo '<tr>';
-                    echo '<td>' . $item['quotation_id'] . '</td>';
-                    echo '<td>' . $item['quotation_number'] . '</td>';
-                    echo '<td>' . $item['order_type'] . '</td>';
-                    echo '<td><a href=customer/edit_customer.php?customerid="' . $item["quotation_id"] .'">Quotation info</a></td>';
-                    echo '</tr>';
+                if(!isset($_GET['type'])) {
+                    foreach ($quotations as $item) {
+                        echo '<tr>';
+                        echo '<td>' . $item['quotation_id'] . '</td>';
+                        echo '<td>' . $item['quotation_number'] . '</td>';
+                        echo '<td>' . $item['order_type'] . '</td>';
+                        echo '<td><a href=customer/edit_customer.php?customerid="' . $item["quotation_id"] . '">Quotation info</a></td>';
+                        echo '</tr>';
+                    }
                 }
 
-                if($_GET['type'] == 'search') {
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
                     foreach ($search as $item)
                     {
                         echo '<tr>';
@@ -184,17 +186,18 @@ if(isset($_GET['search-quotation-list'])) {
                 <tbody>
 
                 <?php
-                foreach ($quotations as $item)
-                {
-                    echo '<tr>';
-                    echo '<td>' . $item['quotation_id'] . '</td>';
-                    echo '<td>' . $item['quotation_number'] . '</td>';
-                    echo '<td>' . $item['order_type'] . '</td>';
-                    echo '<td><a href=customer/edit_customer.php?customerid="' . $item["quotation_id"] .'">Quotation info</a></td>';
-                    echo '</tr>';
+                if(!isset($_GET['type'])) {
+                    foreach ($quotations as $item) {
+                        echo '<tr>';
+                        echo '<td>' . $item['quotation_id'] . '</td>';
+                        echo '<td>' . $item['quotation_number'] . '</td>';
+                        echo '<td>' . $item['order_type'] . '</td>';
+                        echo '<td><a href=customer/edit_customer.php?customerid="' . $item["quotation_id"] . '">Quotation info</a></td>';
+                        echo '</tr>';
+                    }
                 }
 
-                if($_GET['type'] == 'search') {
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
                     foreach ($search as $item)
                     {
                         echo '<tr>';
