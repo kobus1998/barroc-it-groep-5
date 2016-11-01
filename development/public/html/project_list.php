@@ -34,7 +34,7 @@ if($user->username == 'Sales') {
                     echo '<td>' . $item['customer_id'] . '</td>';
                     echo '<td>' . $item['project_name'] . '</td>';
                     echo '<td>' . $item['deadline'] . '</td>';
-                    echo '<td><a href=customer/edit_customer.php?customerid="' . $item["project_id"] .'" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
+                    echo '<td><a href=customer/edit_customer.php?customerid="' . $item["project_id"] .'" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
                     echo '</tr>';
                 }
                 ?>
