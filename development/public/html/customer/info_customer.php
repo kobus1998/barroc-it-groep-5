@@ -83,6 +83,39 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                 <li><?php echo $customer[0]["last_contact_date"] ?></li>
             </ul>
         </div>
+        <div class="col-md-6">
+            <?php
+            $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` 
+            LEFT JOIN `tbl_customers`
+              on `tbl_customers`.customer_id = `tbl_projects`.customer_id
+            WHERE `tbl_customers`.customer_id = $customerId");
+            $projects_customer = $stmt->fetchALL(PDO::FETCH_ASSOC);
+            ?>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project name</th>
+                        <th>Deadline</th>
+                        <th>Project info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <?php 
+                        foreach ($projects_customer as $item):
+                        ?>
+                            <td><?php echo $item['project_name'] ?></td>
+                            <td><?php echo $item['deadline'] ?></td>
+                            <td><a href=""></a></td>
+                        <?php
+                        endforeach;
+                        ?>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
     </div>
 </div>
 </body>
