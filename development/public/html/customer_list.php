@@ -330,7 +330,7 @@ if($user->username == 'Development') {
                         echo '</tr>';
                     }
                 }
-                if($_GET['type'] == 'search') {
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
                     foreach ($searchDevelopment as $item) {
                         echo '<tr>';
                         echo '<td>' . $item['customer_id'] . '</td>';
