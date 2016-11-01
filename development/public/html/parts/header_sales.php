@@ -25,8 +25,8 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Project list</a></li>
-                        <li><a href="#">Add project</a></li>
+                        <li><a href="">Project list</a></li>
+                        <li><a href="<?php echo BASE_URL ?>/development/public/html/project_list.php">Add project</a></li>
                     </ul>
                 </li>
             </ul>

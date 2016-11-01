@@ -32,7 +32,7 @@ if($user->username == 'Sales') {
                     echo '<td>' . $item['quotation_id'] . '</td>';
                     echo '<td>' . $item['quotation_number'] . '</td>';
                     echo '<td>' . $item['order_type'] . '</td>';
-                    echo '<td><a href=customer/edit_customer.php?customerid="' . $item["quotation_id"] .'">Quotation info</a></td>';
+                    echo '<td><a href=customer/edit_customer.php?customerid="' . $item["quotation_id"] .'" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                     echo '</tr>';
                 }
                 ?>
