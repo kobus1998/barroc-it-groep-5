@@ -29,6 +29,7 @@ if($user->username == 'Sales') {
                 on `tbl_invoices`.`project_id` = `tbl_projects`.`project_id`
         where `tbl_customers`.customer_id = " . $customerID);
     $sales = $stmt->fetchALL(PDO::FETCH_ASSOC);
+    echo $customerID;
 ?>
 
     <script>
