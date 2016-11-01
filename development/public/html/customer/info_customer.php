@@ -34,7 +34,8 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
         <?php } ?>
         <h1 style="text-align:center;font-size:6rem">Customer details</h1>
         <div class="col-md-6">
-            <ul class="pull-right" style="text-align:right;list-style:none;font-weight:bold;font-size:2rem">
+            <ul class="pull-right" style="list-style: none; font-weight: bold;">
+
                 <li>Company name</li>
                 <li>address 1</li>
                 <li>address 2</li>
@@ -59,7 +60,7 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
             </ul>
         </div>
         <div class="col-md-6">
-            <ul class="pull-left" style="list-style:none;font-size:2rem">
+            <ul class="" style="list-style: none">
                 <li><?php echo $customer[0]["company_name"] ?></li>
                 <li><?php echo $customer[0]["address_1"] ?></li>
                 <li><?php echo $customer[0]["address_2"] ?></li>
@@ -83,7 +84,7 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                 <li><?php echo $customer[0]["last_contact_date"] ?></li>
             </ul>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <?php
             $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` 
             LEFT JOIN `tbl_customers`
@@ -92,7 +93,7 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
             $projects_customer = $stmt->fetchALL(PDO::FETCH_ASSOC);
             ?>
 
-            <table>
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Project name</th>
@@ -101,17 +102,17 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
                         <?php 
                         foreach ($projects_customer as $item):
                         ?>
-                            <td><?php echo $item['project_name'] ?></td>
-                            <td><?php echo $item['deadline'] ?></td>
-                            <td><a href=""></a></td>
+                        <tr>
+                            <td class="col-md-4"><?php echo $item['project_name'] ?></td>
+                            <td class="col-md-4"><?php echo $item['deadline'] ?></td>
+                            <td class="col-md-4"><a href="" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>
+                        </tr>
                         <?php
                         endforeach;
                         ?>
-                    </tr>
                 </tbody>
             </table>
 

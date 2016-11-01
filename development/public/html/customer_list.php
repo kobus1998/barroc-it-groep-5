@@ -66,7 +66,7 @@ if($user->username == 'Sales') {
                         echo '</tr>';
                         }
                 }
-                if($_GET['type'] == 'search') {
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
                     foreach ($search as $item)
                     {
                         echo '<tr>';
