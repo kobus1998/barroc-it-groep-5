@@ -47,8 +47,8 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                 <li>Contact person</li>
                 <li>Internal contact person</li>
                 <li>Potential customer</li>
-                <li>Applications</li>
                 <li>Bank number</li>
+                <li>Applications</li>
                 <li>Limit</li>
                 <li>Credit balance</li>
                 <li>credit worthy</li>
@@ -72,8 +72,8 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                 <li><?php echo $customer[0]["contact_person"] ?></li>
                 <li><?php echo $customer[0]["internal_contact_person"] ?></li>
                 <li><?php echo $customer[0]["potential_customer"] ?></li>
-                <li><?php echo $customer[0]["applications"] ?></li>
                 <li><?php echo $customer[0]["bank_nr"] ?></li>
+                <li><?php echo $customer[0]["applications"] ?></li>
                 <li><?php echo $customer[0]["limit"] ?></li>
                 <li><?php echo $customer[0]["credit_balance"] ?></li>
                 <li><?php echo $customer[0]["credit_worthy"] ?></li>
