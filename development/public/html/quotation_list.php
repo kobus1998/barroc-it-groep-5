@@ -55,7 +55,7 @@ if($user->username == 'Sales') {
                 }
 
                 if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($search as $item)
+                    foreach ($searchSales as $item)
                     {
                         echo '<tr>';
                         echo '<td>' . $item['quotation_id'] . '</td>';
@@ -127,7 +127,7 @@ if(isset($_GET['search-quotation-list'])) {
                 }
 
                 if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($search as $item)
+                    foreach ($searchFinance as $item)
                     {
                         echo '<tr>';
                         echo '<td>' . $item['quotation_id'] . '</td>';
@@ -198,7 +198,7 @@ if(isset($_GET['search-quotation-list'])) {
                 }
 
                 if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($search as $item)
+                    foreach ($searchAdmin as $item)
                     {
                         echo '<tr>';
                         echo '<td>' . $item['quotation_id'] . '</td>';

@@ -56,7 +56,7 @@ if($user->username == 'Sales') {
                 }
 
                 if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($search as $item)
+                    foreach ($searchSales as $item)
                     {
                         echo '<tr>';
                         echo '<td>' . $item['project_id'] . '</td>';
@@ -131,7 +131,7 @@ if($user->username == 'Admin') {
                 }
 
                 if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($search as $item)
+                    foreach ($searchAdmin as $item)
                     {
                         echo '<tr>';
                         echo '<td>' . $item['project_id'] . '</td>';
@@ -209,7 +209,7 @@ if($user->username == 'Development') {
                 }
 
                 if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($search as $item)
+                    foreach ($searchDevelopment as $item)
                     {
                         echo '<tr>';
                         echo '<td>' . $item['project_id'] . '</td>';
