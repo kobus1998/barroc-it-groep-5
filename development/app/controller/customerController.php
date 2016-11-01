@@ -21,7 +21,7 @@ if ($_POST['type'] == 'add customer') {
     {
 
         $user->redirect("customer/add_customer.php?message=Er is een veld verkeerd ingevult");
-
+        die;
     }
     
     if($customer->addCustomer($_POST)) {
