@@ -7,7 +7,12 @@ $user->checkPage($user->username);
 if($user->username == 'Sales') {
     include realpath(__DIR__. '/parts/header_sales.php');
     $invoices = $db->pdo->
-    query("SELECT * FROM `tbl_invoices`")
+    query("SELECT * FROM `tbl_invoices`
+          LEFT JOIN `tbl_projects`
+            ON `tbl_projects`.project_id = `tbl_invoices`.project_id
+          LEFT JOIN `tbl_customers`
+            on `tbl_customers`.customer_id = `tbl_projects`.customer_id          
+          ")
         ->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <section class="invoices">
@@ -51,7 +56,12 @@ if($user->username == 'Sales') {
 if($user->username == 'Finance') {
     include realpath(__DIR__. '/parts/header_finance.php');
     $invoices = $db->pdo->
-    query("SELECT * FROM `tbl_invoices`")
+    query("SELECT * FROM `tbl_invoices`
+          LEFT JOIN `tbl_projects`
+            ON `tbl_projects`.project_id = `tbl_invoices`.project_id
+          LEFT JOIN `tbl_customers`
+            on `tbl_customers`.customer_id = `tbl_projects`.customer_id          
+          ")
         ->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <section class="invoices">
@@ -96,7 +106,12 @@ if($user->username == 'Finance') {
 if($user->username == 'Admin') {
     include realpath(__DIR__. '/parts/header_admin.php');
     $invoices = $db->pdo->
-    query("SELECT * FROM `tbl_invoices`")
+    query("SELECT * FROM `tbl_invoices`
+          LEFT JOIN `tbl_projects`
+            ON `tbl_projects`.project_id = `tbl_invoices`.project_id
+          LEFT JOIN `tbl_customers`
+            on `tbl_customers`.customer_id = `tbl_projects`.customer_id          
+          ")
         ->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <section class="invoices">
