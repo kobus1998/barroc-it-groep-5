@@ -4,6 +4,8 @@ require realpath(__dir__ . '/../parts/header.php');
 if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Sales'){
     $user->redirectMessage('index.php', 'Not logged in');
 }
+
+//php
 ?>
 
 <!doctype html>
