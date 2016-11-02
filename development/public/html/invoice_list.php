@@ -14,10 +14,27 @@ if($user->username == 'Sales') {
             on `tbl_customers`.customer_id = `tbl_projects`.customer_id          
           ")
         ->fetchAll(PDO::FETCH_ASSOC);
+
+    if(isset($_GET['search-invoice-list'])) {
+        $searchGET = $_GET['search-invoice-list'];
+
+        $stmt = $db->pdo->query("SELECT * FROM `tbl_invoices` WHERE `tbl_invoices`.invoice_nr like '%$searchGET%'");
+        $searchSales =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     ?>
     <section class="invoices">
         <div class="container">
             <h2 class="text-center">Invoice list</h2>
+            <div class="search-invoice col-md-5 col-md-offset-8">
+                <form method="get" action="">
+                    <div class="form-group row">
+                        <label>Search invoice number
+                            <input type="search" name="search-invoice-list">
+                        </label>
+                        <button class="btn btn-warning glyphicon glyphicon-search" type="submit" name="type" value="search"></button>
+                    </div>
+                </form>
+            </div>
             <table class="table ">
                 <thead>
                 <tr>
@@ -32,15 +49,29 @@ if($user->username == 'Sales') {
                 <tbody>
 
                 <?php
-                foreach ($invoices as $item)
-                {
-                    echo '<tr>';
-                    echo '<td>' . $item['invoice_id'] . '</td>';
-                    echo '<td>' . $item['invoice_nr'] . '</td>';
-                    echo '<td>' . $item['project_id'] . '</td>';
-                    echo '<td>' . $item['paid'] . '</td>';
-                    echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
-                    echo '</tr>';
+                if(!isset($_GET['type'])) {
+                    foreach ($invoices as $item) {
+                        echo '<tr>';
+                        echo '<td>' . $item['invoice_id'] . '</td>';
+                        echo '<td>' . $item['invoice_nr'] . '</td>';
+                        echo '<td>' . $item['project_id'] . '</td>';
+                        echo '<td>' . $item['paid'] . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
+                        echo '</tr>';
+                    }
+                }
+
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
+                    foreach ($searchSales as $item)
+                    {
+                        echo '<tr>';
+                        echo '<td>' . $item['invoice_id'] . '</td>';
+                        echo '<td>' . $item['invoice_nr'] . '</td>';
+                        echo '<td>' . $item['project_id'] . '</td>';
+                        echo '<td>' . $item['paid'] . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
+                        echo '</tr>';
+                    }
                 }
                 ?>
 
@@ -63,10 +94,27 @@ if($user->username == 'Finance') {
             on `tbl_customers`.customer_id = `tbl_projects`.customer_id          
           ")
         ->fetchAll(PDO::FETCH_ASSOC);
+
+    if(isset($_GET['search-invoice-list'])) {
+        $searchGET = $_GET['search-invoice-list'];
+
+        $stmt = $db->pdo->query("SELECT * FROM `tbl_invoices` WHERE `tbl_invoices`.invoice_nr like '%$searchGET%'");
+        $searchFinance =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     ?>
     <section class="invoices">
         <div class="container">
             <h2 class="text-center">Invoice list</h2>
+            <div class="search-invoice col-md-5 col-md-offset-8">
+                <form method="get" action="">
+                    <div class="form-group row">
+                        <label>Search invoice number
+                            <input type="search" name="search-invoice-list">
+                        </label>
+                        <button class="btn btn-warning glyphicon glyphicon-search" type="submit" name="type" value="search"></button>
+                    </div>
+                </form>
+            </div>
             <table class="table ">
                 <thead>
                 <tr>
@@ -82,16 +130,31 @@ if($user->username == 'Finance') {
                 <tbody>
 
                 <?php
-                foreach ($invoices as $item)
-                {
-                    echo '<tr>';
-                    echo '<td>' . $item['invoice_id'] . '</td>';
-                    echo '<td>' . $item['invoice_nr'] . '</td>';
-                    echo '<td>' . $item['project_id'] . '</td>';
-                    echo '<td>' . $item['paid'] . '</td>';
-                    echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
-                    echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
-                    echo '</tr>';
+                if(!isset($_GET['type'])) {
+                    foreach ($invoices as $item) {
+                        echo '<tr>';
+                        echo '<td>' . $item['invoice_id'] . '</td>';
+                        echo '<td>' . $item['invoice_nr'] . '</td>';
+                        echo '<td>' . $item['project_id'] . '</td>';
+                        echo '<td>' . $item['paid'] . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
+                        echo '</tr>';
+                    }
+                }
+
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
+                    foreach ($searchFinance as $item)
+                    {
+                        echo '<tr>';
+                        echo '<td>' . $item['invoice_id'] . '</td>';
+                        echo '<td>' . $item['invoice_nr'] . '</td>';
+                        echo '<td>' . $item['project_id'] . '</td>';
+                        echo '<td>' . $item['paid'] . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
+                        echo '</tr>';
+                    }
                 }
                 ?>
 
@@ -113,10 +176,27 @@ if($user->username == 'Admin') {
             on `tbl_customers`.customer_id = `tbl_projects`.customer_id          
           ")
         ->fetchAll(PDO::FETCH_ASSOC);
+
+    if(isset($_GET['search-invoice-list'])) {
+        $searchGET = $_GET['search-invoice-list'];
+
+        $stmt = $db->pdo->query("SELECT * FROM `tbl_invoices` WHERE `tbl_invoices`.invoice_nr like '%$searchGET%'");
+        $searchAdmin =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     ?>
     <section class="invoices">
         <div class="container">
             <h2 class="text-center">Invoice list</h2>
+            <div class="search-invoice col-md-5 col-md-offset-8">
+                <form method="get" action="">
+                    <div class="form-group row">
+                        <label>Search invoice number
+                            <input type="search" name="search-invoice-list">
+                        </label>
+                        <button class="btn btn-warning glyphicon glyphicon-search" type="submit" name="type" value="search"></button>
+                    </div>
+                </form>
+            </div>
             <table class="table ">
                 <thead>
                 <tr>
@@ -132,16 +212,31 @@ if($user->username == 'Admin') {
                 <tbody>
 
                 <?php
-                foreach ($invoices as $item)
-                {
-                    echo '<tr>';
-                    echo '<td>' . $item['invoice_id'] . '</td>';
-                    echo '<td>' . $item['invoice_nr'] . '</td>';
-                    echo '<td>' . $item['project_id'] . '</td>';
-                    echo '<td>' . $item['paid'] . '</td>';
-                    echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '">Invoice info</a></td>';
-                    echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '">Edit invoice</a></td>';
-                    echo '</tr>';
+                if(!isset($_GET['type'])) {
+                    foreach ($invoices as $item) {
+                        echo '<tr>';
+                        echo '<td>' . $item['invoice_id'] . '</td>';
+                        echo '<td>' . $item['invoice_nr'] . '</td>';
+                        echo '<td>' . $item['project_id'] . '</td>';
+                        echo '<td>' . $item['paid'] . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '">Invoice info</a></td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '">Edit invoice</a></td>';
+                        echo '</tr>';
+                    }
+                }
+
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
+                    foreach ($searchAdmin as $item)
+                    {
+                        echo '<tr>';
+                        echo '<td>' . $item['invoice_id'] . '</td>';
+                        echo '<td>' . $item['invoice_nr'] . '</td>';
+                        echo '<td>' . $item['project_id'] . '</td>';
+                        echo '<td>' . $item['paid'] . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '">Invoice info</a></td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '">Edit invoice</a></td>';
+                        echo '</tr>';
+                    }
                 }
                 ?>
 
