@@ -10,7 +10,6 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Invoice<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo BASE_URL;?>/development/public/html/invoice_list.php">Invoices list</a></li>
-                        <li><a href="<?php echo BASE_URL;?>/development/public/html/invoices/add_invoice.php">Add invoice</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

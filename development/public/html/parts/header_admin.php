@@ -30,7 +30,6 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Invoice<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo BASE_URL;?>/development/public/html/invoice_list.php">Invoice list</a></li>
-                            <li><a href="<?php echo BASE_URL;?>/development/public/html/invoices/add_invoice.php">Add invoice</a></li>
                         </ul>
                     </li>
 
@@ -38,7 +37,6 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Project<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo BASE_URL ?>/development/public/html/project_list.php">Project list</a></li>
-                            <li><a href="<?php echo BASE_URL ?>/development/public/html/project/add_project.php">Add project</a></li>
                         </ul>
                     </li>
                 </ul>
