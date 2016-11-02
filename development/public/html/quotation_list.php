@@ -192,7 +192,7 @@ if(isset($_GET['search-quotation-list'])) {
                         echo '<td>' . $item['quotation_id'] . '</td>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
-                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '">Quotation info</a></td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
                         echo '</tr>';
                     }
                 }
