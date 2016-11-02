@@ -52,21 +52,17 @@ class Customers {
      * bank_nr
      *
      */
-    /*public function getCustomers() 
+    public function getCustomers($customer_id) 
     {
-        if (1 == 1) {
-            $sql = "SELECT alles behalve dat wat dev niet mag zien
+        $sql = "SELECT *
                 FROM tbl_customers
-                ORDER BY customer_id DESC
-                LIMIT 30 ";
-        }
+                WHERE customer_id = :customer_id";
 
         $stmt = $this->db->pdo->prepare($sql);
-        if ($stmt->execute()){
-            return true;
-        }
-        return false;
-      }*/
+        $stmt->bindParam(':customer_id', $customer_id);
+        $stmt->execute();
+        $GLOBALS['customerData'] = $stmt->fetchAll();
+      }
     
     public function addCustomer($customer) {
 
@@ -93,7 +89,8 @@ class Customers {
         if($stmt->execute()) {
             return true;
         }
-
+        return false;
+        
     }
 
     public function filterCustomers() {
