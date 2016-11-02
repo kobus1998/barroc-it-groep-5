@@ -13,7 +13,8 @@ if($user->username == 'Sales') {
     if(isset($_GET['search-project-list'])) {
         $searchGET = $_GET['search-project-list'];
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` WHERE `tbl_projects`.project_name like '%$searchGET%'");
+        $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` WHERE `tbl_projects`.project_name like '%:searchGET%'");
+        $stmt->bindParam(':searchGET', $searchGET);
         $searchSales =  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     ?>
@@ -84,7 +85,8 @@ if($user->username == 'Admin') {
     if(isset($_GET['search-project-list'])) {
         $searchGET = $_GET['search-project-list'];
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` WHERE `tbl_projects`.project_name like '%$searchGET%'");
+        $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` WHERE `tbl_projects`.project_name like '%:searchGET%'");
+        $stmt->bindParam(':searchGET', $searchGET);
         $searchAdmin =  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     ?>
@@ -159,7 +161,8 @@ if($user->username == 'Development') {
     if(isset($_GET['search-project-list'])) {
         $searchGET = $_GET['search-project-list'];
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` WHERE `tbl_projects`.project_name like '%$searchGET%'");
+        $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` WHERE `tbl_projects`.project_name like '%:searchGET%'");
+        $stmt->bindParam(':searchGET', $searchGET);
         $searchDevelopment =  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     ?>

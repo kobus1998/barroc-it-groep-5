@@ -13,7 +13,8 @@ if($user->username == 'Sales') {
     if(isset($_GET['search-quotation-list'])) {
         $searchGET = $_GET['search-quotation-list'];
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_quotations` WHERE `tbl_quotations`.order_type like '%$searchGET%'");
+        $stmt = $db->pdo->query("SELECT * FROM `tbl_quotations` WHERE `tbl_quotations`.order_type like '%:searchGET%'");
+        $stmt->bindParam(':searchGET', $searchGET);
         $searchSales =  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     ?>
@@ -82,7 +83,8 @@ if($user->username == 'Finance') {
 if(isset($_GET['search-quotation-list'])) {
     $searchGET = $_GET['search-quotation-list'];
 
-    $stmt = $db->pdo->query("SELECT * FROM `tbl_quotations` WHERE `tbl_quotations`.order_type like '%$searchGET%'");
+    $stmt = $db->pdo->query("SELECT * FROM `tbl_quotations` WHERE `tbl_quotations`.order_type like '%:searchGET%'");
+    $stmt->bindParam(':searchGET', $searchGET);
     $searchFinance = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
     ?>
@@ -150,7 +152,8 @@ if($user->username == 'Admin') {
 if(isset($_GET['search-quotation-list'])) {
     $searchGET = $_GET['search-quotation-list'];
 
-    $stmt = $db->pdo->query("SELECT * FROM `tbl_quotations` WHERE `tbl_quotations`.order_type like '%$searchGET%'");
+    $stmt = $db->pdo->query("SELECT * FROM `tbl_quotations` WHERE `tbl_quotations`.order_type like '%:searchGET%'");
+    $stmt->bindParam(':searchGET', $searchGET);
     $searchAdmin = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
     ?>
