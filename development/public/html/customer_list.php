@@ -11,7 +11,8 @@ if($user->username == 'Sales') {
 
     if(isset($_GET['search-customer-list'])) {
         $searchGET = $_GET['search-customer-list'];
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_customers` WHERE `tbl_customers`.company_name like '%$searchGET%'");
+        $stmt = $db->pdo->query("SELECT * FROM `tbl_customers` WHERE `tbl_customers`.company_name like '%:searchget%'");
+        $stmt->bindParam(":searchget", $searchGET);
         $search =  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     ?>
@@ -100,7 +101,8 @@ if($user->username == 'Finance') {
     if(isset($_GET['search-customer-list'])) {
         $searchGET = $_GET['search-customer-list'];
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_customers` WHERE `tbl_customers`.company_name like '%$searchGET%'");
+        $stmt = $db->pdo->query("SELECT * FROM `tbl_customers` WHERE `tbl_customers`.company_name like '%:searchget%'");
+        $stmt->bindParam(":searchget", $searchGET);
         $searchFinance =  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     ?>
@@ -190,7 +192,8 @@ if($user->username == 'Admin') {
     if(isset($_GET['search-customer-list'])) {
         $searchGET = $_GET['search-customer-list'];
 
-        $stmt = $db->pdo->query('SELECT * FROM `tbl_customers` WHERE `tbl_customers`.company_name like "%$searchGET%"');
+        $stmt = $db->pdo->query("SELECT * FROM `tbl_customers` WHERE `tbl_customers`.company_name like '%:searchget%'");
+        $stmt->bindParam(":searchget", $searchGET);
         $searchAdmin =  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     ?>
@@ -270,7 +273,8 @@ if($user->username == 'Development') {
     if(isset($_GET['search-customer-list'])) {
         $searchGET = $_GET['search-customer-list'];
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_customers` WHERE `tbl_customers`.company_name like '%$searchGET%'");
+        $stmt = $db->pdo->query("SELECT * FROM `tbl_customers` WHERE `tbl_customers`.company_name like '%:searchget%'");
+        $stmt->bindParam(":searchget", $searchGET);
         $searchDevelopment =  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     ?>
