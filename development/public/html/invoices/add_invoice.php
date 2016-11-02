@@ -13,7 +13,14 @@ $user->checkPage('Finance');
 <body>
 <div class="header">
 	<?php
-	include '../parts/header_finance.php';
+	if($user->username == "Sales") {
+		require "../parts/header_sales.php";
+	} elseif($user->username == "Finance") {
+		require "../parts/header_finance.php";
+	} elseif($user->username == "Admin") {
+		require "../parts/header_admin.php";
+	}
+
 	?>
 </div>
 <div class="main-content">
