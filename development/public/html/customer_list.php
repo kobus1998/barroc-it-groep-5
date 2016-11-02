@@ -33,7 +33,6 @@ if($user->username == 'Sales') {
             <table class="table">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Company name</th>
                     <th>Contact person</th>
                     <th>Phone number 1</th>
@@ -53,7 +52,6 @@ if($user->username == 'Sales') {
                     foreach ($customers as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['contact_person'] . '</td>';
                         echo '<td>' . $item['phone_number_1'] . '</td>';
@@ -70,7 +68,6 @@ if($user->username == 'Sales') {
                     foreach ($search as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['contact_person'] . '</td>';
                         echo '<td>' . $item['phone_number_1'] . '</td>';
@@ -126,7 +123,6 @@ if($user->username == 'Finance') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Company name</th>
                     <th>Contact person</th>
                     <th>Email</th>
@@ -148,7 +144,6 @@ if($user->username == 'Finance') {
                     foreach ($customers as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['contact_person'] . '</td>';
                         echo '<td>' . $item['email'] . '</td>';
@@ -164,7 +159,6 @@ if($user->username == 'Finance') {
                 if(isset($_GET['type']) && $_GET['type'] == 'search') {
                 foreach ($searchFinance as $item) {
                     echo '<tr>';
-                    echo '<td>' . $item['customer_id'] . '</td>';
                     echo '<td>' . $item['company_name'] . '</td>';
                     echo '<td>' . $item['contact_person'] . '</td>';
                     echo '<td>' . $item['email'] . '</td>';
@@ -218,7 +212,6 @@ if($user->username == 'Admin') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Company name</th>
                     <th>Contact person</th>
                     <th>Phone number 1</th>
@@ -234,7 +227,6 @@ if($user->username == 'Admin') {
                 if(!isset($_GET['type'])) {
                     foreach ($customers as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['contact_person'] . '</td>';
                         echo '<td>' . $item['phone_number_1'] . '</td>';
@@ -247,7 +239,6 @@ if($user->username == 'Admin') {
                 if(isset($_GET['type']) && $_GET['type'] == 'search') {
                     foreach ($searchAdmin as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['contact_person'] . '</td>';
                         echo '<td>' . $item['phone_number_1'] . '</td>';
@@ -302,7 +293,6 @@ if($user->username == 'Development') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Company name</th>
                     <th>Contact person</th>
                     <th>Phone number 1</th>
@@ -319,7 +309,6 @@ if($user->username == 'Development') {
                 if(!isset($_GET['type'])) {
                     foreach ($customers as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['contact_person'] . '</td>';
                         echo '<td>' . $item['phone_number_1'] . '</td>';
@@ -333,7 +322,6 @@ if($user->username == 'Development') {
                 if(isset($_GET['type']) && $_GET['type'] == 'search') {
                     foreach ($searchDevelopment as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['contact_person'] . '</td>';
                         echo '<td>' . $item['phone_number_1'] . '</td>';
