@@ -33,7 +33,6 @@ if($user->username == 'Sales') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Quotation number</th>
                     <th>Order type</th>
                     <th>Quotation info</th>
@@ -46,7 +45,6 @@ if($user->username == 'Sales') {
                 if(!isset($_GET['type'])) {
                     foreach ($quotations as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['quotation_id'] . '</td>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
@@ -58,7 +56,6 @@ if($user->username == 'Sales') {
                     foreach ($searchSales as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['quotation_id'] . '</td>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
@@ -105,7 +102,6 @@ if(isset($_GET['search-quotation-list'])) {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Quotation number</th>
                     <th>Order type</th>
                     <th>Quotation info</th>
@@ -118,7 +114,6 @@ if(isset($_GET['search-quotation-list'])) {
                 if(!isset($_GET['type'])) {
                     foreach ($quotations as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['quotation_id'] . '</td>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '">Quotation info</a></td>';
@@ -130,7 +125,6 @@ if(isset($_GET['search-quotation-list'])) {
                     foreach ($searchFinance as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['quotation_id'] . '</td>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
@@ -176,7 +170,6 @@ if(isset($_GET['search-quotation-list'])) {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Quotation number</th>
                     <th>Order type</th>
                     <th>Quotation info</th>
@@ -189,7 +182,6 @@ if(isset($_GET['search-quotation-list'])) {
                 if(!isset($_GET['type'])) {
                     foreach ($quotations as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['quotation_id'] . '</td>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
@@ -201,7 +193,6 @@ if(isset($_GET['search-quotation-list'])) {
                     foreach ($searchAdmin as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['quotation_id'] . '</td>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
