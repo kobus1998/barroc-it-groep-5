@@ -8,7 +8,16 @@ $user->checkPage('Admin');
 </head>
 
 <div class="header">
-    <?php require realpath(__DIR__ . '/../parts/header_sales.php'); ?>
+    <?php
+    if($user->username == "Sales") {
+        require "../parts/header_sales.php";
+    } elseif($user->username == "Finance") {
+        require "../parts/header_finance.php";
+    } elseif($user->username == "Admin") {
+        require "../parts/header_admin.php";
+    }
+
+    ?>
 </div>
 
 <div class="main-content">
