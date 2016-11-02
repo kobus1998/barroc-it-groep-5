@@ -176,7 +176,7 @@ if($user->username == 'Admin') {
     if(isset($_GET['search-invoice-list'])) {
         $searchGET = $_GET['search-invoice-list'];
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_invoices` WHERE `tbl_invoices`.invoice_nr like ':$searchGET%'");
+        $stmt = $db->pdo->query("SELECT * FROM `tbl_invoices` WHERE `tbl_invoices`.invoice_nr like '%:searchGET%'");
         $stmt->bindParam(':searchGET', $searchGET);
         $searchAdmin =  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
