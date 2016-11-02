@@ -81,9 +81,10 @@ $customerData = $GLOBALS['customerData'][0];
             <div class="form-group">
 
                 <p style="font-weight:bold">Deadline</p>
-                <input style="width:33%" class="form-control col-md-2" type="text" placeholder="dd" name="day" id="deadline">
-                <input style="width:33%" class="form-control col-md-2" type="text" placeholder="mm" name="month" id="deadline">
                 <input style="width:33%" class="form-control" type="text" placeholder="yyyy" name="year" id="deadline">
+                <input style="width:33%" class="form-control col-md-2" type="text" placeholder="mm" name="month" id="deadline">
+                <input style="width:33%" class="form-control col-md-2" type="text" placeholder="dd" name="day" id="deadline">
+
 
             </div>
 
