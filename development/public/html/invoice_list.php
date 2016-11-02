@@ -38,7 +38,6 @@ if($user->username == 'Sales') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Invoice number</th>
                     <th>Project id</th>
                     <th>Paid</th>
@@ -52,7 +51,6 @@ if($user->username == 'Sales') {
                 if(!isset($_GET['type'])) {
                     foreach ($invoices as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['invoice_id'] . '</td>';
                         echo '<td>' . $item['invoice_nr'] . '</td>';
                         echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['paid'] . '</td>';
@@ -65,7 +63,6 @@ if($user->username == 'Sales') {
                     foreach ($searchSales as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['invoice_id'] . '</td>';
                         echo '<td>' . $item['invoice_nr'] . '</td>';
                         echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['paid'] . '</td>';
@@ -118,7 +115,6 @@ if($user->username == 'Finance') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Invoice number</th>
                     <th>Project id</th>
                     <th>Paid</th>
@@ -133,7 +129,6 @@ if($user->username == 'Finance') {
                 if(!isset($_GET['type'])) {
                     foreach ($invoices as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['invoice_id'] . '</td>';
                         echo '<td>' . $item['invoice_nr'] . '</td>';
                         echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['paid'] . '</td>';
@@ -147,7 +142,6 @@ if($user->username == 'Finance') {
                     foreach ($searchFinance as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['invoice_id'] . '</td>';
                         echo '<td>' . $item['invoice_nr'] . '</td>';
                         echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['paid'] . '</td>';
@@ -200,7 +194,6 @@ if($user->username == 'Admin') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Invoice number</th>
                     <th>Project id</th>
                     <th>Paid</th>
@@ -215,7 +208,6 @@ if($user->username == 'Admin') {
                 if(!isset($_GET['type'])) {
                     foreach ($invoices as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['invoice_id'] . '</td>';
                         echo '<td>' . $item['invoice_nr'] . '</td>';
                         echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['paid'] . '</td>';
@@ -229,7 +221,6 @@ if($user->username == 'Admin') {
                     foreach ($searchAdmin as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['invoice_id'] . '</td>';
                         echo '<td>' . $item['invoice_nr'] . '</td>';
                         echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['paid'] . '</td>';
