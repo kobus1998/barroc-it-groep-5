@@ -18,7 +18,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quotations<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo BASE_URL ?>/development/public/html/quotation_list.php">Quotation list</a></li>
-                        <li><a href="#">Add quotation</a></li>
+                        <li><a href="<?php echo BASE_URL;?>/development/public/html/quotation/add_quotation.php">Add quotation</a></li>
                     </ul>
                 </li>
 

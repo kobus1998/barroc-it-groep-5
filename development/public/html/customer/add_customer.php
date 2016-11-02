@@ -2,7 +2,7 @@
 require realpath(__dir__ . '/../parts/header.php');
 
 $user->checkPage('Sales');
-$user->checkPage('Admin');
+
 ?>
 
 <!doctype html>
