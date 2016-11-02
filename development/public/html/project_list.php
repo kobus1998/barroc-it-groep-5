@@ -33,7 +33,6 @@ if($user->username == 'Sales') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Customer id</th>
                     <th>Project name</th>
                     <th>Deadline</th>
@@ -46,7 +45,6 @@ if($user->username == 'Sales') {
                 if(!isset($_GET['type'])) {
                     foreach ($projects as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
@@ -59,7 +57,6 @@ if($user->username == 'Sales') {
                     foreach ($searchSales as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
@@ -107,7 +104,6 @@ if($user->username == 'Admin') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Customer id</th>
                     <th>Project name</th>
                     <th>Deadline</th>
@@ -121,11 +117,10 @@ if($user->username == 'Admin') {
                 if(!isset($_GET['type'])) {
                     foreach ($projects as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
-                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '">Project info</a></td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -134,7 +129,6 @@ if($user->username == 'Admin') {
                     foreach ($searchAdmin as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
@@ -185,7 +179,6 @@ if($user->username == 'Development') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>#</th>
                     <th>Customer id</th>
                     <th>Project name</th>
                     <th>Deadline</th>
@@ -199,11 +192,10 @@ if($user->username == 'Development') {
                 if(!isset($_GET['type'])) {
                     foreach ($projects as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
-                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '">Project info</a></td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -212,7 +204,6 @@ if($user->username == 'Development') {
                     foreach ($searchDevelopment as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
