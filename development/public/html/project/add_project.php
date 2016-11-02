@@ -1,9 +1,8 @@
 <?php
 require realpath(__dir__ . '/../parts/header.php');
 
-if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Sales'){
-    $user->redirectMessage('index.php', 'Not logged in');
-}
+$user->checkPage('Sales');
+$user->checkPage('Admin');
 
 if (!isset($_GET['customerid'])) {
     $user->redirect('customer_list.php?message=No customer selected');

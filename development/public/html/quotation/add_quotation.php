@@ -2,6 +2,7 @@
 require_once realpath(__DIR__ . '/../parts/header.php');
 
 $user->checkPage('Sales');
+$user->checkPage('Admin');
 ?>
 <title>Add quotation</title>
 </head>
