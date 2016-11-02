@@ -38,26 +38,50 @@ $projectId = $invoiceDB[0]['project_id']
                     </div>
                 <?php } ?>
             <h1 style="text-align:center;font-size:6rem">Invoice details</h1>
-            <div class="col-md-6 row">
-                <ul class="pull-right" style="list-style: none; font-weight: bold;">
-                    <li>Invoice nr</li>
-                    <li>Price</li>
-                    <li>Tax</li>
-                    <li>Total</li>
-                    <li>Paid</li>
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <ul class="" style="list-style: none">
-                    <li><?php echo $invoiceDB[0]['invoice_nr'] ?></li>
-                    <li>€ <?php echo $invoiceDB[0]['price'] ?></li>
-                    <li>€ <?php echo $invoiceDB[0]['tax'] ?></li>
-                    <li>€ <?php echo $invoiceDB[0]['total'] ?></li>
-                    <li><?php if( $invoiceDB[0]['paid'] == 1 ){
-                            echo 'Yes';
-                        } else {echo 'No';} ?></li>
-                </ul>
-            </div>
+                <div class="container">
+                    <div class="panel panel-default col-md-6" style="padding: 0;">
+                        <div class="panel-heading">
+                            Invoice number
+                        </div>
+                        <div class="panel-body">
+                            <p><?php echo $invoiceDB[0]['invoice_nr'] ?></p>
+                        </div>
+                    </div>
+                    <div class="panel panel-default col-md-6" style="padding: 0;">
+                        <div class="panel-heading">
+                            Price
+                        </div>
+                        <div class="panel-body">
+                            <p>€ <?php echo $invoiceDB[0]['price'] ?></p>
+                        </div>
+                    </div>
+                    <div class="panel panel-default col-md-6" style="padding: 0;">
+                        <div class="panel-heading">
+                            Tax
+                        </div>
+                        <div class="panel-body">
+                            <p>€ <?php echo $invoiceDB[0]['tax'] ?></p>
+                        </div>
+                    </div>
+                    <div class="panel panel-default col-md-6" style="padding: 0;">
+                        <div class="panel-heading">
+                            Total
+                        </div>
+                        <div class="panel-body">
+                            <p>€ <?php echo $invoiceDB[0]['total'] ?></p>
+                        </div>
+                    </div>
+                    <div class="panel panel-default col-md-6" style="padding: 0;">
+                        <div class="panel-heading">
+                            Paid
+                        </div>
+                        <div class="panel-body">
+                            <p> <?php if($invoiceDB[0]['paid'] == 1) {
+                                    echo 'yes';
+                                } else {echo 'no'; } ?> </p>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
 </body>

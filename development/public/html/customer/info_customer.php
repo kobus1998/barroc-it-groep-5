@@ -39,56 +39,164 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
         </div>
         <?php } ?>
         <h1 style="text-align:center;font-size:6rem">Customer details</h1>
-        <div class="col-md-6">
-            <ul class="pull-right" style="list-style: none; font-weight: bold;">
 
-                <li>Company name</li>
-                <li>address 1</li>
-                <li>address 2</li>
-                <li>Zipcode</li>
-                <li>Phone number 1</li>
-                <li>Phone number 2</li>
-                <li>Email</li>
-                <li>Fax</li>
-                <li>Contact person</li>
-                <li>Internal contact person</li>
-                <li>Potential customer</li>
-                <li>Bank number</li>
-                <li>Applications</li>
-                <li>Limit</li>
-                <li>Credit balance</li>
-                <li>credit worthy</li>
-                <li>Ledger account number</li>
-                <li>Gross revenue</li>
-                <li>Sales percentage</li>
-                <li>Number of invoices</li>
-                <li>Last contact date</li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <ul class="" style="list-style: none">
-                <li><?php echo $customer[0]["company_name"] ?></li>
-                <li><?php echo $customer[0]["address_1"] ?></li>
-                <li><?php echo $customer[0]["address_2"] ?></li>
-                <li><?php echo $customer[0]["zipcode"] ?></li>
-                <li><?php echo $customer[0]["phone_number_1"] ?></li>
-                <li><?php echo $customer[0]["phone_number_2"] ?></li>
-                <li><?php echo $customer[0]["email"] ?></li>
-                <li><?php echo $customer[0]["fax"] ?></li>
-                <li><?php echo $customer[0]["contact_person"] ?></li>
-                <li><?php echo $customer[0]["internal_contact_person"] ?></li>
-                <li><?php echo $customer[0]["potential_customer"] ?></li>
-                <li><?php echo $customer[0]["bank_nr"] ?></li>
-                <li><?php echo $customer[0]["applications"] ?></li>
-                <li><?php echo $customer[0]["limit"] ?></li>
-                <li><?php echo $customer[0]["credit_balance"] ?></li>
-                <li><?php echo $customer[0]["credit_worthy"] ?></li>
-                <li><?php echo $customer[0]["ledger_account_number"] ?></li>
-                <li><?php echo $customer[0]["gross_revenue"] ?></li>
-                <li><?php echo $customer[0]["sales_percentage"] ?></li>
-                <li><?php echo $customer[0]["number_of_invoices"] ?></li>
-                <li><?php echo $customer[0]["last_contact_date"] ?></li>
-            </ul>
+        <div class="container">
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Company name
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['company_name'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Contact person
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['contact_person'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Address
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['address_1'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Zipcode
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['zipcode'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Phone number
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['phone_number_2'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Email
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['email'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Fax
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['fax'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Potential customer
+                </div>
+                <div class="panel-body">
+                    <p><?php if($customer[0]['potential_customer'] == 1) {
+                            echo 'yes';
+                        } else {echo 'no'; } ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Bank number
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['bank_nr'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Limit
+                </div>
+                <div class="panel-body">
+                    <p>€ <?php echo $customer[0]['limit'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Credit balance
+                </div>
+                <div class="panel-body">
+                    <p>€ <?php echo $customer[0]['credit_balance'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Credit worthy
+                </div>
+                <div class="panel-body">
+                    <p><?php if($customer[0]['credit_worthy'] == 1 ) {
+                            echo 'yes';
+                        } else {echo 'no'; }?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Ledger account number
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['ledger_account_number'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Gross revenue
+                </div>
+                <div class="panel-body">
+                    <p>€ <?php echo $customer[0]['gross_revenue'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Sales percentage
+                </div>
+                <div class="panel-body">
+                    <p>€ <?php echo $customer[0]['sales_percentage'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Number of invoices
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['number_of_invoices'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Last contact date
+                </div>
+                <div class="panel-body">
+                    <p class="text-danger"><?php echo $customer[0]['last_contact_date'] ?></p>
+                </div>
+            </div>
         </div>
         <div class="col-md-12">
             <?php
@@ -98,30 +206,34 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
             WHERE `tbl_customers`.customer_id = $customerId");
             $projects_customer = $stmt->fetchALL(PDO::FETCH_ASSOC);
             ?>
-
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Project name</th>
-                        <th>Deadline</th>
-                        <th>Project info</th>
-                    </tr>
-                </thead>
-                <tbody>
-                        <?php 
-                        foreach ($projects_customer as $item):
-                        ?>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td class="col-md-4"><?php echo $item['project_name'] ?></td>
-                            <td class="col-md-4"><?php echo $item['deadline'] ?></td>
-                            <td class="col-md-4"><a href="" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>
+                            <th>Project name</th>
+                            <th>Deadline</th>
+                            <th>Project info</th>
                         </tr>
-                        <?php
-                        endforeach;
-                        ?>
-                </tbody>
-            </table>
-
+                    </thead>
+                </div>
+                <div class="panel-body">
+                    <tbody>
+                            <?php
+                            foreach ($projects_customer as $item):
+                            ?>
+                            <tr>
+                                <td class="col-md-4"><?php echo $item['project_name'] ?></td>
+                                <td class="col-md-4"><?php echo $item['deadline'] ?></td>
+                                <td class="col-md-4"><a href="" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>
+                            </tr>
+                            <?php
+                            endforeach;
+                            ?>
+                    </tbody>
+                </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

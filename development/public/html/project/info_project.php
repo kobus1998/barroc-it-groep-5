@@ -35,7 +35,7 @@ $projectDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <h1 style="text-align:center;font-size:6rem">Project details</h1>
             <div class="">
                 <div class="container">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default col-md-6" style="padding: 0;">
                         <div class="panel-heading">
                             Project name
                         </div>
@@ -43,7 +43,7 @@ $projectDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <p><?php echo $projectDB[0]['project_name'] ?></p>
                         </div>
                     </div>
-                    <div class="panel panel-default">
+                    <div class="panel panel-default col-md-6" style="padding: 0;">
                         <div class="panel-heading">
                             Deadline
                         </div>
@@ -51,7 +51,7 @@ $projectDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <p><?php echo $projectDB[0]['deadline'] ?></p>
                         </div>
                     </div>
-                    <div class="panel panel-default">
+                    <div class="panel panel-default col-md-6" style="padding: 0;">
                         <div class="panel-heading">
                             Hardware & Software
                         </div>
@@ -59,7 +59,7 @@ $projectDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <p><?php echo $projectDB[0]['hardware&software'] ?></p>
                         </div>
                     </div>
-                    <div class="panel panel-default">
+                    <div class="panel panel-default col-md-6" style="padding: 0;">
                         <div class="panel-heading">
                             Maintenance contract
                         </div>
@@ -67,11 +67,11 @@ $projectDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <p><?php echo $projectDB[0]['maintenance_contract'] ?></p>
                         </div>
                     </div>
-                    <div class="panel panel-default" style="display: inline-block">
+                    <div class="panel panel-default col-md-6" style="padding: 0;">
                         <div class="panel-heading">
                             Project description
                         </div>
-                        <div class="container">
+                        <div class="panel-body">
                             <p> <?php echo $projectDB[0]['description'] ?> </p>
                         </div>
                     </div>
