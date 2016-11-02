@@ -76,7 +76,7 @@ class User {
     
     public function redirectMessage($path, $message) 
     {
-        header('location: ' . BASE_URL . '/development/public/html/' . $path . '?message=' . $message);
+        header('location: ' . BASE_URL . '/development/public/html/' . $path . '?message=' . $message . '&');
     }
     
     public function checkPage($departments)
