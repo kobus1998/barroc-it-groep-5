@@ -39,7 +39,7 @@ if($user->username == 'Sales') {
                     echo '<td>' . $item['invoice_nr'] . '</td>';
                     echo '<td>' . $item['project_id'] . '</td>';
                     echo '<td>' . $item['paid'] . '</td>';
-                    echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
+                    echo '<td><a href="invoices/info_invoice.php?invoiceid=' . $item["invoice_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
                     echo '</tr>';
                 }
                 ?>
@@ -89,8 +89,8 @@ if($user->username == 'Finance') {
                     echo '<td>' . $item['invoice_nr'] . '</td>';
                     echo '<td>' . $item['project_id'] . '</td>';
                     echo '<td>' . $item['paid'] . '</td>';
-                    echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
-                    echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
+                    echo '<td><a href="invoices/info_invoice.php?invoiceid=' . $item["invoice_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
+                    echo '<td><a href="customer/edit_invoice.php?invoiceid=' . $item["invoice_id"] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                     echo '</tr>';
                 }
                 ?>
@@ -139,8 +139,8 @@ if($user->username == 'Admin') {
                     echo '<td>' . $item['invoice_nr'] . '</td>';
                     echo '<td>' . $item['project_id'] . '</td>';
                     echo '<td>' . $item['paid'] . '</td>';
-                    echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '">Invoice info</a></td>';
-                    echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '">Edit invoice</a></td>';
+                    echo '<td><a href="customer/info_invoice.php?invoiceid=' . $item["invoice_id"] . '">Invoice info</a></td>';
+                    echo '<td><a href="customer/edit_invoice.php?invoiceid=' . $item["invoice_id"] . '">Edit invoice</a></td>';
                     echo '</tr>';
                 }
                 ?>

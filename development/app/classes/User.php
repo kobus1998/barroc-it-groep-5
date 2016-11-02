@@ -81,7 +81,7 @@ class User {
     
     public function checkPage($departments)
     {
-        if($this->getLoggedIn() != true || $this->username != "$departments"){
+        if($this->getLoggedIn() != true || $this->username != "$departments" || $this->username != "Admin"){
             $this->redirectMessage('index.php', 'Not logged in');
         }
     }
