@@ -3,9 +3,11 @@ require realpath(__dir__ . '/parts/header.php');
 $users = Database::getInstance()->pdo->
 query("SELECT * FROM `tbl_users`")
     ->fetchAll(PDO::FETCH_ASSOC);
-if($user->isLoggedIn = true) {
+
+if($user->getLoggedIn() == true) {
     $user->redirect('../../app/router.php');
 }
+
 ?>
 
 <title>Home</title>
