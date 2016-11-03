@@ -31,4 +31,39 @@ if ($_POST["type"] == "add project") {
 
 if ($_POST["type"] == "edit project") {
     
+    if (!Validator::numeric()->validate($_POST['project_id']) ||
+        !Validator::notEmpty()->validate($_POST['project_name']) ||
+        !Validator::notEmpty()->validate($_POST['description']) ||
+        !Validator::notEmpty()->validate($_POST['hardwaresoftware']) ||
+        !Validator::notEmpty()->validate($_POST['maintenance_contract']))
+    {
+        $user->redirect("project/project_list.php?message=Something went wrong");
+        die;
+    }
+    
+    if (!Validator::notEmpty()->validate($_POST['day']) ||
+        !Validator::notEmpty()->validate($_POST['month']) ||
+        !Validator::notEmpty()->validate($_POST['year'])) 
+    {
+        // Hier wordt alles aangepast behalve de datum
+        if ($project->editProject($_POST)) {
+            $user->redirect('project_list.php?message=Project updated');
+        } else {
+            $user->redirect("project/project_list.php?message=Something went wrong");
+            die;
+        }
+
+    } else {
+        // Hier wordt ook de datum aangepast
+        $date = $_POST['year'] . "-" . $_POST['month'] . "-" . $_POST['day'];
+
+        if ($project->editProject($_POST) && $project->editProjectDate($_POST, $date)) {
+            $user->redirect('project_list.php?message=Project updated');
+        } else {
+            $user->redirect("project/project_list.php?message=Something went wrong");
+            die;
+        }
+    }
+    
+    
 }

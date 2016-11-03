@@ -70,7 +70,7 @@ $customerData = $GLOBALS['customerData'][0];
                 <p style="font-weight:bold">Active maintenance contract</p>
                 <label for="maintenance_contract"></label>
                 <select name="maintenance_contract" id="maintenance_contract">
-                    <option selected disabled>Selecteer een optie</option>
+                    <option selected disabled>Select an option</option>
                     <option value="1">Yes</option>
                     <option value="0">No</option>
                 </select>
