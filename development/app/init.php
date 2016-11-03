@@ -19,6 +19,8 @@ spl_autoload_register( function($class) {
 
 $user = new User();
 
+
+
 if(isset($_SESSION['user_id']))
 {
     $db = Database::getInstance();

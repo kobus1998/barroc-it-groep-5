@@ -2,6 +2,7 @@
 require realpath(__dir__ . '/../parts/header.php');
 
 $user->checkPage('Finance');
+$projectId = $_GET['projectid'];
 ?>
 
 <!doctype html>
@@ -29,7 +30,7 @@ $user->checkPage('Finance');
 			echo "<h2><span class='label label-danger text-center col-md-6 col-md-offset-3'>". $_GET['message'] ."</span></h2>";
 		} ?>
 		<h1 class="col-md-6 col-md-offset-3">Add invoice</h1>
-		<form class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>\development\app\controller\Controller.php" method="POST">
+		<form class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>\development\app\controller\invoiceController.php?projectid=<?= $projectId ?>" method="POST">
 			<div class="form-group">
 
 				<label for="invoice_nr">Invoice number</label>
@@ -58,14 +59,7 @@ $user->checkPage('Finance');
 
 			</div>
 
-			<div class="form-group">
-
-				<label for="paid">Paid</label>
-				<input class="form-control checkbox" type="checkbox" name="paid" id="paid">
-
-			</div>
-
-			<input type="submit" class="btn btn-primary pull-right" value="add customer" name="type" style="margin-bottom:15px">
+			<input type="submit" class="btn btn-primary pull-right" value="add invoice" name="type" style="margin-bottom:15px">
 
 		</form>
 	</div>
