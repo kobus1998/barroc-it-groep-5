@@ -9,6 +9,12 @@ $user->checkPage('Finance');
 <head>
 	<meta charset="UTF-8">
 	<title>Barroc-IT</title>
+	<style>
+		.checkbox {
+			width: 25px!important;
+			height: 25px!important;
+		}
+	</style>
 </head>
 <body>
 <div class="header">
@@ -61,7 +67,7 @@ $user->checkPage('Finance');
 			<div class="form-group">
 
 				<label for="paid">Paid</label>
-				<input class="form-control checkbox" type="checkbox" name="paid" id="paid">
+				<input class="checkbox" type="checkbox" name="paid" id="paid">
 
 			</div>
 
