@@ -7,7 +7,9 @@ $user->checkPage($user->username);
 if($user->username == 'Sales') {
     include realpath(__DIR__. '/parts/header_sales.php');
     $projects = $db->pdo->
-    query("SELECT * FROM `tbl_projects`")
+    query("
+          SELECT * FROM tbl_projects
+           ")
         ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-project-list'])) {
@@ -144,18 +146,18 @@ if($user->username == 'Admin') {
             </table>
         </div>
     </section>
-
-
-
     <?php
 }
 
 if($user->username == 'Development') {
     include realpath(__DIR__. '/parts/header_development.php');
     $projects = $db->pdo->
-    query("SELECT * 
-           from `tbl_projects` 
-            ")
+    query("
+        SELECT * FROM tbl_projects
+        INNER JOIN tbl_customers
+          on tbl_projects.customer_id = tbl_customers.customer_id
+        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.limit
+    ")
         ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-project-list'])) {

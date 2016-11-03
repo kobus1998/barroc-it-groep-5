@@ -38,6 +38,12 @@ if( $_POST['type'] == 'edit customer') {
 
     require_once realpath(__DIR__ . '/../variable/variableEditCustomer.php');
 
+    if( !isset($_POST['edit-potential-customer']) ) {
+        $editPotentialCustomer = 0;
+    } else {
+        $editPotentialCustomer = 1;
+    }
+
     $customerID = $_GET['customerid'];
     if( $user->getUsername() == 'Sales')
     {
@@ -114,6 +120,12 @@ if( $_POST['type'] == 'edit customer') {
     }
     if($user->getUsername() === 'Finance')
     {
+        if( !isset($_POST['edit-credit-worthy']) ) {
+            $editCreditWorthy = 0;
+        } else {
+            $editCreditWorthy = 1;
+        }
+
         if(
             empty($editBankAccountNr) ||
             empty($editCreditBalance) ||
@@ -139,7 +151,8 @@ if( $_POST['type'] == 'edit customer') {
             `tbl_customers`.gross_revenue = :grossRevenue,
             `tbl_customers`.limit = :limit,
             `tbl_customers`.ledger_account_number = :ledgerNr,
-            `tbl_invoices`.tax = :tax
+            `tbl_invoices`.tax = :tax,
+            `tbl_customers`.credit_worthy = :creditWorthy
         WHERE `tbl_customers`.customer_id = $customerID
         ";
         $stmt = $db->pdo->prepare($sql);
@@ -150,6 +163,7 @@ if( $_POST['type'] == 'edit customer') {
         $stmt->bindParam(':limit', $editLimit);
         $stmt->bindParam(':ledgerNr', $editLedgerAccountNr);
         $stmt->bindParam(':tax', $editTax);
+        $stmt->bindParam(':creditWorthy', $editCreditWorthy);
         $stmt->execute();
 
         $message = 'Succesfull edited';

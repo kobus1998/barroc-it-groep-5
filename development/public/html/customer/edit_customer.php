@@ -2,6 +2,14 @@
 require '../parts/header.php';
 ?>
 <title>Edit Customer</title>
+<style>
+
+    .checkbox-potential-customer {
+        width: 25px;
+        height: 25px;
+    }
+
+</style>
 </head>
 
 <?php
@@ -30,17 +38,6 @@ if($user->username == 'Sales') {
         where `tbl_customers`.customer_id = " . $customerID);
     $sales = $stmt->fetchALL(PDO::FETCH_ASSOC);
 ?>
-
-    <script>
-        $(document).ready(function(){
-
-            if( $('#potential-custom-check').val(1)) {
-                $('#potential-custom-check').prop('checked', true);
-            } else if( $('#potential-custom-check').val(0)) {
-                $('#potential-custom-check').prop('checked', false);
-            }
-        });
-    </script>
 
     <div class="header">
         <?php
@@ -139,7 +136,9 @@ if($user->username == 'Sales') {
                     <div class="form-group">
 
                         <label for="edit-potential-customer">Potential customer</label>
-                        <input type="checkbox" id="potential-custom-check" name="edit-potential-customer" value="<?php echo $sales[0]['potential_customer'] ?>" class="form-control">
+                        <input type="checkbox" id="potential-custom-check" name="edit-potential-customer" value="<?php echo $sales[0]['potential_customer'] ?>" class="checkbox-potential-customer"
+                        <?php if($sales[0]['potential_customer'] == 1){ echo 'checked="checked"'; } else { echo ''; } ?>
+                        >
 
                     </div>
                     <br>
@@ -261,6 +260,13 @@ if($user->username == 'Finance') {
                         <input type="text" name="edit-tax-code" value="<?php echo $finance[0]['tax'] ?>"
                                class="form-control">
 
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="edit-credit-worthy">Credit worthy</label>
+                        <input type="checkbox" name="edit-credit-worthy" value="<?= $finance[0]['credit_worthy'] ?>"
+                        <?php if($finance[0]['credit_worthy'] == 1){echo 'checked';} else {echo '';} ?> >
                     </div>
 
                 <input type="submit" name="type" value="edit customer" class="btn btn-primary">
@@ -395,10 +401,12 @@ if($user->username == 'Finance') {
                         <div class="form-group">
 
                             <label for="edit-potential-customer">Potential customer</label>
-                            <input type="checkbox" id="potential-custom-check" name="edit-potential-customer"
-                                   value="<?php echo $adminSQL[0]['potential_customer'] ?>" class="form-control">
+                            <input type="checkbox" id="potential-custom-check" name="edit-potential-customer" value="<?php echo $sales[0]['potential_customer'] ?>" class="checkbox-potential-customer"
+                                <?php if($sales[0]['potential_customer'] == 1){ echo 'checked="checked"'; } else { echo ''; } ?>
+                            >
 
                         </div>
+
                         <br>
                         <div class="form-group">
 

@@ -38,6 +38,9 @@ if(isset($_POST['edit-email'])) {
 
 if(isset($_POST['edit-potential-customer'])) {
     $editPotentialCustomer = $_POST['edit-potential-customer'];
+    if($editPotentialCustomer == '') {
+        $editPotentialCustomer = 0;
+    }
 }
 
 if(isset($_POST['edit-last-contact-date'])) {
@@ -67,6 +70,10 @@ if(isset($_POST['edit-next-action'])) {
 /*
  *  finance
  */
+
+if(isset($_POST['edit-credit-worthy'])) {
+    $editCreditWorthy = $_POST['edit-credit-worthy'];
+}
 
 if(isset($_POST['edit-bank-account-number'])) {
     $editBankAccountNr = $_POST['edit-bank-account-number'];
