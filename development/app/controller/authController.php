@@ -129,7 +129,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST')
          */
         $user->register($username, $password);
         $message = 'success';
-        $user->redirectMessage('index.php', $message);
+        $user->redirectMessage('register.php', $message);
         
     }
 }
