@@ -9,12 +9,9 @@ if ($_POST['type'] == 'add customer') {
 
     if (!Validator::notEmpty()->validate($_POST['company_name']) ||
         !Validator::notEmpty()->validate($_POST['address_1']) ||
-        !Validator::notEmpty()->validate($_POST['address_2']) ||
         !Validator::notEmpty()->validate($_POST['zipcode']) ||
         !Validator::phone()->validate($_POST['phone_number_1']) ||
-        !Validator::phone()->validate($_POST['phone_number_2']) ||
         !Validator::email()->validate($_POST['email']) ||
-        !Validator::phone()->validate($_POST['fax']) ||
         !Validator::notEmpty()->validate($_POST['contact_person']) ||
         !Validator::notEmpty()->validate($_POST['internal_contact_person']) ||
         !Validator::notEmpty()->validate($_POST['bank_nr']))
