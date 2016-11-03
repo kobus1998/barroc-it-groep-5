@@ -56,7 +56,7 @@ $projectDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             Hardware & Software
                         </div>
                         <div class="panel-body">
-                            <p><?php echo $projectDB[0]['hardware&software'] ?></p>
+                            <p><?php echo $projectDB[0]['hardwaresoftware'] ?></p>
                         </div>
                     </div>
                     <div class="panel panel-default col-md-6" style="padding: 0;">

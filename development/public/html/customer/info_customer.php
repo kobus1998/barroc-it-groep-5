@@ -28,6 +28,8 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
         require "../parts/header_finance.php";
     } elseif($user->username == "Admin") {
         require "../parts/header_admin.php";
+    } elseif($user->username == "Development") {
+        require "../parts/header_development.php";
     }
     ?>
 </div>
