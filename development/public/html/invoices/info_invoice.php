@@ -2,7 +2,6 @@
 require_once realpath(__DIR__ . '/../parts/header.php');
 
 $user->checkPage('Finance');
-$user->checkPage('Admin');
 
 $invoiceId = $_GET['invoiceid'];
 
