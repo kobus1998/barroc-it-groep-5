@@ -10,6 +10,12 @@ $projectId = $_GET['projectid'];
 <head>
 	<meta charset="UTF-8">
 	<title>Barroc-IT</title>
+	<style>
+		.checkbox {
+			width: 25px!important;
+			height: 25px!important;
+		}
+	</style>
 </head>
 <body>
 <div class="header">
@@ -58,6 +64,7 @@ $projectId = $_GET['projectid'];
 				<input class="form-control" type="text" name="total" id="total">
 
 			</div>
+
 
 			<input type="submit" class="btn btn-primary pull-right" value="add invoice" name="type" style="margin-bottom:15px">
 
