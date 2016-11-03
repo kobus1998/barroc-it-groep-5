@@ -65,13 +65,7 @@ $user->checkPage('Sales');
 					<input class="form-control" type="text" name="zipcode_2" id="zipcode_2">
 
 				</div>
-
-				<div class="form-group">
-
-					<label for="zipcode_2">zipcode 2</label>
-					<input class="form-control" type="text" name="zipcode_2" id="zipcode_2">
-
-				</div>
+				
 	        	
 	        	<div class="form-group">
 
