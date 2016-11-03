@@ -73,6 +73,79 @@ if($user->username == 'Sales') {
             </table>
         </div>
     </section>
+    <?php
+}
+
+if($user->username == 'Finance') {
+    include realpath(__DIR__. '/parts/header_finance.php');
+    $projects = $db->pdo->
+    query("SELECT * FROM `tbl_projects`")
+        ->fetchAll(PDO::FETCH_ASSOC);
+
+    if(isset($_GET['search-project-list'])) {
+        $searchGET = $_GET['search-project-list'];
+
+        $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` WHERE `tbl_projects`.project_name like '%:searchGET%'");
+        $stmt->bindParam(':searchGET', $searchGET);
+        $searchAdmin =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    ?>
+    <section class="projects">
+        <div class="container">
+            <h2 class="text-center">Project list</h2>
+            <div class="search-project col-md-5 col-md-offset-8">
+                <form method="get" action="">
+                    <div class="form-group row">
+                        <label>Search project name
+                            <input type="search" name="search-project-list">
+                        </label>
+                        <button class="btn btn-warning glyphicon glyphicon-search" type="submit" name="type" value="search"></button>
+                    </div>
+                </form>
+            </div>
+            <table class="table ">
+                <thead>
+                <tr>
+                    <th>Customer id</th>
+                    <th>Project name</th>
+                    <th>Deadline</th>
+                    <th>Project info</th>
+                    <th>Add invoice</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <?php
+                if(!isset($_GET['type'])) {
+                    foreach ($projects as $item) {
+                        echo '<tr>';
+                        echo '<td>' . $item['customer_id'] . '</td>';
+                        echo '<td>' . $item['project_name'] . '</td>';
+                        echo '<td>' . $item['deadline'] . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="invoices/add_invoice.php?projectid=' . $item['project_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
+                        echo '</tr>';
+                    }
+                }
+
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
+                    foreach ($searchAdmin as $item)
+                    {
+                        echo '<tr>';
+                        echo '<td>' . $item['customer_id'] . '</td>';
+                        echo '<td>' . $item['project_name'] . '</td>';
+                        echo '<td>' . $item['deadline'] . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="invoices/add_invoice.php?projectid=' . $item['project_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
+                        echo '</tr>';
+                    }
+                }
+                ?>
+
+                </tbody>
+            </table>
+        </div>
+    </section>
 
 
     <?php
@@ -112,7 +185,7 @@ if($user->username == 'Admin') {
                     <th>Project name</th>
                     <th>Deadline</th>
                     <th>Project info</th>
-
+                    <th>Add invoice</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -125,6 +198,7 @@ if($user->username == 'Admin') {
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="invoices/add_invoice.php?projectid=' . $item['project_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -137,6 +211,7 @@ if($user->username == 'Admin') {
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="invoices/add_invoice.php?projectid=' . $item['project_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
                         echo '</tr>';
                     }
                 }
