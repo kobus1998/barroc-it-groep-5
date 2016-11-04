@@ -35,7 +35,7 @@ if( $_POST['type'] == 'edit customer') {
 
     require_once realpath(__DIR__ . '/../variable/variableEditCustomer.php');
 
-    if( !isset($_POST['edit-potential-customer']) ) {
+    if( !isset($_POST['edit-potential_customer']) ) {
         $editPotentialCustomer = 0;
     } else {
         $editPotentialCustomer = 1;

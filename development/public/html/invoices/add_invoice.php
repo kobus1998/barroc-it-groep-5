@@ -10,12 +10,6 @@ $projectId = $_GET['projectid'];
 <head>
 	<meta charset="UTF-8">
 	<title>Barroc-IT</title>
-	<style>
-		.checkbox {
-			width: 25px!important;
-			height: 25px!important;
-		}
-	</style>
 </head>
 <body>
 <div class="header">

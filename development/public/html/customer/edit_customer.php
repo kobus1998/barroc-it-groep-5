@@ -4,9 +4,9 @@ require '../parts/header.php';
 <title>Edit Customer</title>
 <style>
 
-    .checkbox-potential-customer {
-        width: 25px;
-        height: 25px;
+    .checkbox {
+        width: 25px!important;
+        height: 25px!important;
     }
 
 </style>
@@ -135,13 +135,23 @@ if($user->username == 'Sales') {
 
                     <div class="form-group">
 
-                        <label for="edit-potential-customer">Potential customer</label>
-                        <input type="checkbox" id="potential-custom-check" name="edit-potential-customer" value="<?php echo $sales[0]['potential_customer'] ?>" class="checkbox-potential-customer"
-                        <?php if($sales[0]['potential_customer'] == 1){ echo 'checked="checked"'; } else { echo ''; } ?>
-                        >
+                        <p style="font-weight:bold">Potential customer</p>
+                        <select class="form-control" name="potential_customer" id="potential_customer"><?php
+                            if ($sales[0]['potential_customer'] == 0) { ?>
+                                <option value="1">Yes</option>
+                                <option selected value="0">No</option>
+                            <?php } else if ($sales[0]['potential_customer'] == 1) { ?>
+                                <option selected value="1">Yes</option>
+                                <option value="0">No</option>
+                            <?php } else { ?>
+                                <option selected disabled>Select an option</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            <?php } ?>
+                        </select>
 
                     </div>
-                    <br>
+
                     <div class="form-group">
 
                         <label for="edit-appointment-day">Appointment day</label>
