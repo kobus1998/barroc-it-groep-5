@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="<?php echo BASE_URL ?>/development/public/html/sales.php" class="navbar-brand">Barroc IT</a>
+            <a href="<?php echo BASE_URL ?>/development/public/html/finance.php" class="navbar-brand">Barroc IT / <span style="font-size: 12px;"><?= $user->username; ?></span></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -33,7 +33,6 @@
             <ul class="nav navbar-right">
                 <li><a href="<?php echo BASE_URL;?>/development/app/controller/authController.php?type=logout"><button class="btn btn-warning">Logout</button></a></li>
             </ul>
-            <ul><li class="pull-right" style="list-style: none; margin-top: 17px;"><?= $user->username; ?></li></ul>
         </div>
     </div>
 </nav>
