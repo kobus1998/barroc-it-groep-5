@@ -63,6 +63,15 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
 
             <div class="panel panel-default col-md-6" style="padding: 0;">
                 <div class="panel-heading">
+                    Initials
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['initials'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
                     Address and housenumber
                 </div>
                 <div class="panel-body">
@@ -81,7 +90,53 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
 
             <div class="panel panel-default col-md-6" style="padding: 0;">
                 <div class="panel-heading">
+                    City
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['city'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Address and housenumber 2
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['address_2'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Zipcode 2
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['zipcode_2'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    City 2
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['city_2'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
                     Phone number
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['phone_number_1'] ?></p>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Phone number 2
                 </div>
                 <div class="panel-body">
                     <p><?php echo $customer[0]['phone_number_2'] ?></p>
