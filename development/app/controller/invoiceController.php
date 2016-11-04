@@ -18,7 +18,8 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $invoice->addInvoice($_POST, $projectId, $totalPrice);
         $invoice->increaseNrInvoices($projectId);
-        
+
+        $user->redirect('invoice_list.php?message=Invoice added');
         
     }
 }

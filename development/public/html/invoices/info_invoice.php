@@ -12,6 +12,7 @@ $invoiceDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $projectId = $invoiceDB[0]['project_id']
 ?>
 <title>Invoice Detail</title>
+<meta charset="UTF-8">
 </head>
 
 <body>
@@ -59,7 +60,7 @@ $projectId = $invoiceDB[0]['project_id']
                             Tax
                         </div>
                         <div class="panel-body">
-                            <p>€ <?php echo $invoiceDB[0]['tax'] ?></p>
+                            <p><?php echo $invoiceDB[0]['tax'] ?>%</p>
                         </div>
                     </div>
                     <div class="panel panel-default col-md-6" style="padding: 0;">
