@@ -257,10 +257,13 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
         </div>
         <div class="col-md-12">
             <?php
-            $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` 
-            LEFT JOIN `tbl_customers`
+            $sql = "SELECT * FROM `tbl_projects` 
+            INNER JOIN `tbl_customers`
               on `tbl_customers`.customer_id = `tbl_projects`.customer_id
-            WHERE `tbl_customers`.customer_id = $customerId");
+            WHERE `tbl_customers`.customer_id = :customerId";
+
+            $stmt = $db->pdo->prepare($sql);
+            $stmt->bindParam(':customerId', $customerId);
             $projects_customer = $stmt->fetchALL(PDO::FETCH_ASSOC);
             ?>
             <div class="panel panel-default">
@@ -278,6 +281,7 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                     <tbody>
                             <?php
                             foreach ($projects_customer as $item):
+
                             ?>
                             <tr>
                                 <td class="col-md-4"><?php echo $item['project_name'] ?></td>
