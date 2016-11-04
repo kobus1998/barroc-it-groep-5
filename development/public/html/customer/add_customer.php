@@ -52,7 +52,7 @@ $user->checkPage('Sales');
 				<div class="form-group">
 
 					<label for="city">city</label>
-					<input class="form-control" type="text" name="zipcode" id="zipcode">
+					<input class="form-control" type="text" name="city" id="city">
 
 				</div>
 

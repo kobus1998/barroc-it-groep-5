@@ -1,6 +1,6 @@
 <?php
 require_once realpath(__DIR__ . '/../init.php');
-require_once realpath(__DIR__ . '/../variable/variableEditCustomer.php');
+//require_once realpath(__DIR__ . '/../variable/variableEditCustomer.php');
 
 $db = Database::getInstance();
 
@@ -11,10 +11,12 @@ if ($_POST['type'] == 'add customer') {
     if (!Validator::notEmpty()->validate($_POST['company_name']) ||
         !Validator::notEmpty()->validate($_POST['address_1']) ||
         !Validator::notEmpty()->validate($_POST['zipcode']) ||
+        !Validator::notEmpty()->validate($_POST['city']) ||
         !Validator::phone()->validate($_POST['phone_number_1']) ||
         !Validator::email()->validate($_POST['email']) ||
         !Validator::notEmpty()->validate($_POST['contact_person']) ||
         !Validator::notEmpty()->validate($_POST['internal_contact_person']) ||
+        !Validator::notEmpty()->validate($_POST['initials']) ||
         !Validator::notEmpty()->validate($_POST['bank_nr']))
     {
         $message = "Some fields are empty";
