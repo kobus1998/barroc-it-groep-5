@@ -37,78 +37,85 @@ $user->checkPage('Sales');
 	        		<input class="form-control" type="text" name="company_name" id="company_name">
 
 	        	</div>
-	        	
 	        	<div class="form-group">
 
 	        		<label for="address_1">address and housenumber</label>
 	        		<input class="form-control" type="text" name="address_1" id="address_1">
 
 	        	</div>
-	        	
+				<div class="form-group">
+
+					<label for="zipcode">zipcode</label>
+					<input class="form-control" type="text" name="zipcode" id="zipcode">
+
+				</div>
+				<div class="form-group">
+
+					<label for="city">city</label>
+					<input class="form-control" type="text" name="zipcode" id="zipcode">
+
+				</div>
+
 	        	<div class="form-group">
 
 	        		<label for="address_2">address and housenumber 2</label>
 	        		<input class="form-control" type="text" name="address_2" id="address_2">
 
 	        	</div>
-	        	
-	        	<div class="form-group">
-
-					<label for="zipcode">zipcode</label>
-					<input class="form-control" type="text" name="zipcode" id="zipcode">
-
-				</div>
-
 				<div class="form-group">
 
 					<label for="zipcode_2">zipcode 2</label>
 					<input class="form-control" type="text" name="zipcode_2" id="zipcode_2">
 
 				</div>
+				<div class="form-group">
 
-	        	
+					<label for="city_2">city 2</label>
+					<input class="form-control" type="text" name="city_2" id="city_2">
+
+				</div>
+				<div class="form-group">
+
+					<label for="contact_person">contact person</label>
+					<input class="form-control" type="text" name="contact_person" id="contact_person">
+
+				</div>
+				<div class="form-group">
+
+					<label for="initials">Initials</label>
+					<input class="form-control" type="text" name="initials" id="initials">
+
+				</div>
+				<div class="form-group">
+
+					<label for="internal_contact_person">internal contact person</label>
+					<input class="form-control" type="text" name="internal_contact_person" id="internal_contact_person">
+
+				</div>
 	        	<div class="form-group">
 
 	        		<label for="phone_number_1">phone number</label>
 	        		<input class="form-control" type="text" name="phone_number_1" id="phone_number_1">
 
 	        	</div>
-	        	
 	        	<div class="form-group">
 
 	        		<label for="phone_number_2">phone number 2</label>
 	        		<input class="form-control" type="text" name="phone_number_2" id="phone_number_2">
 
 	        	</div>
-	        	
+				<div class="form-group">
+
+					<label for="fax">fax</label>
+					<input class="form-control" type="text" name="fax" id="fax">
+
+				</div>
 	        	<div class="form-group">
 
 	        		<label for="email">email</label>
 	        		<input class="form-control" type="text" name="email" id="email">
 
 	        	</div>
-	        	
-	        	<div class="form-group">
-
-	        		<label for="fax">fax</label>
-	        		<input class="form-control" type="text" name="fax" id="fax">
-
-	        	</div>
-	        	
-	        	<div class="form-group">
-
-	        		<label for="contact_person">contact person</label>
-	        		<input class="form-control" type="text" name="contact_person" id="contact_person">
-
-	        	</div>
-	        	
-	        	<div class="form-group">
-
-	        		<label for="internal_contact_person">internal contact person</label>
-	        		<input class="form-control" type="text" name="internal_contact_person" id="internal_contact_person">
-
-	        	</div>
-	        	
 	        	<div class="form-group">
 
 	        		<label for="bank_nr">bank number</label>
