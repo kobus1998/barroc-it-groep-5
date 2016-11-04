@@ -38,58 +38,61 @@ if( $_POST['type'] == 'edit customer') {
     }
 
     if( !isset($_POST['edit-potential-customer']) ) {
-        $editPotentialCustomer = 0;
-    } else {
-        $editPotentialCustomer = 1;
-    }
 
-    $customerID = $_GET['customerid'];
-    if( $user->getUsername() == 'Sales')
-    {
-        if (
-            empty($editCompanyName) ||
-            empty($editContactPerson) ||
-            empty($editAdress) ||
-            empty($editZipcode) ||
-            empty($editPhone) ||
-            empty($editFax) ||
-            empty($editEmail) )
-        {
-            $message = 'Some required fields are empty';
-            $user->redirectMessage("../customer/editcustomer.php?editcustomer=$customerID", $message);
-            die;
-        }
+        require_once realpath(__DIR__ . '/../variable/variableEditCustomer.php');
 
-        $customer->editCustomerSales($customerID, $_POST);
-
-        $message = "Customer edited";
-        $user->redirectMessage('customer_list.php', $message);
-    }
-    if($user->getUsername() === 'Finance')
-    {
-        if( !isset($_POST['edit-credit-worthy']) ) {
-            $editCreditWorthy = 0;
+        if (!isset($_POST['edit-potential-customer'])) {
+            $editPotentialCustomer = 0;
         } else {
-            $editCreditWorthy = 1;
+            $editPotentialCustomer = 1;
         }
 
-        if(
-            empty($editBankAccountNr) ||
-            empty($editCreditBalance) ||
-            empty($editNumberInvoices) ||
-            empty($editGrossRevenue) ||
-            empty($editLimit) ||
-            empty($editLedgerAccountNr) ||
-            empty($editTax)
-        ) {
-            $message = 'some required fields are empty';
-            $user->redirectMessage("customer_list.php", $message);
+        $customerID = $_GET['customerid'];
+        if ($user->getUsername() == 'Sales') {
+            if (
+                empty($editCompanyName) ||
+                empty($editContactPerson) ||
+                empty($editAdress) ||
+                empty($editZipcode) ||
+                empty($editPhone) ||
+                empty($editFax) ||
+                empty($editEmail)
+            ) {
+                $message = 'Some required fields are empty';
+                $user->redirectMessage("../customer/editcustomer.php?editcustomer=$customerID", $message);
+                die;
+            }
+
+            $customer->editCustomerSales($customerID, $_POST);
+
+            $message = "Customer edited";
+            $user->redirectMessage('customer_list.php', $message);
         }
+        if ($user->getUsername() === 'Finance') {
+            if (!isset($_POST['edit-credit-worthy'])) {
+                $editCreditWorthy = 0;
+            } else {
+                $editCreditWorthy = 1;
+            }
 
-        $customer->editCustomerFinance($customerID);
+            if (
+                empty($editBankAccountNr) ||
+                empty($editCreditBalance) ||
+                empty($editNumberInvoices) ||
+                empty($editGrossRevenue) ||
+                empty($editLimit) ||
+                empty($editLedgerAccountNr) ||
+                empty($editTax)
+            ) {
+                $message = 'some required fields are empty';
+                $user->redirectMessage("customer_list.php", $message);
+            }
 
-        $message = 'Customer edited';
-        $user->redirectMessage('customer_list.php', $message);
+            $customer->editCustomerFinance($customerID);
 
+            $message = 'Customer edited';
+            $user->redirectMessage('customer_list.php', $message);
+
+        }
     }
 }

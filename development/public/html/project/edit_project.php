@@ -66,8 +66,7 @@ $projectData = $GLOBALS['projectData'][0];
             <div class="form-group">
 
                 <p style="font-weight:bold">Active maintenance contract</p>
-                <label for="maintenance_contract"></label>
-                <select name="maintenance_contract" id="maintenance_contract"><?php
+                <select class="form-control" name="maintenance_contract" id="maintenance_contract"><?php
                     if ($projectData['maintenance_contract'] == 0) { ?>
                         <option value="1">Yes</option>
                         <option selected value="0">No</option>
