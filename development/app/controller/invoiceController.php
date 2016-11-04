@@ -11,7 +11,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST') {
             !Validator::numeric()->validate($_POST['price']) ||
             !Validator::numeric()->validate($_POST['tax']))
         {
-            $user->redirect('invoices/add_invoice.php');
+            $user->redirect("invoices/add_invoice.php?projectid=$projectId&message=Something is not filled it");
             die;
         }
         $totalPrice = $_POST['price'] / 100 * (100 + $_POST['tax']);
@@ -19,7 +19,8 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST') {
         $invoice->addInvoice($_POST, $projectId, $totalPrice);
         $invoice->increaseNrInvoices($projectId);
 
-        $user->redirect('invoice_list.php?message=Invoice added');
+        $message = 'invoice added';
+        $user->redirectMessage('invoice_list.php', $message);
         
     }
 }

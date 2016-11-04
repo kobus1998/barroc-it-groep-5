@@ -20,6 +20,7 @@ if($user->username == 'Sales') {
     ?>
     <section class="quotations">
         <div class="container">
+            <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
             <h2 class="text-center">Quotation list</h2>
             <div class="search-quotation col-md-5 col-md-offset-8">
                 <form method="get" action="">
@@ -90,6 +91,7 @@ if(isset($_GET['search-quotation-list'])) {
     ?>
     <section class="quotations">
         <div class="container">
+            <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
             <h2 class="text-center">Quotation list</h2>
             <div class="search-quotation col-md-5 col-md-offset-8">
                 <form method="get" action="">
@@ -159,6 +161,7 @@ if(isset($_GET['search-quotation-list'])) {
     ?>
     <section class="quotations">
         <div class="container">
+            <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
             <h2 class="text-center">Quotation list</h2>
             <div class="search-quotation col-md-5 col-md-offset-8">
                 <form method="get" action="">

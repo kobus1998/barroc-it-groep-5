@@ -18,6 +18,7 @@ if($user->username == 'Sales') {
     ?>
     <section class="customers">
         <div class="container">
+            <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
             <h2 class="text-center">Customer list</h2>
             <div class="search-customer col-md-5 col-md-offset-8">
                 <form method="get" action="">
@@ -112,6 +113,7 @@ if($user->username == 'Finance') {
     <!--html-->
     <section class="customers">
         <div class="container">
+            <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
             <h2 class="text-center">Customer list</h2>
             <div class="search-customer col-md-5 col-md-offset-8">
                 <form method="get" action="">
@@ -202,6 +204,7 @@ if($user->username == 'Admin') {
     ?>
     <section class="customers">
         <div class="container">
+            <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
             <h2 class="text-center">Customer list</h2>
             <div class="search-customer col-md-5 col-md-offset-8">
                 <form method="get" action="">
@@ -286,6 +289,7 @@ if($user->username == 'Development') {
     <!--html-->
     <section class="customers">
         <div class="container">
+            <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
             <h2 class="text-center">Customer list</h2>
             <div class="search-customer col-md-5 col-md-offset-8">
                 <form method="get" action="">

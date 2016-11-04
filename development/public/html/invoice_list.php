@@ -103,6 +103,7 @@ if($user->username == 'Finance') {
     ?>
     <section class="invoices">
         <div class="container">
+            <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
             <h2 class="text-center">Invoice list</h2>
             <div class="search-invoice col-md-5 col-md-offset-8">
                 <form method="get" action="">
@@ -183,6 +184,7 @@ if($user->username == 'Admin') {
     ?>
     <section class="invoices">
         <div class="container">
+            <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
             <h2 class="text-center">Invoice list</h2>
             <div class="search-invoice col-md-5 col-md-offset-8">
                 <form method="get" action="">
