@@ -143,9 +143,9 @@ class Customers {
         $stmt->bindParam(':nrInvoices', $method['edit-number-invoices']);
         $stmt->bindParam(':grossRevenue', $method['edit-gross-revenue']);
         $stmt->bindParam(':limit', $method['edit-limit']);
-        $stmt->bindParam(':ledgerNr', $method['edit-ledger-nr']);
-        $stmt->bindParam(':tax', $method['edit-tax']);
-        $stmt->bindParam(':creditWorthy', $method['edit-credit-worthy']);
+        $stmt->bindParam(':ledgerNr', $method['edit-ledger-account-number']);
+        $stmt->bindParam(':tax', $method['edit-tax-code']);
+        $stmt->bindParam(':creditWorthy', $method['credit_worthy']);
         $stmt->execute();
     }
 }

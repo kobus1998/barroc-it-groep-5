@@ -50,13 +50,13 @@ if( $_POST['type'] == 'edit customer') {
         $customerID = $_GET['customerid'];
         if ($user->getUsername() == 'Sales') {
             if (
-                empty($editCompanyName) ||
-                empty($editContactPerson) ||
-                empty($editAdress) ||
-                empty($editZipcode) ||
-                empty($editPhone) ||
-                empty($editFax) ||
-                empty($editEmail)
+                !Validator::notEmpty()->validate($_POST['edit-company-name']) ||
+                !Validator::notEmpty()->validate($_POST['edit-contact-person']) ||
+                !Validator::notEmpty()->validate($_POST['edit-adress']) ||
+                !Validator::notEmpty()->validate($_POST['edit-zipcode']) ||
+                !Validator::notEmpty()->validate($_POST['edit-phone-number']) ||
+                !Validator::notEmpty()->validate($_POST['edit-fax']) ||
+                !Validator::notEmpty()->validate($_POST['edit-email'])
             ) {
                 $message = 'Some required fields are empty';
                 $user->redirectMessage("../customer/editcustomer.php?editcustomer=$customerID", $message);
@@ -76,20 +76,20 @@ if( $_POST['type'] == 'edit customer') {
             }
 
             if (
-                empty($editBankAccountNr) ||
-                empty($editCreditBalance) ||
-                empty($editNumberInvoices) ||
-                empty($editGrossRevenue) ||
-                empty($editLimit) ||
-                empty($editLedgerAccountNr) ||
-                empty($editTax)
+                !Validator::notEmpty()->validate($_POST['edit-bank-account-number']) ||
+                !Validator::notEmpty()->validate($_POST['edit-credit-balance']) ||
+                !Validator::notEmpty()->validate($_POST['edit-number-invoices']) ||
+                !Validator::notEmpty()->validate($_POST['edit-gross-revenue']) ||
+                !Validator::notEmpty()->validate($_POST['edit-limit']) ||
+                !Validator::notEmpty()->validate($_POST['edit-ledger-account-number']) ||
+                !Validator::notEmpty()->validate($_POST['edit-tax-code'])
+
             ) {
                 $message = 'some required fields are empty';
                 $user->redirectMessage("customer_list.php", $message);
             }
 
             $customer->editCustomerFinance($customerID, $_POST);
-
             $message = 'Customer edited';
             $user->redirectMessage('customer_list.php', $message);
 
