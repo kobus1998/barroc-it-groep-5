@@ -56,7 +56,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST')
          */
         if($result = 0)
         {
-            $message = 'wrong username';
+            $message = 'Username doesn\' exist yet';
             $user->redirectMessage('index.php', $message);
             die;
         }
@@ -112,7 +112,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST')
              */
         } else if( $password != $passwordRepeat) 
         {
-            $message = 'Password does not match with repeat password';
+            $message = 'Password and repeat password does not match';
             $user->redirectMessage("register.php", $message);
             die;
         }
@@ -128,7 +128,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST')
          *  use function register
          */
         $user->register($username, $password);
-        $message = 'success';
+        $message = 'successful registered';
         $user->redirectMessage('register.php', $message);
         
     }
