@@ -272,12 +272,25 @@ if($user->username == 'Finance') {
 
                     </div>
 
-                    <div class="form-group">
+                <div class="form-group">
 
-                        <label for="edit-credit-worthy">Credit worthy</label>
-                        <input type="checkbox" name="edit-credit-worthy" value="<?= $finance[0]['credit_worthy'] ?>"
-                        <?php if($finance[0]['credit_worthy'] == 1){echo 'checked';} else {echo '';} ?> >
-                    </div>
+                    <p style="font-weight:bold">Credit Worthy</p>
+                    <select class="form-control" name="credit_worthy" id="credit_worthy"><?php
+                        var_dump($sales[0]);
+                        if ($sales[0]['credit_worthy'] == 0) { ?>
+                            <option value="1">Yes</option>
+                            <option selected value="0">No</option>
+                        <?php } else if ($sales[0]['credit_worthy'] == 1) { ?>
+                            <option selected value="1">Yes</option>
+                            <option value="0">No</option>
+                        <?php } else { ?>
+                            <option selected disabled>Select an option</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        <?php } ?>
+                    </select>
+
+                </div>
 
                 <input type="submit" name="type" value="edit customer" class="btn btn-primary">
             </form>

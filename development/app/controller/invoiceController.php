@@ -9,14 +9,14 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST') {
     if($_POST['type'] == 'add invoice') {
         if( !Validator::numeric()->validate($_POST['invoice_nr']) ||
             !Validator::numeric()->validate($_POST['price']) ||
-            !Validator::numeric()->validate($_POST['tax']) ||
-            !Validator::numeric()->validate($_POST['total']))
+            !Validator::numeric()->validate($_POST['tax']))
         {
             $user->redirect('invoices/add_invoice.php');
             die;
         }
+        $totalPrice = $_POST['price'] / 100 * (100 + $_POST['tax']);
 
-        $invoice->addInvoice($_POST, $projectId);
+        $invoice->addInvoice($_POST, $projectId, $totalPrice);
         $invoice->increaseNrInvoices($projectId);
         
         

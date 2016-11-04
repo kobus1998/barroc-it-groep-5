@@ -27,7 +27,7 @@ class Invoices  {
         return false;
     }
 
-    public function addInvoice($post, $projectId)
+    public function addInvoice($post, $projectId, $totalPrice)
     {
         $db = Database::getInstance();
         $sql = "INSERT INTO `tbl_invoices` 
@@ -39,7 +39,7 @@ class Invoices  {
         $stmt->bindParam(':invoice_nr', $post['invoice_nr']);
         $stmt->bindParam(':price', $post['price']);
         $stmt->bindParam(':tax', $post['tax']);
-        $stmt->bindParam(':total', $post['total']);
+        $stmt->bindParam(':total', $totalPrice);
         $stmt->bindParam(':projectId', $projectId);
 
         if($stmt->execute()) {
