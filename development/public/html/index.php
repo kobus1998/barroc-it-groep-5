@@ -55,7 +55,7 @@ if($user->getLoggedIn() == true) {
                         <label for="password">Password</label>
                         <input type="password" name="password" id="password" class="form-control">
                     </div>
-
+                    <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
                     <input type="submit" name="type" value="login" class="btn btn-primary">
                 </form>
             </div>

@@ -34,9 +34,8 @@ $customerData = $GLOBALS['customerData'][0];
 </div>
 <div class="main-content">
     <div class="container">
-        <?php if (isset($_GET['message'])) {
-            echo "<h2><span class='label label-danger text-center col-md-6 col-md-offset-3'>". $_GET['message'] ."</span></h2>";
-        } ?>
+        <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
+        
         <h1 class="col-md-6 col-md-offset-3">Add project</h1>
         <h2 class="col-md-6 col-md-offset-3">Customer: <?php echo $customerData['company_name']; ?></h2>
 

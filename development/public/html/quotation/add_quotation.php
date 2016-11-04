@@ -21,9 +21,7 @@ $user->checkPage('Sales');
 
 <div class="main-content">
     <div class="container">
-        <?php if (isset($_GET['message'])) {
-            echo "<h2><span class='label label-danger text-center col-md-6 col-md-offset-3'>". $_GET['message'] ."</span></h2>";
-        } ?>
+        <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
         <h1 class="col-md-6 col-md-offset-3">Add quotation</h1>
         <form class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>\development\app\controller\quotationController.php" method="POST">
             <div class="form-group">

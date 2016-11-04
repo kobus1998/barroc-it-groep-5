@@ -20,6 +20,7 @@ if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Sales'){
     </div>
     <div class="main-content">
     	<div class="container">
+			<p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
     		<h1 class="col-md-6 col-md-offset-3">Add appointment</h1>
 	        <form class="col-md-6 col-md-offset-3" action="">
 	        

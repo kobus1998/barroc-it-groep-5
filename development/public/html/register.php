@@ -47,8 +47,8 @@ query("SELECT * FROM `tbl_users`")
                     </label>
                     <input type="password" name="password-repeat" class="form-control">
                 </div>
-
-                <input class="btn btn-primary" type="submit" name="type" value="register">
+                <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
+                <input type="submit" name="type" value="login" class="btn btn-primary">
                 
             </form>
         </div>
