@@ -282,7 +282,7 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                             <tr>
                                 <td class="col-md-4"><?php echo $item['project_name'] ?></td>
                                 <td class="col-md-4"><?php echo $item['deadline'] ?></td>
-                                <td class="col-md-4"><a href="../project/info_project.php?projectid=<?=$item['projectid']?>" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>
+                                <td class="col-md-4"><a href="../project/info_project.php?projectid=<?=$item['project_id']?>" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>
                             </tr>
                             <?php
                             endforeach;
