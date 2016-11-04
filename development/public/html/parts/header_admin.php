@@ -40,9 +40,12 @@
                         </ul>
                     </li>
                 </ul>
-                <ul class="nav navbar-right">
+
+                <ul class="nav navbar-right row">
+                    <p><?= $user->username; ?></p>
                     <li><a href="<?php echo BASE_URL;?>/development/app/controller/authController.php?type=logout"><button class="btn btn-warning">Logout</button></a></li>
                 </ul>
+                <ul><li class="pull-right" style="list-style: none; margin-top: 17px;"><?= $user->username; ?></li></ul>
             </div>
         </div>
     </nav>
