@@ -63,7 +63,7 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
 
             <div class="panel panel-default col-md-6" style="padding: 0;">
                 <div class="panel-heading">
-                    Address
+                    Address and housenumber
                 </div>
                 <div class="panel-body">
                     <p><?php echo $customer[0]['address_1'] ?></p>

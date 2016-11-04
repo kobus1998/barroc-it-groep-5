@@ -40,14 +40,14 @@ $user->checkPage('Sales');
 	        	
 	        	<div class="form-group">
 
-	        		<label for="address_1">address</label>
+	        		<label for="address_1">address and housenumber</label>
 	        		<input class="form-control" type="text" name="address_1" id="address_1">
 
 	        	</div>
 	        	
 	        	<div class="form-group">
 
-	        		<label for="address_2">address 2</label>
+	        		<label for="address_2">address and housenumber 2</label>
 	        		<input class="form-control" type="text" name="address_2" id="address_2">
 
 	        	</div>
@@ -65,7 +65,7 @@ $user->checkPage('Sales');
 					<input class="form-control" type="text" name="zipcode_2" id="zipcode_2">
 
 				</div>
-				
+
 	        	
 	        	<div class="form-group">
 
