@@ -57,4 +57,95 @@ class Customers {
 
 
     }
+
+    public function editCustomerSales($customerID, $method) {
+        $sql = "
+        UPDATE `tbl_customers`
+        SET `company_name` = :companyName,
+            contact_person = :contactPerson,
+            address_1 = :address,
+            zipcode = :zipcode,
+            phone_number_1 = :phoneNumber,
+            fax = :fax,
+            email = :email,
+            potential_customer = :potentialCustomer
+        WHERE customer_id = $customerID";
+
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(":companyName", $method['edit-company-name']);
+        $stmt->bindParam(":contactPerson", $method['edit-contact-person']);
+        $stmt->bindParam(":address", $method['edit-adress']);
+        $stmt->bindParam(":zipcode", $method['edit-zipcode']);
+        $stmt->bindParam(":phoneNumber", $method['edit-phone-number']);
+        $stmt->bindParam(":fax", $method['edit-fax']);
+        $stmt->bindParam(":email", $method['edit-email']);
+        $stmt->bindParam(":potentialCustomer", $editPotentialCustomer);
+
+        $stmt->execute();
+
+        $sql = " 
+        UPDATE `tbl_appointments`
+        INNER join `tbl_projects`
+            on `tbl_projects`.project_id = `tbl_appointments`.project_id
+        INNER join `tbl_customers`
+            on `tbl_customers`.customer_id = `tbl_projects`.customer_id
+    
+        SET appointment_day = :appointmentDay,
+            next_action = :nextAction
+            WHERE `tbl_customers`.customer_id = $customerID 
+    ";
+
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(":appointmentDay", $method['edit-appointment-day']);
+        $stmt->bindParam(":nextAction", $method['edit-next-action']);
+        $stmt->execute();
+
+        $sql = "
+        UPDATE `tbl_invoices`
+        
+        INNER join `tbl_projects`
+          on `tbl_projects`.project_id = `tbl_invoices`.project_id
+        INNER join `tbl_customers`
+          on `tbl_customers`.customer_id = `tbl_projects`.customer_id
+        
+        SET invoice_nr = :invoiceNr
+        
+        WHERE `tbl_customers`.customer_id = $customerID
+    ";
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(":invoiceNr", $method['edit-invoice-number']);
+        $stmt->execute();
+
+    }
+
+    public function editCustomerFinance($customerID) {
+        $sql = "
+        UPDATE `tbl_customers`
+        LEFT JOIN `tbl_projects`
+	        on `tbl_customers`.customer_id = `tbl_projects`.customer_id
+        left join `tbl_invoices`
+            on `tbl_invoices`.project_id = `tbl_projects`.project_id
+        set 
+            `tbl_customers`.bank_nr = :bankNr,
+            `tbl_customers`.credit_balance = :creditBalance,
+            `tbl_customers`.number_of_invoices = :nrInvoices,
+            `tbl_customers`.gross_revenue = :grossRevenue,
+            `tbl_customers`.limit = :limit,
+            `tbl_customers`.ledger_account_number = :ledgerNr,
+            `tbl_invoices`.tax = :tax,
+            `tbl_customers`.credit_worthy = :creditWorthy
+        WHERE `tbl_customers`.customer_id = $customerID
+        ";
+
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(':bankNr', $editBankAccountNr);
+        $stmt->bindParam(':creditBalance', $editCreditBalance);
+        $stmt->bindParam(':nrInvoices', $editNumberInvoices);
+        $stmt->bindParam(':grossRevenue', $editGrossRevenue);
+        $stmt->bindParam(':limit', $editLimit);
+        $stmt->bindParam(':ledgerNr', $editLedgerAccountNr);
+        $stmt->bindParam(':tax', $editTax);
+        $stmt->bindParam(':creditWorthy', $editCreditWorthy);
+        $stmt->execute();
+    }
 }
