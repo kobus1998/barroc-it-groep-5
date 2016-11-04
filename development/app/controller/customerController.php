@@ -88,7 +88,7 @@ if( $_POST['type'] == 'edit customer') {
                 $user->redirectMessage("customer_list.php", $message);
             }
 
-            $customer->editCustomerFinance($customerID);
+            $customer->editCustomerFinance($customerID, $_POST);
 
             $message = 'Customer edited';
             $user->redirectMessage('customer_list.php', $message);

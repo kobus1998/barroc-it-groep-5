@@ -79,7 +79,7 @@ class Customers {
         $stmt->bindParam(":phoneNumber", $method['edit-phone-number']);
         $stmt->bindParam(":fax", $method['edit-fax']);
         $stmt->bindParam(":email", $method['edit-email']);
-        $stmt->bindParam(":potentialCustomer", $editPotentialCustomer);
+        $stmt->bindParam(":potentialCustomer", $method['potential_customer']);
 
         $stmt->execute();
 
@@ -118,7 +118,7 @@ class Customers {
 
     }
 
-    public function editCustomerFinance($customerID) {
+    public function editCustomerFinance($customerID, $method) {
         $sql = "
         UPDATE `tbl_customers`
         LEFT JOIN `tbl_projects`
@@ -138,14 +138,14 @@ class Customers {
         ";
 
         $stmt = $this->db->pdo->prepare($sql);
-        $stmt->bindParam(':bankNr', $editBankAccountNr);
-        $stmt->bindParam(':creditBalance', $editCreditBalance);
-        $stmt->bindParam(':nrInvoices', $editNumberInvoices);
-        $stmt->bindParam(':grossRevenue', $editGrossRevenue);
-        $stmt->bindParam(':limit', $editLimit);
-        $stmt->bindParam(':ledgerNr', $editLedgerAccountNr);
-        $stmt->bindParam(':tax', $editTax);
-        $stmt->bindParam(':creditWorthy', $editCreditWorthy);
+        $stmt->bindParam(':bankNr', $method['edit-bank-account-number']);
+        $stmt->bindParam(':creditBalance', $method['edit-credit-balance']);
+        $stmt->bindParam(':nrInvoices', $method['edit-number-invoices']);
+        $stmt->bindParam(':grossRevenue', $method['edit-gross-revenue']);
+        $stmt->bindParam(':limit', $method['edit-limit']);
+        $stmt->bindParam(':ledgerNr', $method['edit-ledger-nr']);
+        $stmt->bindParam(':tax', $method['edit-tax']);
+        $stmt->bindParam(':creditWorthy', $method['edit-credit-worthy']);
         $stmt->execute();
     }
 }
