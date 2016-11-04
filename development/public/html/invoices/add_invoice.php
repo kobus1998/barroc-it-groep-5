@@ -52,13 +52,6 @@ $projectId = $_GET['projectid'];
 
 			</div>
 
-			<div class="form-group">
-
-				<label for="total">Total</label>
-				<input class="form-control" type="text" name="total" id="total">
-
-			</div>
-
 
 			<input type="submit" class="btn btn-primary pull-right" value="add invoice" name="type" style="margin-bottom:15px">
 
