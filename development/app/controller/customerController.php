@@ -53,10 +53,11 @@ if( $_POST['type'] == 'edit customer') {
                 !Validator::notEmpty()->validate($_POST['edit-company-name']) ||
                 !Validator::notEmpty()->validate($_POST['edit-contact-person']) ||
                 !Validator::notEmpty()->validate($_POST['edit-adress']) ||
+                !Validator::notEmpty()->validate($_POST['edit-city']) ||
                 !Validator::notEmpty()->validate($_POST['edit-zipcode']) ||
                 !Validator::notEmpty()->validate($_POST['edit-phone-number']) ||
-                !Validator::notEmpty()->validate($_POST['edit-fax']) ||
-                !Validator::notEmpty()->validate($_POST['edit-email'])
+                !Validator::notEmpty()->validate($_POST['edit-email']) ||
+                !Validator::notEmpty()->validate($_POST['edit-initials'])
             ) {
                 $message = 'Some required fields are empty';
                 $user->redirectMessage("../customer/editcustomer.php?editcustomer=$customerID", $message);

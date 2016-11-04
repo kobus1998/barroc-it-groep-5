@@ -63,9 +63,15 @@ class Customers {
         UPDATE `tbl_customers`
         SET `company_name` = :companyName,
             contact_person = :contactPerson,
+            initials = :initials,
             address_1 = :address,
+            address_2 = :address2,
+            city = :city,
+            city_2 = :city2,
             zipcode = :zipcode,
+            zipcode_2 = :zipcode2, 
             phone_number_1 = :phoneNumber,
+            phone_number_2 = :phoneNumber2,
             fax = :fax,
             email = :email,
             potential_customer = :potentialCustomer
@@ -74,9 +80,15 @@ class Customers {
         $stmt = $this->db->pdo->prepare($sql);
         $stmt->bindParam(":companyName", $method['edit-company-name']);
         $stmt->bindParam(":contactPerson", $method['edit-contact-person']);
+        $stmt->bindParam(":initials", $method['edit-initials']);
         $stmt->bindParam(":address", $method['edit-adress']);
+        $stmt->bindParam(":address2", $method['edit-adress-2']);
+        $stmt->bindParam(":city", $method['edit-city']);
+        $stmt->bindParam(":city2", $method['edit-city-2']);
         $stmt->bindParam(":zipcode", $method['edit-zipcode']);
+        $stmt->bindParam(":zipcode2", $method['edit-zipcode-2']);
         $stmt->bindParam(":phoneNumber", $method['edit-phone-number']);
+        $stmt->bindParam(":phoneNumber2", $method['edit-phone-number2']);
         $stmt->bindParam(":fax", $method['edit-fax']);
         $stmt->bindParam(":email", $method['edit-email']);
         $stmt->bindParam(":potentialCustomer", $method['potential_customer']);

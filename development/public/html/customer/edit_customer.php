@@ -84,10 +84,16 @@ if($user->username == 'Sales') {
                         <input type="text" name="edit-contact-person" value="<?php echo $sales[0]['contact_person'] ?>" class="form-control">
 
                     </div>
+
+                    <div class="form-group">
+                        <label for="edit-initials">Initials</label>
+                        <input type="text" name="edit-initials" value="<?= $sales[0]['initials'] ?>" class="form-control">
+                    </div>
+
                     <br>
                     <div class="form-group">
 
-                        <label for="edit-adress">Adress</label>
+                        <label for="edit-adress">Address</label>
                         <input type="text" name="edit-adress" value="<?php echo $sales[0]['address_1'] ?>" class="form-control">
 
                     </div>
@@ -99,10 +105,43 @@ if($user->username == 'Sales') {
 
                     </div>
 
+                    <div class="form-group">
+
+                        <label for="edit-city">City</label>
+                        <input type="text" name="edit-city" value="<?php echo $sales[0]['city'] ?>" class="form-control">
+
+                    </div>
+                    <br>
+                    <div class="form-group">
+
+                        <label for="edit-adress-2">Address 2</label>
+                        <input type="text" name="edit-adress-2" value="<?php echo $sales[0]['address_2'] ?>" class="form-control">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="edit-zipcode-2">Zip-code 2</label>
+                        <input type="text" name="edit-zipcode-2" value="<?php echo $sales[0]['zipcode_2'] ?>" class="form-control">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="edit-city-2">City 2</label>
+                        <input type="text" name="edit-city-2" value="<?php echo $sales[0]['city_2'] ?>" class="form-control">
+
+                    </div>
+                    <br>
                     <br>
                     <div class="form-group">
                         <label for="edit-phone-number">Phone number</label>
                         <input type="tel" name="edit-phone-number" value="<?php echo $sales[0]['phone_number_1'] ?>" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-phone-number2">Phone number 2</label>
+                        <input type="tel" name="edit-phone-number2" value="<?php echo $sales[0]['phone_number_2'] ?>" class="form-control">
                     </div>
 
                     <div class="form-group">
