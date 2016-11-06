@@ -275,7 +275,7 @@ if($user->username == 'Admin') {
 if($user->username == 'Development') {
     include realpath(__DIR__. '/parts/header_development.php');
     $customers = $db->pdo->
-    query("SELECT * from tbl_customers ")
+    query("SELECT * from tbl_customers WHERE (`credit_worthy` = 1) AND (`credit_balance` BETWEEN 0 AND `limit`)")
         ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-customer-list'])) {
