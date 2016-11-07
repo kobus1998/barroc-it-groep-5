@@ -8,7 +8,12 @@ require realpath(__dir__ . '/../parts/header.php');
  * */
 $customerId = $_GET['customerid'];
 $customer = $db->pdo->
-query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
+query("SELECT * FROM `tbl_customers` 
+        left join tbl_projects
+          on tbl_customers.customer_id = tbl_projects.customer_id
+        left JOIN tbl_appointments
+          on tbl_projects.project_id = tbl_appointments.project_id
+WHERE tbl_customers.customer_id = ". $customerId)
     ->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -41,7 +46,7 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
         </div>
         <?php } ?>
         <h1 style="text-align:center;font-size:6rem">Customer details</h1>
-
+        <h2 class="col-md-12">General</h2>
         <div class="container">
             <div class="panel panel-default col-md-6" style="padding: 0;">
                 <div class="panel-heading">
@@ -70,6 +75,8 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                 </div>
             </div>
 
+            <h2 class="col-md-12">Address 1</h2>
+
             <div class="panel panel-default col-md-6" style="padding: 0;">
                 <div class="panel-heading">
                     Address and housenumber
@@ -97,6 +104,8 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                 </div>
             </div>
 
+            <h2 class="col-md-12" ">Adress 2</h2>
+
             <div class="panel panel-default col-md-6" style="padding: 0;">
                 <div class="panel-heading">
                     Address and housenumber 2
@@ -123,6 +132,8 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                     <p><?php echo $customer[0]['city_2'] ?></p>
                 </div>
             </div>
+
+            <h2 class="col-md-12">Contact</h2>
 
             <div class="panel panel-default col-md-6" style="padding: 0;">
                 <div class="panel-heading">
@@ -160,6 +171,8 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                     <p><?php echo $customer[0]['fax'] ?></p>
                 </div>
             </div>
+
+            <h2 class="col-md-12">Finance</h2>
 
             <div class="panel panel-default col-md-6" style="padding: 0;">
                 <div class="panel-heading">
@@ -246,25 +259,32 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                 </div>
             </div>
 
+            <h2 class="col-md-12">Appointments</h2>
+
             <div class="panel panel-default col-md-6" style="padding: 0;">
                 <div class="panel-heading">
                     Last contact date
                 </div>
                 <div class="panel-body">
-                    <p class="text-danger"><?php echo $customer[0]['last_contact_date'] ?></p>
+                    <p><?php echo $customer[0]['last_contact_date'] ?></p>
+                </div>
+            </div>
+
+            <div class="panel panel-default col-md-6" style="padding: 0;">
+                <div class="panel-heading">
+                    Next action
+                </div>
+                <div class="panel-body">
+                    <p><?php echo $customer[0]['next_action'] ?></p>
                 </div>
             </div>
         </div>
         <div class="col-md-12">
             <?php
-            $sql = "SELECT * FROM `tbl_projects` 
-            INNER JOIN `tbl_customers`
+            $projects_customer = $db->pdo->query( "SELECT * FROM `tbl_projects` 
+            LEFT JOIN `tbl_customers`
               on `tbl_customers`.customer_id = `tbl_projects`.customer_id
-            WHERE `tbl_customers`.customer_id = :customerId";
-
-            $stmt = $db->pdo->prepare($sql);
-            $stmt->bindParam(':customerId', $customerId);
-            $projects_customer = $stmt->fetchALL(PDO::FETCH_ASSOC);
+            WHERE `tbl_customers`.customer_id = $customerId")->fetchALL(PDO::FETCH_ASSOC);
             ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
