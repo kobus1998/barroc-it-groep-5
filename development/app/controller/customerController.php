@@ -20,13 +20,13 @@ if ($_POST['type'] == 'add customer') {
         !Validator::notEmpty()->validate($_POST['bank_nr']))
     {
         $message = "Some fields are empty";
-        $user->redirectMessage("customer/add_customer.php", $message);
+        $user->redirect("customer/add_customer.php?messageDanger=$message&customerid=$customerID");
         die;
     }
     
     if($customer->addCustomer($_POST)) {
         $message = "Customer is created";
-        $user->redirectMessage('customer_list.php', $message);
+        $user->redirect("customer_list.php?messageSuccess=$message");
     }
     
 }
@@ -35,7 +35,7 @@ if( $_POST['type'] == 'edit customer') {
 
     if (!isset($_GET['customerid'])) {
         $message = "No customer is selected";
-        $user->redirectMessage('customer/add_customer', $message);
+        $user->redirect("customer/add_customer.php?messageDanger=$message");
         die("redirect to add_customer");
     }
 
@@ -62,14 +62,14 @@ if( $_POST['type'] == 'edit customer') {
                 !Validator::notEmpty()->validate($_POST['edit-initials'])
             ) {
                 $message = 'Some required fields are empty';
-                $user->redirectMessage("../customer/editcustomer.php?editcustomer=$customerID", $message);
+                $user->redirect("../customer/editcustomer.php?messageDanger=$message&customerid=$customerID");
                 die;
             }
 
             $customer->editCustomerSales($customerID, $_POST);
 
-            $message = "Customer edited";
-            $user->redirectMessage('customer_list.php', $message);
+            $messageSuccess = 'Customer edited';
+            $user->redirect("customer_list.php?messageSuccess=$messageSuccess");
         }
         if ($user->getUsername() === 'Finance') {
 
@@ -83,13 +83,13 @@ if( $_POST['type'] == 'edit customer') {
                 !Validator::notEmpty()->validate($_POST['edit-tax-code'])
 
             ) {
-                $message = "some required fields are empty";
-                $user->redirect("customer/edit_customer.php?customerid=$customerID&messageDanger=$message");
+                $messageDanger = "some required fields are empty";
+                $user->redirect("customer/edit_customer.php?customerid=$customerID&messageDanger=$messageDanger");
             }
 
             $customer->editCustomerFinance($customerID, $_POST);
-            $message = 'Customer edited';
-            $user->redirectMessage('customer_list.php', $message);
+            $messageSuccess = 'Customer edited';
+            $user->redirect("customer_list.php?messageSuccess=$messageSuccess");
 
         }
     }
