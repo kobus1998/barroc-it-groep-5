@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="<?php echo BASE_URL ?>/development/public/html/finance.php" class="navbar-brand">Barroc IT / <span style="font-size: 12px;"><?= $user->username; ?></span></a>
+            <a href="<?php echo BASE_URL ?>/development/public/html/customer_list.php" class="navbar-brand">Barroc IT / <span style="font-size: 12px;"><?= $user->username; ?></span></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -67,8 +67,8 @@ if($user->username == 'Sales') {
                         echo '<td>' . $item['phone_number_1'] . '</td>';
                         echo '<td>' . $item['email'] . '</td>';
                         echo '<td>' . $item['limit'] . '</td>';
-                        echo '<td>' . $item['potential_customer'] . '</td>';
-                        echo '<td>' . $item['credit_worthy'] . '</td>';
+                        echo '<td>' . ($item['potential_customer'] ? 'Yes' : 'No') . '</td>';
+                        echo '<td>' . ($item['credit_worthy'] ? 'Yes' : 'No') . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $item['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
@@ -79,6 +79,7 @@ if($user->username == 'Sales') {
                     foreach ($searchResults as $searchResult)
                     {
                         echo '<tr>';
+
                         echo '<td>' . $searchResult['company_name'] . '</td>';
                         echo '<td>' . $searchResult['contact_person'] . '</td>';
                         echo '<td>' . $searchResult['phone_number_1'] . '</td>';
@@ -89,6 +90,18 @@ if($user->username == 'Sales') {
                         echo '<td><a href="customer/info_customer.php?customerid=' . $searchResult["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
+
+                        echo '<td>' . $item['company_name'] . '</td>';
+                        echo '<td>' . $item['contact_person'] . '</td>';
+                        echo '<td>' . $item['phone_number_1'] . '</td>';
+                        echo '<td>' . $item['email'] . '</td>';
+                        echo '<td>' . $item['limit'] . '</td>';
+                        echo '<td>' . ($item['potential_customer'] ? 'Yes' : 'No') . '</td>';
+                        echo '<td>' . ($item['credit_worthy'] ? 'Yes' : 'No') . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
+                        echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
+                        echo '<td><a href="project/add_project.php?customerid=' . $item['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
+
                         echo '</tr>';
                     }
                 }
@@ -169,13 +182,14 @@ if($user->username == 'Finance') {
                         echo '<td>' . $item['email'] . '</td>';
                         echo '<td>' . $item['credit_balance'] . '</td>';
                         echo '<td>' . $item['gross_revenue'] . '</td>';
-                        echo '<td>' . $item['credit_worthy'] . '</td>';
+                        echo '<td>' . ($item['credit_worthy'] ? 'Yes' : 'No') . '</td>';
                         echo '<td>' . $item['limit'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '</tr>';
                     }
                 }
+
                 if(isset($_GET['type']) && $_GET['type'] == 'search' && isset($searchResults)) {
                     foreach ($searchResults as $searchResult) {
                         echo '<tr>';
@@ -190,6 +204,22 @@ if($user->username == 'Finance') {
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '</tr>';
                     }
+
+                if(isset($_GET['type']) && $_GET['type'] == 'search') {
+                foreach ($searchFinance as $item) {
+                    echo '<tr>';
+                    echo '<td>' . $item['company_name'] . '</td>';
+                    echo '<td>' . $item['contact_person'] . '</td>';
+                    echo '<td>' . $item['email'] . '</td>';
+                    echo '<td>' . $item['credit_balance'] . '</td>';
+                    echo '<td>' . $item['gross_revenue'] . '</td>';
+                    echo '<td>' . ($item['credit_worthy'] ? 'Yes' : 'No') . '</td>';
+                    echo '<td>' . $item['limit'] . '</td>';
+                    echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
+                    echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
+                    echo '</tr>';
+                }
+
                 }
                 ?>
 
@@ -351,7 +381,7 @@ if($user->username == 'Development') {
                         echo '<td>' . $item['contact_person'] . '</td>';
                         echo '<td>' . $item['phone_number_1'] . '</td>';
                         echo '<td>' . $item['credit_balance'] . '</td>';
-                        echo '<td>' . $item['credit_worthy'] . '</td>';
+                        echo '<td>' . ($item['credit_worthy'] ? 'Yes' : 'No') . '</td>';
                         echo '<td>' . $item['email'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                         echo '</tr>';
@@ -360,6 +390,7 @@ if($user->username == 'Development') {
                 if(isset($_GET['type']) && $_GET['type'] == 'search' && isset($searchResults)) {
                     foreach ($searchResults as $searchResult) {
                         echo '<tr>';
+
                         echo '<td>' . $searchResult['company_name'] . '</td>';
                         echo '<td>' . $searchResult['contact_person'] . '</td>';
                         echo '<td>' . $searchResult['phone_number_1'] . '</td>';
@@ -367,6 +398,15 @@ if($user->username == 'Development') {
                         echo '<td>' . $searchResult['credit_worthy'] . '</td>';
                         echo '<td>' . $searchResult['email'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $searchResult["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
+
+                        echo '<td>' . $item['company_name'] . '</td>';
+                        echo '<td>' . $item['contact_person'] . '</td>';
+                        echo '<td>' . $item['phone_number_1'] . '</td>';
+                        echo '<td>' . $item['credit_balance'] . '</td>';
+                        echo '<td>' . ($item['credit_worthy'] ? 'Yes' : 'No') . '</td>';
+                        echo '<td>' . $item['email'] . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
+
                         echo '</tr>';
                     }
                 }
