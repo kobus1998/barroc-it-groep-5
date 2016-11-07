@@ -178,12 +178,6 @@ if($user->username == 'Sales') {
 
                     </div>
                     <br>
-                    <div class="form-group">
-
-                        <label for="edit-invoice-number">Invoice number</label>
-                        <input type="text" name="edit-invoice-number" value="<?php echo $sales[0]['invoice_nr'] ?>" class="form-control">
-
-                    </div>
 
                     <div class="form-group">
 
@@ -308,14 +302,6 @@ if($user->username == 'Finance') {
                         <label for="edit-credit-balance">Credit balance</label>
                         <input type="text" name="edit-credit-balance" value="<?php echo $finance[0]['credit_balance'] ?>"
                                class="form-control">
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label for="edit-number-invoices">Number of invoices</label>
-                        <input type="text" name="edit-number-invoices"
-                               value="<?php echo $finance[0]['number_of_invoices'] ?>" class="form-control">
 
                     </div>
 
