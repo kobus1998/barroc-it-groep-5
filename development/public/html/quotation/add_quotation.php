@@ -2,7 +2,13 @@
 require_once realpath(__DIR__ . '/../parts/header.php');
 
 $user->checkPage('Sales');
+
+if (!isset($_GET['quotationid'])) {
+    $user->redirect('quotation_list.php?message=No customer selected');
+}
+
 ?>
+
 <title>Add quotation</title>
 </head>
 
@@ -24,6 +30,9 @@ $user->checkPage('Sales');
         <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
         <h1 class="col-md-6 col-md-offset-3">Add quotation</h1>
         <form class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>\development\app\controller\quotationController.php" method="POST">
+
+            <input type="hidden" name="quotation_id" value="<?php $_GET['quotationid'] ?>">
+
             <div class="form-group">
 
                 <label for="quotation_number">Quotation number</label>
@@ -42,6 +51,13 @@ $user->checkPage('Sales');
 
                 <label for="order_type">Order type</label>
                 <input class="form-control" type="text" name="order_type" id="order_type">
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="description">Description</label>
+                <textarea style="resize:vertical" class="form-control" name="description" id="description"></textarea>
 
             </div>
 

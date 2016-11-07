@@ -1,7 +1,7 @@
 <?php
 
 
-class Quotations {
+class Quotation {
 
     private $db;
 
@@ -31,13 +31,15 @@ class Quotations {
 
         $db = Database::getInstance();
 
-        $sql = "INSERT INTO `tbl_quotations` (quotation_number, quotation_date, order_type) 
-                                             VALUES (:quotation_number, :quotation_date, :order_type)";
+        $sql = "INSERT INTO `tbl_quotations` (id, quotation_number, quotation_date, order_type, description) 
+                                      VALUES (:id, :quotation_number, :quotation_date, :order_type, :description)";
 
         $stmt = $db->pdo->prepare($sql);
+        $stmt->bindParam(':id', $quotation['quotation_id']);
         $stmt->bindParam(':quotation_number', $quotation['quotation_number']);
         $stmt->bindParam(':quotation_date', $quotation['quotation_date']);
         $stmt->bindParam(':order_type', $quotation['order_type']);
+        $stmt->bindParam(':description', $quotation['description']);
 
         if($stmt->execute()) {
             return true;

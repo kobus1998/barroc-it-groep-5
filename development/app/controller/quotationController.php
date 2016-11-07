@@ -3,11 +3,12 @@ require_once realpath(__DIR__ . '/../init.php');
 
 $db = Database::getInstance();
 
-$quotation = new Quotations();
+$quotation = new Quotation();
 use \Respect\Validation\Validator as Validator;
 if ($_POST['type'] == 'add quotation') {
 
-    if (!Validator::notEmpty()->validate($_POST['quotation_number']) ||
+    if (!Validator::numeric()->validate($_POST['quotation_id']) ||
+        !Validator::notEmpty()->validate($_POST['quotation_number']) ||
         !Validator::notEmpty()->validate($_POST['quotation_date']) ||
         !Validator::notEmpty()->validate($_POST['order_type']))
     {
@@ -17,7 +18,7 @@ if ($_POST['type'] == 'add quotation') {
     }
 
     if($quotation->addQuotation($_POST)) {
-        $user->redirect('customer_list.php?message=quotation added');
+        $user->redirect('quotation_list.php?message=quotation added');
     }
 
 }
