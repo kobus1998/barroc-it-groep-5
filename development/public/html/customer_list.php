@@ -52,6 +52,7 @@ if($user->username == 'Sales') {
                     <th>Customer info</th>
                     <th>Edit customer</th>
                     <th>Add project</th>
+                    <th>Add quotation</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -72,6 +73,7 @@ if($user->username == 'Sales') {
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $item['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
+                        echo '<td><a href="quotation/add_quotation.php?customerid=' . $item['customer_id'] . '" class="btn btn-warning glyphicon glyphicon-plus"></a></td>';
                         echo '</tr>';
                         }
                 }
