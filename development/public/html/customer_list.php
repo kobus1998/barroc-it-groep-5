@@ -399,12 +399,12 @@ if($user->username == 'Development') {
                         echo '<td>' . $searchResult['email'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $searchResult["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
 
-                        echo '<td>' . $item['company_name'] . '</td>';
-                        echo '<td>' . $item['contact_person'] . '</td>';
-                        echo '<td>' . $item['phone_number_1'] . '</td>';
-                        echo '<td>' . $item['credit_balance'] . '</td>';
-                        echo '<td>' . ($item['credit_worthy'] ? 'Yes' : 'No') . '</td>';
-                        echo '<td>' . $item['email'] . '</td>';
+                        echo '<td>' . $searchResult['company_name'] . '</td>';
+                        echo '<td>' . $searchResult['contact_person'] . '</td>';
+                        echo '<td>' . $searchResult['phone_number_1'] . '</td>';
+                        echo '<td>' . $searchResult['credit_balance'] . '</td>';
+                        echo '<td>' . ($searchResult['credit_worthy'] ? 'Yes' : 'No') . '</td>';
+                        echo '<td>' . $searchResult['email'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
 
                         echo '</tr>';
@@ -420,6 +420,6 @@ if($user->username == 'Development') {
     </section>
 
 <?php
-    }
+    } }
  ?>
 
