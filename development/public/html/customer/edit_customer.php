@@ -338,20 +338,14 @@ if($user->username == 'Finance') {
                     </div>
 
                 <div class="form-group">
-
                     <p style="font-weight:bold">Credit Worthy</p>
-                    <select class="form-control" name="credit_worthy" id="credit_worthy"><?php
-                        var_dump($sales[0]);
-                        if ($sales[0]['credit_worthy'] == 0) { ?>
-                            <option value="1">Yes</option>
-                            <option selected value="0">No</option>
-                        <?php } else if ($sales[0]['credit_worthy'] == 1) { ?>
-                            <option selected value="1">Yes</option>
+                    <select class="form-control" name="credit_worthy" id="credit_worthy">
+                        <?php if ($finance[1]['credit_worthy'] == 1) { ?>
+                            <option value="1" selected>Yes</option>
                             <option value="0">No</option>
                         <?php } else { ?>
-                            <option selected disabled>Select an option</option>
                             <option value="1">Yes</option>
-                            <option value="0">No</option>
+                            <option value="0" selected>No</option>
                         <?php } ?>
                     </select>
 
