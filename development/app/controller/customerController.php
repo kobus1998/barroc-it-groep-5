@@ -3,7 +3,7 @@ require_once realpath(__DIR__ . '/../init.php');
 //require_once realpath(__DIR__ . '/../variable/variableEditCustomer.php');
 
 $db = Database::getInstance();
-
+$customerID = $_GET['customerid'];
 $customer = new Customers();
 use \Respect\Validation\Validator as Validator;
 if ($_POST['type'] == 'add customer') {
@@ -72,24 +72,19 @@ if( $_POST['type'] == 'edit customer') {
             $user->redirectMessage('customer_list.php', $message);
         }
         if ($user->getUsername() === 'Finance') {
-            if (!isset($_POST['edit-credit-worthy'])) {
-                $editCreditWorthy = 0;
-            } else {
-                $editCreditWorthy = 1;
-            }
+
 
             if (
                 !Validator::notEmpty()->validate($_POST['edit-bank-account-number']) ||
                 !Validator::notEmpty()->validate($_POST['edit-credit-balance']) ||
-                !Validator::notEmpty()->validate($_POST['edit-number-invoices']) ||
                 !Validator::notEmpty()->validate($_POST['edit-gross-revenue']) ||
                 !Validator::notEmpty()->validate($_POST['edit-limit']) ||
                 !Validator::notEmpty()->validate($_POST['edit-ledger-account-number']) ||
                 !Validator::notEmpty()->validate($_POST['edit-tax-code'])
 
             ) {
-                $message = 'some required fields are empty';
-                $user->redirectMessage("customer_list.php", $message);
+                $message = "some required fields are empty";
+                $user->redirect("customer/edit_customer.php?customerid=$customerID&messageDanger=$message");
             }
 
             $customer->editCustomerFinance($customerID, $_POST);
