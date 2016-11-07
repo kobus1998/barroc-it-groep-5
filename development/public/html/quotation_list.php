@@ -49,7 +49,7 @@ if($user->username == 'Sales') {
                         echo '<tr>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
-                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="quotation/info_quotation.php?quotationid=' . $item["quotation_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -60,7 +60,7 @@ if($user->username == 'Sales') {
                         echo '<tr>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
-                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="quotation/info_quotation.php?quotationid=' . $item["quotation_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -120,7 +120,7 @@ if(isset($_GET['search-quotation-list'])) {
                         echo '<tr>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
-                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '">Quotation info</a></td>';
+                        echo '<td><a href="quotation/info_quotation.php?customerid=' . $item["customer_id"] . '">Quotation info</a></td>';
                         echo '</tr>';
                     }
                 }
@@ -131,7 +131,7 @@ if(isset($_GET['search-quotation-list'])) {
                         echo '<tr>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
-                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="quotation/info_quotation.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -190,7 +190,7 @@ if(isset($_GET['search-quotation-list'])) {
                         echo '<tr>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
-                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="quotation/info_quotation.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -201,7 +201,7 @@ if(isset($_GET['search-quotation-list'])) {
                         echo '<tr>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
-                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="quotation/info_quotation.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                         echo '</tr>';
                     }
                 }
