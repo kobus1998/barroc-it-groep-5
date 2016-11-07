@@ -31,11 +31,11 @@ class Quotation {
 
         $db = Database::getInstance();
 
-        $sql = "INSERT INTO `tbl_quotations` (id, quotation_number, quotation_date, order_type, description) 
+        $sql = "INSERT INTO `tbl_quotations` (customer_id, quotation_number, quotation_date, order_type, description) 
                                       VALUES (:id, :quotation_number, :quotation_date, :order_type, :description)";
 
         $stmt = $db->pdo->prepare($sql);
-        $stmt->bindParam(':id', $quotation['quotation_id']);
+        $stmt->bindParam(':id', $quotation['customer_id']);
         $stmt->bindParam(':quotation_number', $quotation['quotation_number']);
         $stmt->bindParam(':quotation_date', $quotation['quotation_date']);
         $stmt->bindParam(':order_type', $quotation['order_type']);

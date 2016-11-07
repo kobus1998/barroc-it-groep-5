@@ -7,7 +7,7 @@ $quotation = new Quotation();
 use \Respect\Validation\Validator as Validator;
 if ($_POST['type'] == 'add quotation') {
 
-    if (!Validator::numeric()->validate($_POST['quotation_id']) ||
+    if (!Validator::numeric()->validate($_POST['customer_id']) ||
         !Validator::notEmpty()->validate($_POST['quotation_number']) ||
         !Validator::notEmpty()->validate($_POST['quotation_date']) ||
         !Validator::notEmpty()->validate($_POST['order_type']))
