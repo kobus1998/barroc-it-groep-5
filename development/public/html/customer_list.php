@@ -60,8 +60,8 @@ if($user->username == 'Sales') {
                         echo '<td>' . $item['phone_number_1'] . '</td>';
                         echo '<td>' . $item['email'] . '</td>';
                         echo '<td>' . $item['limit'] . '</td>';
-                        echo '<td>' . $item['potential_customer'] . '</td>';
-                        echo '<td>' . $item['credit_worthy'] . '</td>';
+                        echo '<td>' . ($item['potential_customer'] ? 'Yes' : 'No') . '</td>';
+                        echo '<td>' . ($item['credit_worthy'] ? 'Yes' : 'No') . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $item['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
@@ -77,8 +77,8 @@ if($user->username == 'Sales') {
                         echo '<td>' . $item['phone_number_1'] . '</td>';
                         echo '<td>' . $item['email'] . '</td>';
                         echo '<td>' . $item['limit'] . '</td>';
-                        echo '<td>' . $item['potential_customer'] . '</td>';
-                        echo '<td>' . $item['credit_worthy'] . '</td>';
+                        echo '<td>' . ($item['potential_customer'] ? 'Yes' : 'No') . '</td>';
+                        echo '<td>' . ($item['credit_worthy'] ? 'Yes' : 'No') . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $item['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
@@ -156,7 +156,7 @@ if($user->username == 'Finance') {
                         echo '<td>' . $item['email'] . '</td>';
                         echo '<td>' . $item['credit_balance'] . '</td>';
                         echo '<td>' . $item['gross_revenue'] . '</td>';
-                        echo '<td>' . $item['credit_worthy'] . '</td>';
+                        echo '<td>' . ($item['credit_worthy'] ? 'Yes' : 'No') . '</td>';
                         echo '<td>' . $item['limit'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
@@ -171,7 +171,7 @@ if($user->username == 'Finance') {
                     echo '<td>' . $item['email'] . '</td>';
                     echo '<td>' . $item['credit_balance'] . '</td>';
                     echo '<td>' . $item['gross_revenue'] . '</td>';
-                    echo '<td>' . $item['credit_worthy'] . '</td>';
+                    echo '<td>' . ($item['credit_worthy'] ? 'Yes' : 'No') . '</td>';
                     echo '<td>' . $item['limit'] . '</td>';
                     echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                     echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
@@ -326,7 +326,7 @@ if($user->username == 'Development') {
                         echo '<td>' . $item['contact_person'] . '</td>';
                         echo '<td>' . $item['phone_number_1'] . '</td>';
                         echo '<td>' . $item['credit_balance'] . '</td>';
-                        echo '<td>' . $item['credit_worthy'] . '</td>';
+                        echo '<td>' . ($item['credit_worthy'] ? 'Yes' : 'No') . '</td>';
                         echo '<td>' . $item['email'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                         echo '</tr>';
@@ -339,7 +339,7 @@ if($user->username == 'Development') {
                         echo '<td>' . $item['contact_person'] . '</td>';
                         echo '<td>' . $item['phone_number_1'] . '</td>';
                         echo '<td>' . $item['credit_balance'] . '</td>';
-                        echo '<td>' . $item['credit_worthy'] . '</td>';
+                        echo '<td>' . ($item['credit_worthy'] ? 'Yes' : 'No') . '</td>';
                         echo '<td>' . $item['email'] . '</td>';
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                         echo '</tr>';
