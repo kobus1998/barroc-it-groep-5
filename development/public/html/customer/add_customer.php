@@ -26,9 +26,26 @@ $user->checkPage('Sales');
     </div>
     <div class="main-content">
     	<div class="container">
-			<?php if (isset($_GET['message'])) {
-				echo "<h2><span class='label label-danger text-center col-md-6 col-md-offset-3'>". $_GET['message'] ."</span></h2>";
-			} ?>
+			<?php if(!isset($_GET['messageDanger']) || $_GET['messageDanger'] == '') {
+			} else { ?>
+				<P class="alert-danger pull-right" style="padding: 7px!important;">
+					<?= $_GET['messageDanger'] ?>
+				</P>
+			<?php }
+
+			if(!isset($_GET['messagePrimary']) || $_GET['messagePrimary'] == '') {
+			} else { ?>
+				<P class="alert-primary pull-right" style="padding: 7px!important;">
+					<?= $_GET['messagePrimary'] ?>
+				</p>
+			<?php }
+
+			if(!isset($_GET['messageSuccess']) || $_GET['messageSuccess'] == '') {
+			} else { ?>
+				<P class="alert-success pull-right" style="padding: 7px!important;">
+					<?= $_GET['messageSuccess'] ?>
+				</P>
+			<?php } ?>
     		<h1 class="col-md-6 col-md-offset-3">Add customer</h1>
 	        <form class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>\development\app\controller\customerController.php" method="POST">
 	        	<div class="form-group">

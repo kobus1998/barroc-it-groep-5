@@ -64,6 +64,26 @@ if($user->username == 'Sales') {
                 echo $sales[0]['contact_person'];
                 ?>
             </div>
+            <?php if(!isset($_GET['messageDanger']) || $_GET['messageDanger'] == '') {
+            } else { ?>
+                <P class="alert-danger pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messageDanger'] ?>
+                </P>
+            <?php }
+
+            if(!isset($_GET['messagePrimary']) || $_GET['messagePrimary'] == '') {
+            } else { ?>
+                <P class="alert-primary pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messagePrimary'] ?>
+                </p>
+            <?php }
+
+            if(!isset($_GET['messageSuccess']) || $_GET['messageSuccess'] == '') {
+            } else { ?>
+                <P class="alert-success pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messageSuccess'] ?>
+                </P>
+            <?php } ?>
             <div class="container">
                 <h1 class="text-center">Edit customer</h1>
 
@@ -249,6 +269,26 @@ if($user->username == 'Finance') {
         echo $finance[0]['contact_person'];
         ?>
         </div>
+        <?php if(!isset($_GET['messageDanger']) || $_GET['messageDanger'] == '') {
+        } else { ?>
+            <P class="alert-danger pull-right" style="padding: 7px!important;">
+                <?= $_GET['messageDanger'] ?>
+            </P>
+        <?php }
+
+        if(!isset($_GET['messagePrimary']) || $_GET['messagePrimary'] == '') {
+        } else { ?>
+            <P class="alert-primary pull-right" style="padding: 7px!important;">
+                <?= $_GET['messagePrimary'] ?>
+            </p>
+        <?php }
+
+        if(!isset($_GET['messageSuccess']) || $_GET['messageSuccess'] == '') {
+        } else { ?>
+            <P class="alert-success pull-right" style="padding: 7px!important;">
+                <?= $_GET['messageSuccess'] ?>
+            </P>
+        <?php } ?>
         <div class="container">
             <h1 class="text-center">Edit customer</h1>
             <form class="col-md-6 col-md-offset-3" method="post"
@@ -384,6 +424,26 @@ if($user->username == 'Finance') {
                     echo $adminSQL[0]['contact_person'];
                     ?>
                 </div>
+                <?php if(!isset($_GET['messageDanger']) || $_GET['messageDanger'] == '') {
+                } else { ?>
+                    <P class="alert-danger pull-right" style="padding: 7px!important;">
+                        <?= $_GET['messageDanger'] ?>
+                    </P>
+                <?php }
+
+                if(!isset($_GET['messagePrimary']) || $_GET['messagePrimary'] == '') {
+                } else { ?>
+                    <P class="alert-primary pull-right" style="padding: 7px!important;">
+                        <?= $_GET['messagePrimary'] ?>
+                    </p>
+                <?php }
+
+                if(!isset($_GET['messageSuccess']) || $_GET['messageSuccess'] == '') {
+                } else { ?>
+                    <P class="alert-success pull-right" style="padding: 7px!important;">
+                        <?= $_GET['messageSuccess'] ?>
+                    </P>
+                <?php } ?>
                 <div class="container">
                     <h1 class="text-center">Edit customer</h1>
                     <form>

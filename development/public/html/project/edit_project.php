@@ -32,7 +32,26 @@ $projectData = $GLOBALS['projectData'][0];
 </div>
 <div class="main-content">
     <div class="container">
-        <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
+        <?php if(!isset($_GET['messageDanger']) || $_GET['messageDanger'] == '') {
+        } else { ?>
+            <P class="alert-danger pull-right" style="padding: 7px!important;">
+                <?= $_GET['messageDanger'] ?>
+            </P>
+        <?php }
+
+        if(!isset($_GET['messagePrimary']) || $_GET['messagePrimary'] == '') {
+        } else { ?>
+            <P class="alert-primary pull-right" style="padding: 7px!important;">
+                <?= $_GET['messagePrimary'] ?>
+            </p>
+        <?php }
+
+        if(!isset($_GET['messageSuccess']) || $_GET['messageSuccess'] == '') {
+        } else { ?>
+            <P class="alert-success pull-right" style="padding: 7px!important;">
+                <?= $_GET['messageSuccess'] ?>
+            </P>
+        <?php } ?>
         
         <h1 class="col-md-6 col-md-offset-3">Add project</h1>
         <h2 class="col-md-6 col-md-offset-3">Customer: <?php echo $projectData['company_name']; ?></h2>
