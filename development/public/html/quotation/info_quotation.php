@@ -1,18 +1,13 @@
 <?php
 require_once realpath(__DIR__ . '/../parts/header.php');
 
-$user->checkPage('Finance');
+$user->checkPage('Sales');
 
-var_dump($_GET);
-die;
-
-$invoiceId = $_GET['quotationid'];
+$quotationId = $_GET['quotationid'];
 
 $stmt = $db->pdo->query("SELECT * FROM `tbl_quotations`
                  WHERE `tbl_quotations`.quotation_id = " . $quotationId);
 $quotationDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$customerID = $customerDB[0]['customer_id']
 ?>
 <title>Quotation Detail</title>
 <meta charset="UTF-8">
@@ -35,7 +30,6 @@ $customerID = $customerDB[0]['customer_id']
             <?php if($user->username == 'Admin' || $user->username == 'Sales'){ ?>
                 <div class="container">
                     <?php echo "<a href='edit_quotation.php?quotationid=$quotationId'>Edit this quotation</a>" ?><br>
-                    <?php echo "<a href='../customer/info_customer.php?customerid=$customerId'>Quotation from customer</a>" ?>
                 </div>
             <?php } ?>
             <h1 style="text-align:center;font-size:6rem">quotation details</h1>
@@ -53,7 +47,7 @@ $customerID = $customerDB[0]['customer_id']
                         Price
                     </div>
                     <div class="panel-body">
-                        <p>€ <?php echo $invoiceDB[0]['quotation_date'] ?></p>
+                        <p>€ <?php echo $quotationDB[0]['quotation_date'] ?></p>
                     </div>
                 </div>
                 <div class="panel panel-default col-md-6" style="padding: 0;">
@@ -61,7 +55,7 @@ $customerID = $customerDB[0]['customer_id']
                         Tax
                     </div>
                     <div class="panel-body">
-                        <p><?php echo $invoiceDB[0]['quotation_type'] ?></p>
+                        <p><?php echo $quotationDB[0]['order_type'] ?></p>
                     </div>
                 </div>
             </div>
