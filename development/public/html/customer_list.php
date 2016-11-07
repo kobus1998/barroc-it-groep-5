@@ -11,9 +11,16 @@ if($user->username == 'Sales') {
 
     if(isset($_GET['search-customer-list'])) {
         $searchGET = $_GET['search-customer-list'];
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_customers` WHERE `tbl_customers`.company_name like '%:searchget%'");
-        $stmt->bindParam(":searchget", $searchGET);
-        $search =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
+        $searchQuery = '%'.$searchQuery.'%';
+
+        $searchSQL = "SELECT * FROM `tbl_customers` WHERE `company_name` LIKE :search_query";
+
+        $stmt = $db->pdo->prepare($searchSQL);
+        $stmt->bindParam(':search_query', $searchQuery);
+        $stmt->execute();
+
+        $searchResults = $stmt->fetchAll();
     }
     ?>
     <section class="customers">
@@ -68,20 +75,20 @@ if($user->username == 'Sales') {
                         echo '</tr>';
                         }
                 }
-                if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($search as $item)
+                if(isset($_GET['type']) && $_GET['type'] == 'search' && isset($searchResults)) {
+                    foreach ($searchResults as $searchResult)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['company_name'] . '</td>';
-                        echo '<td>' . $item['contact_person'] . '</td>';
-                        echo '<td>' . $item['phone_number_1'] . '</td>';
-                        echo '<td>' . $item['email'] . '</td>';
-                        echo '<td>' . $item['limit'] . '</td>';
-                        echo '<td>' . $item['potential_customer'] . '</td>';
-                        echo '<td>' . $item['credit_worthy'] . '</td>';
-                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
-                        echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
-                        echo '<td><a href="project/add_project.php?customerid=' . $item['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
+                        echo '<td>' . $searchResult['company_name'] . '</td>';
+                        echo '<td>' . $searchResult['contact_person'] . '</td>';
+                        echo '<td>' . $searchResult['phone_number_1'] . '</td>';
+                        echo '<td>' . $searchResult['email'] . '</td>';
+                        echo '<td>' . $searchResult['limit'] . '</td>';
+                        echo '<td>' . $searchResult['potential_customer'] . '</td>';
+                        echo '<td>' . $searchResult['credit_worthy'] . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $searchResult["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
+                        echo '<td><a href="customer/edit_customer.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
+                        echo '<td><a href="project/add_project.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -104,10 +111,16 @@ if($user->username == 'Finance') {
 
     if(isset($_GET['search-customer-list'])) {
         $searchGET = $_GET['search-customer-list'];
+        $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
+        $searchQuery = '%'.$searchQuery.'%';
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_customers` WHERE `tbl_customers`.company_name like '%:searchget%'");
-        $stmt->bindParam(":searchget", $searchGET);
-        $searchFinance =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $searchSQL = "SELECT * FROM `tbl_customers` WHERE `company_name` LIKE :search_query";
+
+        $stmt = $db->pdo->prepare($searchSQL);
+        $stmt->bindParam(':search_query', $searchQuery);
+        $stmt->execute();
+
+        $searchResults = $stmt->fetchAll();
     }
     ?>
     <!--html-->
@@ -163,20 +176,20 @@ if($user->username == 'Finance') {
                         echo '</tr>';
                     }
                 }
-                if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                foreach ($searchFinance as $item) {
-                    echo '<tr>';
-                    echo '<td>' . $item['company_name'] . '</td>';
-                    echo '<td>' . $item['contact_person'] . '</td>';
-                    echo '<td>' . $item['email'] . '</td>';
-                    echo '<td>' . $item['credit_balance'] . '</td>';
-                    echo '<td>' . $item['gross_revenue'] . '</td>';
-                    echo '<td>' . $item['credit_worthy'] . '</td>';
-                    echo '<td>' . $item['limit'] . '</td>';
-                    echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
-                    echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
-                    echo '</tr>';
-                }
+                if(isset($_GET['type']) && $_GET['type'] == 'search' && isset($searchResults)) {
+                    foreach ($searchResults as $searchResult) {
+                        echo '<tr>';
+                        echo '<td>' . $searchResult['company_name'] . '</td>';
+                        echo '<td>' . $searchResult['contact_person'] . '</td>';
+                        echo '<td>' . $searchResult['email'] . '</td>';
+                        echo '<td>' . $searchResult['credit_balance'] . '</td>';
+                        echo '<td>' . $searchResult['gross_revenue'] . '</td>';
+                        echo '<td>' . $searchResult['credit_worthy'] . '</td>';
+                        echo '<td>' . $searchResult['limit'] . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $searchResult["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
+                        echo '<td><a href="customer/edit_customer.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
+                        echo '</tr>';
+                    }
                 }
                 ?>
 
@@ -196,10 +209,16 @@ if($user->username == 'Admin') {
 
     if(isset($_GET['search-customer-list'])) {
         $searchGET = $_GET['search-customer-list'];
+        $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
+        $searchQuery = '%'.$searchQuery.'%';
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_customers` WHERE `tbl_customers`.company_name like '%:searchget%'");
-        $stmt->bindParam(":searchget", $searchGET);
-        $searchAdmin =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $searchSQL = "SELECT * FROM `tbl_customers` WHERE `company_name` LIKE :search_query";
+
+        $stmt = $db->pdo->prepare($searchSQL);
+        $stmt->bindParam(':search_query', $searchQuery);
+        $stmt->execute();
+
+        $searchResults = $stmt->fetchAll();
     }
     ?>
     <section class="customers">
@@ -246,16 +265,16 @@ if($user->username == 'Admin') {
                         echo '</tr>';
                     }
                 }
-                if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($searchAdmin as $item) {
+                if(isset($_GET['type']) && $_GET['type'] == 'search' && isset($searchResults)) {
+                    foreach ($searchResults as $searchResult) {
                         echo '<tr>';
-                        echo '<td>' . $item['company_name'] . '</td>';
-                        echo '<td>' . $item['contact_person'] . '</td>';
-                        echo '<td>' . $item['phone_number_1'] . '</td>';
-                        echo '<td>' . $item['email'] . '</td>';
-                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
-                        echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
-                        echo '<td><a href="project/add_project.php?customerid=' . $item['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
+                        echo '<td>' . $searchResult['company_name'] . '</td>';
+                        echo '<td>' . $searchResult['contact_person'] . '</td>';
+                        echo '<td>' . $searchResult['phone_number_1'] . '</td>';
+                        echo '<td>' . $searchResult['email'] . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $searchResult["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
+                        echo '<td><a href="customer/edit_customer.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
+                        echo '<td><a href="project/add_project.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
                         echo '</tr>';
                     }
                 } else {
@@ -280,10 +299,16 @@ if($user->username == 'Development') {
 
     if(isset($_GET['search-customer-list'])) {
         $searchGET = $_GET['search-customer-list'];
+        $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
+        $searchQuery = '%'.$searchQuery.'%';
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_customers` WHERE `tbl_customers`.company_name like '%:searchget%'");
-        $stmt->bindParam(":searchget", $searchGET);
-        $searchDevelopment =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $searchSQL = "SELECT * FROM `tbl_customers` WHERE `company_name` LIKE :search_query";
+
+        $stmt = $db->pdo->prepare($searchSQL);
+        $stmt->bindParam(':search_query', $searchQuery);
+        $stmt->execute();
+
+        $searchResults = $stmt->fetchAll();
     }
     ?>
     <!--html-->
@@ -332,16 +357,16 @@ if($user->username == 'Development') {
                         echo '</tr>';
                     }
                 }
-                if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($searchDevelopment as $item) {
+                if(isset($_GET['type']) && $_GET['type'] == 'search' && isset($searchResults)) {
+                    foreach ($searchResults as $searchResult) {
                         echo '<tr>';
-                        echo '<td>' . $item['company_name'] . '</td>';
-                        echo '<td>' . $item['contact_person'] . '</td>';
-                        echo '<td>' . $item['phone_number_1'] . '</td>';
-                        echo '<td>' . $item['credit_balance'] . '</td>';
-                        echo '<td>' . $item['credit_worthy'] . '</td>';
-                        echo '<td>' . $item['email'] . '</td>';
-                        echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
+                        echo '<td>' . $searchResult['company_name'] . '</td>';
+                        echo '<td>' . $searchResult['contact_person'] . '</td>';
+                        echo '<td>' . $searchResult['phone_number_1'] . '</td>';
+                        echo '<td>' . $searchResult['credit_balance'] . '</td>';
+                        echo '<td>' . $searchResult['credit_worthy'] . '</td>';
+                        echo '<td>' . $searchResult['email'] . '</td>';
+                        echo '<td><a href="customer/info_customer.php?customerid=' . $searchResult["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                         echo '</tr>';
                     }
                 }
