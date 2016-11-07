@@ -22,7 +22,6 @@
             </ul>
             
             <ul class="nav navbar-right">
-                <p><?= $user->username; ?></p>
                 <li><a href="<?php echo BASE_URL;?>/development/app/controller/authController.php?type=logout"><button class="btn btn-warning">Logout</button></a></li>
             </ul>
         </div>
