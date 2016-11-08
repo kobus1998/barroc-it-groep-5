@@ -89,7 +89,7 @@ if($user->username == 'Sales') {
 
                 <form class="col-md-6 col-md-offset-3" method="post" action="<?php echo BASE_URL ?>/development/app/controller/customerController.php?customerid=<?php echo $customerID ?>">
 
-
+                    <input type="hidden" name="customer_id" value="<?= $sales[0]['customer_id'] ?>">
 
                     <div class="form-group">
 
@@ -225,6 +225,13 @@ if($user->username == 'Sales') {
                         <textarea name="edit-next-action" class="form-control"><?php echo $sales[0]['next_action'] ?></textarea>
 
                     </div>
+
+                    <div class="form-group">
+
+                        <label for="edit-bank_nr">Bank number</label>
+                        <input type="date" name="edit-bank_nr" value="<?php echo $sales[0]['bank_nr'] ?>" class="form-control">
+
+                    </div>
                     <input type="submit" name="type" value="edit customer" class="btn btn-primary">
                     <br>
                     <br>
@@ -287,6 +294,8 @@ if($user->username == 'Finance') {
             <h1 class="text-center">Edit customer</h1>
             <form class="col-md-6 col-md-offset-3" method="post"
                   action="<?php echo BASE_URL ?>/development/app/controller/customerController.php?customerid=<?php echo $customerID ?>">
+
+                    <input type="hidden" name="customer_id" value="<?= $finance[0]['customer_id'] ?>">
 
 
                     <div class="form-group">

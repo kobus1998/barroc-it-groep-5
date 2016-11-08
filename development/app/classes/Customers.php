@@ -61,7 +61,7 @@ class Customers {
 
     }
 
-    public function editCustomerSales($customerID, $method) {
+    public function editCustomerSales($method) {
         $sql = "
         UPDATE `tbl_customers`
         SET `company_name` = :companyName,
@@ -77,8 +77,9 @@ class Customers {
             phone_number_2 = :phoneNumber2,
             fax = :fax,
             email = :email,
-            potential_customer = :potentialCustomer
-        WHERE customer_id = $customerID";
+            potential_customer = :potentialCustomer,
+            bank_nr = :bank_nr
+        WHERE customer_id = :customer_id";
 
         $stmt = $this->db->pdo->prepare($sql);
         $stmt->bindParam(":companyName", $method['edit-company-name']);
@@ -95,6 +96,9 @@ class Customers {
         $stmt->bindParam(":fax", $method['edit-fax']);
         $stmt->bindParam(":email", $method['edit-email']);
         $stmt->bindParam(":potentialCustomer", $method['potential_customer']);
+        $stmt->bindParam(":bank_nr", $method['edit-bank_nr']);
+
+        $stmt->bindParam(":customer_id", $method['customer_id']);
 
         $stmt->execute();
 
@@ -107,12 +111,13 @@ class Customers {
     
         SET appointment_day = :appointmentDay,
             next_action = :nextAction
-            WHERE `tbl_customers`.customer_id = $customerID 
+            WHERE `tbl_customers`.customer_id = :customer_id 
     ";
 
         $stmt = $this->db->pdo->prepare($sql);
         $stmt->bindParam(":appointmentDay", $method['edit-appointment-day']);
         $stmt->bindParam(":nextAction", $method['edit-next-action']);
+        $stmt->bindParam(":customer_id", $method['customer_id']);
         $stmt->execute();
 
         $sql = "
@@ -125,15 +130,16 @@ class Customers {
         
         SET invoice_nr = :invoiceNr
         
-        WHERE `tbl_customers`.customer_id = $customerID
+        WHERE `tbl_customers`.customer_id = :customer_id
     ";
         $stmt = $this->db->pdo->prepare($sql);
         $stmt->bindParam(":invoiceNr", $method['edit-invoice-number']);
+        $stmt->bindParam(":customer_id", $method['customer_id']);
         $stmt->execute();
 
     }
 
-    public function editCustomerFinance($customerID, $method) {
+    public function editCustomerFinance($method) {
         $sql = "
         UPDATE `tbl_customers`
         LEFT JOIN `tbl_projects`
@@ -148,7 +154,7 @@ class Customers {
             `tbl_customers`.ledger_account_number = :ledgerNr,
             `tbl_invoices`.tax = :tax,
             `tbl_customers`.credit_worthy = :creditWorthy
-        WHERE `tbl_customers`.customer_id = $customerID
+        WHERE `tbl_customers`.customer_id = :customer_id
         ";
 
         $stmt = $this->db->pdo->prepare($sql);
@@ -159,6 +165,7 @@ class Customers {
         $stmt->bindParam(':ledgerNr', $method['edit-ledger-account-number']);
         $stmt->bindParam(':tax', $method['edit-tax-code']);
         $stmt->bindParam(':creditWorthy', $method['credit_worthy']);
+        $stmt->bindParam(':customer_id', $method['customer_id']);
         $stmt->execute();
     }
 }

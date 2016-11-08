@@ -52,6 +52,7 @@ if( $_POST['type'] == 'edit customer') {
         $customerID = $_GET['customerid'];
         if ($user->getUsername() == 'Sales') {
             if (
+                !Validator::numeric()->validate($_POST['customer_id']) ||
                 !Validator::notEmpty()->validate($_POST['edit-company-name']) ||
                 !Validator::notEmpty()->validate($_POST['edit-contact-person']) ||
                 !Validator::notEmpty()->validate($_POST['edit-adress']) ||
@@ -59,14 +60,15 @@ if( $_POST['type'] == 'edit customer') {
                 !Validator::notEmpty()->validate($_POST['edit-zipcode']) ||
                 !Validator::notEmpty()->validate($_POST['edit-phone-number']) ||
                 !Validator::notEmpty()->validate($_POST['edit-email']) ||
-                !Validator::notEmpty()->validate($_POST['edit-initials'])
+                !Validator::notEmpty()->validate($_POST['edit-initials']) ||
+                !Validator::notEmpty()->validate($_POST['edit-bank_nr'])
             ) {
                 $message = 'Some required fields are empty';
-                $user->redirect("../customer/editcustomer.php?messageDanger=$message&customerid=$customerID");
+                $user->redirect("customer/edit_customer.php?messageDanger=$message&customerid=$customerID");
                 die;
             }
 
-            $customer->editCustomerSales($customerID, $_POST);
+            $customer->editCustomerSales($_POST);
 
             $messageSuccess = 'Customer edited';
             $user->redirect("customer_list.php?messageSuccess=$messageSuccess");
@@ -75,6 +77,7 @@ if( $_POST['type'] == 'edit customer') {
 
 
             if (
+                !Validator::numeric()->validate($_POST['customer_id']) ||
                 !Validator::notEmpty()->validate($_POST['edit-bank-account-number']) ||
                 !Validator::notEmpty()->validate($_POST['edit-credit-balance']) ||
                 !Validator::notEmpty()->validate($_POST['edit-gross-revenue']) ||
@@ -87,7 +90,7 @@ if( $_POST['type'] == 'edit customer') {
                 $user->redirect("customer/edit_customer.php?customerid=$customerID&messageDanger=$messageDanger");
             }
 
-            $customer->editCustomerFinance($customerID, $_POST);
+            $customer->editCustomerFinance($_POST);
             $messageSuccess = 'Customer edited';
             $user->redirect("customer_list.php?messageSuccess=$messageSuccess");
 
