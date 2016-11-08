@@ -14,6 +14,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $user->redirect("appointments/add_appointment.php?customerid=$customerid&messageDanger=$messageWarning");
         } else {
             $appointments->addAppointment($_POST);
+            $appointments->lastContactDate($customerid);
             $user->redirect("customer/info_customer?customerid=$customerid");
         }
     }

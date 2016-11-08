@@ -30,4 +30,18 @@ class Appointments
         $stmt->execute();
     }
 
+    public function lastContactDate($id) {
+        $db = Database::getInstance();
+        $result = $db->pdo->query("SELECT appointment_day FROM `tbl_appointments` 
+                WHERE customer_id = $id ORDER BY appointment_day DESC limit 1")
+            ->fetchAll(PDO::FETCH_ASSOC);
+
+        var_dump($result);
+
+        $lastContactDate = $result[0]['appointment_day'];
+
+        $sql = "UPDATE `tbl_customers` SET last_contact_date = '$lastContactDate'
+                WHERE customer_id = $id";
+        $db->pdo->prepare($sql)->execute();
+    }
 }
