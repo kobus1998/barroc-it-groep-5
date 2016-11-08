@@ -329,7 +329,7 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                         <tr>
                             <td class="col-md-4"><?php echo $item['quotation_number'] ?></td>
                             <td class="col-md-4"><?php echo $item['quotation_date'] ?></td>
-                            <td class="col-md-4"><a href="../project/info_project.php?projectid=<?=$item['quotation_id']?>" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>
+                            <td class="col-md-4"><a href="../quotation/info_quotation.php?quotationid=<?=$item['quotation_id']?>" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>
                         </tr>
                         <?php
                     endforeach;
