@@ -29,10 +29,6 @@ if($user->username == 'Finance') {
         $stmt->execute();
 
         $searchResults = $stmt->fetchAll();
-
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_invoices` WHERE `tbl_invoices`.invoice_nr like '%:searchGET%'");
-        $stmt->bindParam(':searchGET', $searchGET);
-        $searchFinance =  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     ?>
     <section class="invoices">
@@ -132,6 +128,8 @@ if($user->username == 'Admin') {
 
     if (isset($_GET['search-invoice-list'])) {
         $searchGET = $_GET['search-invoice-list'];
+        $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
+        $searchQuery = '%'.$searchQuery.'%';
 
         $searchSQL = "SELECT * FROM `tbl_invoices` 
                       WHERE tbl_invoices.invoice_nr LIKE :search_query 
@@ -142,16 +140,30 @@ if($user->username == 'Admin') {
         $stmt->execute();
 
         $searchResults = $stmt->fetchAll();
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_invoices` WHERE `tbl_invoices`.invoice_nr like '%:searchGET%'");
-        $stmt->bindParam(':searchGET', $searchGET);
-        $searchAdmin = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     ?>
     <section class="invoices">
     <div class="container">
-    <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if (isset($_GET['message'])) {
-            echo $_GET['message'];
-        } ?></p>
+        <?php if(!isset($_GET['messageDanger']) || $_GET['messageDanger'] == '') {
+        } else { ?>
+            <P class="alert-danger pull-right" style="padding: 7px!important;">
+                <?= $_GET['messageDanger'] ?>
+            </P>
+        <?php }
+
+        if(!isset($_GET['messagePrimary']) || $_GET['messagePrimary'] == '') {
+        } else { ?>
+            <P class="alert-primary pull-right" style="padding: 7px!important;">
+                <?= $_GET['messagePrimary'] ?>
+            </p>
+        <?php }
+
+        if(!isset($_GET['messageSuccess']) || $_GET['messageSuccess'] == '') {
+        } else { ?>
+            <P class="alert-success pull-right" style="padding: 7px!important;">
+                <?= $_GET['messageSuccess'] ?>
+            </P>
+        <?php } ?>
     <h2 class="text-center">Invoice list</h2>
     <div class="search-invoice col-md-5 col-md-offset-8">
         <form method="get" action="">
@@ -159,7 +171,7 @@ if($user->username == 'Admin') {
                 <label>Search invoice number
                     <input type="search" name="search-invoice-list"
                            value="<?php if (isset($_GET['search-invoice-list'])) {
-                               echo $searchGET;
+                               echo $_GET['search-invoice-list'];
                            } ?>">
                 </label>
                 <button class="btn btn-warning glyphicon glyphicon-search" type="submit" name="type"
@@ -181,7 +193,7 @@ if($user->username == 'Admin') {
     <tbody>
 
     <?php
-    if (!isset($_GET['type']) && $_GET['search-invoice-list'] == '') {
+    if (!isset($_GET['type']) || $_GET['search-invoice-list'] == '') {
         foreach ($invoices as $item) {
             echo '<tr>';
             echo '<td>' . $item['invoice_nr'] . '</td>';
