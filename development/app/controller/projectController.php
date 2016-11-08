@@ -12,12 +12,11 @@ if ($_POST["type"] == "add project") {
         !Validator::notEmpty()->validate($_POST['project_name']) ||
         !Validator::notEmpty()->validate($_POST['description']) ||
         !Validator::notEmpty()->validate($_POST['hardwaresoftware']) ||
-        !Validator::notEmpty()->validate($_POST['maintenance_contract']) ||
         !Validator::notEmpty()->validate($_POST['day']) ||
         !Validator::notEmpty()->validate($_POST['month']) ||
         !Validator::notEmpty()->validate($_POST['year']))
     {
-        $user->redirect("customer/add_customer.php?message=Something went wrong");
+        $user->redirect("project/add_project.php?message=Something went wrong");
         die;
     }
 
@@ -34,8 +33,7 @@ if ($_POST["type"] == "edit project") {
     if (!Validator::numeric()->validate($_POST['project_id']) ||
         !Validator::notEmpty()->validate($_POST['project_name']) ||
         !Validator::notEmpty()->validate($_POST['description']) ||
-        !Validator::notEmpty()->validate($_POST['hardwaresoftware']) ||
-        !Validator::notEmpty()->validate($_POST['maintenance_contract']))
+        !Validator::notEmpty()->validate($_POST['hardwaresoftware']))
     {
         $user->redirect("project/project_list.php?message=Something went wrong");
         die;
