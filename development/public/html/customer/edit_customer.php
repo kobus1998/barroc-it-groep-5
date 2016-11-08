@@ -178,6 +178,12 @@ if($user->username == 'Sales') {
 
                     </div>
                     <br>
+                    <div class="form-group">
+
+                        <label for="edit-invoice-number">Invoice number</label>
+                        <input type="text" name="edit-invoice-number" value="<?php echo $sales[0]['invoice_nr'] ?>" class="form-control">
+
+                    </div>
 
                     <div class="form-group">
 
@@ -316,6 +322,14 @@ if($user->username == 'Finance') {
 
                     <div class="form-group">
 
+                        <label for="edit-number-invoices">Number of invoices</label>
+                        <input type="text" name="edit-number-invoices"
+                               value="<?php echo $finance[0]['number_of_invoices'] ?>" class="form-control">
+
+                    </div>
+
+                    <div class="form-group">
+
                         <label for="edit-gross-revenue">Gross revenue</label>
                         <input type="text" name="edit-gross-revenue" value="<?php echo $finance[0]['gross_revenue'] ?>"
                                class="form-control">
@@ -347,14 +361,20 @@ if($user->username == 'Finance') {
                     </div>
 
                 <div class="form-group">
+
                     <p style="font-weight:bold">Credit Worthy</p>
-                    <select class="form-control" name="credit_worthy" id="credit_worthy">
-                        <?php if ($finance[1]['credit_worthy'] == 1) { ?>
-                            <option value="1" selected>Yes</option>
+                    <select class="form-control" name="credit_worthy" id="credit_worthy"><?php
+                        var_dump($sales[0]);
+                        if ($sales[0]['credit_worthy'] == 0) { ?>
+                            <option value="1">Yes</option>
+                            <option selected value="0">No</option>
+                        <?php } else if ($sales[0]['credit_worthy'] == 1) { ?>
+                            <option selected value="1">Yes</option>
                             <option value="0">No</option>
                         <?php } else { ?>
+                            <option selected disabled>Select an option</option>
                             <option value="1">Yes</option>
-                            <option value="0" selected>No</option>
+                            <option value="0">No</option>
                         <?php } ?>
                     </select>
 
