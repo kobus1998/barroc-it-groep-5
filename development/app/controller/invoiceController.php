@@ -3,7 +3,13 @@ require realpath(__DIR__ . '/../init.php');
 use \Respect\Validation\Validator as Validator;
 
 $invoice = new Invoices();
-$projectId = $_GET['projectid'];
+if(isset($_GET['projectid'])) {
+    $projectId = $_GET['projectid'];
+}
+
+if(isset($_GET['invoiceid'])) {
+    $invoiceId = $_GET['invoiceid'];
+}
 
 if( $_SERVER['REQUEST_METHOD'] == 'POST') {
     if($_POST['type'] == 'add invoice') {
@@ -22,5 +28,12 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST') {
         $message = 'invoice added';
         $user->redirectMessage('invoice_list.php', $message);
         
+    }
+    
+    if($_POST['type'] == 'edit invoice') {
+        var_dump($_POST);
+        $invoice->editInvoice($invoiceId);
+        $message = "Invoice is paid";
+        $user->redirect("invoice_list.php?messageSuccess=$message");
     }
 }

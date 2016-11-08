@@ -66,4 +66,16 @@ class Invoices  {
         $db->pdo->prepare($sql)->execute();
     }
 
+    public function editInvoice($id) {
+        $editPaid = $_POST['edit-paid'];
+        $invoiceId = $_GET['invoiceid'];
+        $db = Database::getInstance();
+        
+        $sql = "UPDATE tbl_invoices SET paid = :editPaid WHERE invoice_id = :invoiceId";
+        $stmt = $db->pdo->prepare($sql);
+        $stmt->bindParam(':editPaid', $editPaid);
+        $stmt->bindParam(':invoiceId', $invoiceId);
+        $stmt->execute();
+    }
+
 }
