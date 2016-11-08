@@ -115,10 +115,18 @@ if($user->username == 'Finance') {
 
     if(isset($_GET['search-invoice-list'])) {
         $searchGET = $_GET['search-invoice-list'];
+        $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
+        $searchQuery = '%'.$searchQuery.'%';
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_invoices` WHERE `tbl_invoices`.invoice_nr like '%:searchGET%'");
-        $stmt->bindParam(':searchGET', $searchGET);
-        $searchFinance =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $searchSQL = "SELECT * FROM `tbl_invoices` WHERE tbl_invoices.invoice_nr LIKE :search_query";
+
+        $stmt = $db->pdo->prepare($searchSQL);
+        $stmt->bindParam(':search_query', $searchQuery);
+        $stmt->execute();
+
+        $searchResults = $stmt->fetchAll();
+
+
     }
     ?>
     <section class="invoices">
@@ -150,7 +158,7 @@ if($user->username == 'Finance') {
                 <form method="get" action="">
                     <div class="form-group row">
                         <label>Search invoice number
-                            <input type="search" name="search-invoice-list">
+                            <input type="search" name="search-invoice-list" value="<?= $searchGET ?>">
                         </label>
                         <button class="btn btn-warning glyphicon glyphicon-search" type="submit" name="type" value="search"></button>
                     </div>
@@ -170,7 +178,7 @@ if($user->username == 'Finance') {
                 <tbody>
 
                 <?php
-                if(!isset($_GET['type'])) {
+                if(!isset($_GET['type']) || $_GET['search-invoice-list'] == '') {
                     foreach ($invoices as $item) {
                         echo '<tr>';
                         echo '<td>' . $item['invoice_nr'] . '</td>';
@@ -182,8 +190,8 @@ if($user->username == 'Finance') {
                     }
                 }
 
-                if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($searchFinance as $item)
+                if(isset($_GET['type']) && $_GET['type'] == 'search' && $_GET['search-invoice-list'] != '') {
+                    foreach ($searchResults as $item)
                     {
                         echo '<tr>';
                         echo '<td>' . $item['invoice_nr'] . '</td>';
@@ -217,10 +225,16 @@ if($user->username == 'Admin') {
 
     if(isset($_GET['search-invoice-list'])) {
         $searchGET = $_GET['search-invoice-list'];
+        $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
+        $searchQuery = '%'.$searchQuery.'%';
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_invoices` WHERE `tbl_invoices`.invoice_nr like '%:searchGET%'");
-        $stmt->bindParam(':searchGET', $searchGET);
-        $searchAdmin =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $searchSQL = "SELECT * FROM `tbl_invoices` WHERE tbl_invoices.invoice_nr LIKE :search_query";
+
+        $stmt = $db->pdo->prepare($searchSQL);
+        $stmt->bindParam(':search_query', $searchQuery);
+        $stmt->execute();
+
+        $searchResults = $stmt->fetchAll();
     }
     ?>
     <section class="invoices">
@@ -250,7 +264,7 @@ if($user->username == 'Admin') {
                 <form method="get" action="">
                     <div class="form-group row">
                         <label>Search invoice number
-                            <input type="search" name="search-invoice-list">
+                            <input type="search" name="search-invoice-list" value="<?= $searchGET ?>">
                         </label>
                         <button class="btn btn-warning glyphicon glyphicon-search" type="submit" name="type" value="search"></button>
                     </div>
@@ -270,7 +284,7 @@ if($user->username == 'Admin') {
                 <tbody>
 
                 <?php
-                if(!isset($_GET['type'])) {
+                if(!isset($_GET['type']) || $_GET['search-invoice-list'] == '') {
                     foreach ($invoices as $item) {
                         echo '<tr>';
                         echo '<td>' . $item['invoice_nr'] . '</td>';
@@ -282,7 +296,7 @@ if($user->username == 'Admin') {
                     }
                 }
 
-                if(isset($_GET['type']) && $_GET['type'] == 'search') {
+                if(isset($_GET['type']) && $_GET['type'] == 'search' && $_GET['search-invoice-list'] != '') {
                     foreach ($searchAdmin as $item)
                     {
                         echo '<tr>';
