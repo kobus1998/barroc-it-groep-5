@@ -50,7 +50,7 @@ if($user->username == 'Sales') {
                 <form method="get" action="">
                     <div class="form-group row">
                         <label>Search Customer
-                            <input type="search" name="search-customer-list">
+                            <input type="search" name="search-customer-list" value="<?php if(isset($_GET['search-customer-list'])){ echo $_GET['search-customer-list'];} ?>">
                         </label>
                         <button class="btn btn-warning glyphicon glyphicon-search" type="submit" name="type" value="search"></button>
                     </div>
@@ -174,7 +174,7 @@ if($user->username == 'Finance') {
                 <form method="get" action="">
                     <div class="form-group row">
                         <label>Search Customer
-                            <input type="search" name="search-customer-list">
+                            <input type="search" name="search-customer-list" value="<?php if(isset($_GET['search-customer-list'])){ echo $_GET['search-customer-list'];} ?>">
                         </label>
                         <input class="btn btn-primary" type="submit" name="type" value="search">
                     </div>
@@ -292,7 +292,7 @@ if($user->username == 'Admin') {
                 <form method="get" action="">
                     <div class="form-group row">
                         <label>Search Customer
-                            <input type="search" name="search-customer-list">
+                            <input type="search" name="search-customer-list"  value="<?php if(isset($_GET['search-customer-list'])){ echo $_GET['search-customer-list'];} ?>">
                         </label>
                         <input class="btn btn-primary" type="submit" name="type" value="search">
                     </div>
@@ -310,6 +310,7 @@ if($user->username == 'Admin') {
                     <th>Customer info</th>
                     <th>Edit customer</th>
                     <th>Add project</th>
+                    <th>Add quotation</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -325,6 +326,7 @@ if($user->username == 'Admin') {
                         echo '<td><a href="customer/info_customer.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $item['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
+                        echo '<td><a href="quotation/add_quotation.php?customerid=' . $item['customer_id'] . '" class="btn btn-warning glyphicon glyphicon-plus"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -338,6 +340,7 @@ if($user->username == 'Admin') {
                         echo '<td><a href="customer/info_customer.php?customerid=' . $searchResult["customer_id"] . '" class="btn btn-info glyphicon glyphicon-user"></a></td>';
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
+                        echo '<td><a href="quotation/add_quotation.php?customerid=' . $item['customer_id'] . '" class="btn btn-warning glyphicon glyphicon-plus"></a></td>';
                         echo '</tr>';
                     }
                 } else {
@@ -402,7 +405,7 @@ if($user->username == 'Development') {
                 <form method="get" action="">
                     <div class="form-group row">
                         <label>Search Customer
-                            <input type="search" name="search-customer-list">
+                            <input type="search" name="search-customer-list" value="<?php if(isset($_GET['search-customer-list'])){ echo $_GET['search-customer-list'];} ?>">
                         </label>
                         <input class="btn btn-primary" type="submit" name="type" value="search">
                     </div>
