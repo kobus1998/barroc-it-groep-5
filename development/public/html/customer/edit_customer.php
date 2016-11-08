@@ -235,7 +235,7 @@ if($user->username == 'Sales') {
                     <div class="form-group">
 
                         <label for="edit-bank_nr">Bank number</label>
-                        <input type="date" name="edit-bank_nr" value="<?php echo $sales[0]['bank_nr'] ?>" class="form-control">
+                        <input type="text" name="edit-bank_nr" value="<?php echo $sales[0]['bank_nr'] ?>" class="form-control">
 
                     </div>
                     <input type="submit" name="type" value="edit customer" class="btn btn-primary">
