@@ -36,7 +36,7 @@ $quotationDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="container">
                 <div class="panel panel-default col-md-6" style="padding: 0;">
                     <div class="panel-heading">
-                        Invoice number
+                        Quotation number
                     </div>
                     <div class="panel-body">
                         <p><?php echo $quotationDB[0]['quotation_number'] ?></p>

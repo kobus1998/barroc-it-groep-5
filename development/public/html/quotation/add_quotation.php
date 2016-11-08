@@ -31,7 +31,7 @@ if (!isset($_GET['customerid'])) {
         <h1 class="col-md-6 col-md-offset-3">Add quotation</h1>
         <form class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>\development\app\controller\quotationController.php" method="POST">
 
-            <input type="hidden" name="customer_id" value="<?php $_GET['customerid'] ?>">
+            <input type="hidden" name="customer_id" value="<?= $_GET['customerid'] ?>">
 
             <div class="form-group">
 
