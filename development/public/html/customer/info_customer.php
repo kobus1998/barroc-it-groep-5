@@ -297,6 +297,48 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
                 </div>
             </div>
         </div>
+        <div class="col-md-12">
+            <?php
+            $sql = "SELECT * FROM tbl_quotations
+                LEFT JOIN tbl_customers
+                  on tbl_customers.customer_id = tbl_quotations.customer_id
+                WHERE tbl_customers.customer_id = :customerId";
+
+            $stmt = $db->pdo->prepare($sql);
+            $stmt->bindParam(':customerId', $customerId);
+            $stmt->execute();
+            $quotation_customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            ?>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Quotation Number</th>
+                            <th>Quotation date</th>
+                            <th>Quotation details</th>
+                        </tr>
+                        </thead>
+                </div>
+                <div class="panel-body">
+                    <tbody>
+                    <?php
+                    foreach ($quotation_customer as $item):
+
+                        ?>
+                        <tr>
+                            <td class="col-md-4"><?php echo $item['quotation_number'] ?></td>
+                            <td class="col-md-4"><?php echo $item['quotation_date'] ?></td>
+                            <td class="col-md-4"><a href="../project/info_project.php?projectid=<?=$item['quotation_id']?>" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>
+                        </tr>
+                        <?php
+                    endforeach;
+                    ?>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
