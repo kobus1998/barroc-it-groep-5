@@ -1,9 +1,10 @@
 <?php
 require realpath(__dir__ . '/../parts/header.php');
 
-if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Sales'){
-    $user->redirectMessage('index.php', 'Not logged in');
-}
+$customerId = $_GET['customerid'];
+
+$customerName = Database::getInstance()->pdo->query("SELECT * FROM `tbl_customers` WHERE customer_id = $customerId")->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!doctype html>
@@ -15,42 +16,55 @@ if(isset($_SESSION['username']) && ($_SESSION['username']) != 'Sales'){
 <body>
 	<div class="header">
         <?php
-        include '../parts/header_sales.php';
+		if($user->username == "Sales") {
+			require "../parts/header_sales.php";
+		} elseif($user->username == "Finance") {
+			require "../parts/header_finance.php";
+		} elseif($user->username == "Admin") {
+			require "../parts/header_admin.php";
+		}
         ?>
     </div>
     <div class="main-content">
     	<div class="container">
-			<p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
+			<?php if(!isset($_GET['messageDanger']) || $_GET['messageDanger'] == '') {
+			} else { ?>
+				<P class="alert-danger pull-right" style="padding: 7px!important;">
+					<?= $_GET['messageDanger'] ?>
+				</P>
+			<?php }
+
+			if(!isset($_GET['messagePrimary']) || $_GET['messagePrimary'] == '') {
+			} else { ?>
+				<P class="alert-primary pull-right" style="padding: 7px!important;">
+					<?= $_GET['messagePrimary'] ?>
+				</p>
+			<?php }
+
+			if(!isset($_GET['messageSuccess']) || $_GET['messageSuccess'] == '') {
+			} else { ?>
+				<P class="alert-success pull-right" style="padding: 7px!important;">
+					<?= $_GET['messageSuccess'] ?>
+				</P>
+			<?php } ?>
     		<h1 class="col-md-6 col-md-offset-3">Add appointment</h1>
-	        <form class="col-md-6 col-md-offset-3" action="">
-	        
-	        	<div class="form-group">
+	        <form method="post" class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>/development/app/controller/appointmentController.php?customerid=<?= $customerId; ?>">
 
-	        		<label for="company_name">Project</label>
-	        		<input class="form-control" type="text" name="company_name" id="company_name">
+				<p><b>For user </b><?= $customerName[0]['company_name']; ?></p>
 
-	        	</div>
-
-	        	<div class="form-group">
-
-	        		<label for="company_name">Date</label>
-	        		<input class="form-control" type="text" name="company_name" id="company_name">
+				<div class="form-group">
+	        		<label for="appointment-day">Appointment day</label>
+	        		<input class="form-control" type="date" name="appointment-day" id="company_name">
 
 	        	</div>
 
-	        	<div class="form-group">
+				<div class="form-group">
+					<label for="next-action">Next action</label>
+					<textarea cols="5" rows="5" class="form-control" type="text" name="next-action"></textarea>
+				</div>
 
-	        		<label for="company_name">Subject</label>
-	        		<input class="form-control" type="text" name="company_name" id="company_name">
 
-	        	</div>
-
-	        	<div class="form-group">
-	        		<label for="description">description</label>
-	        		<textarea class="form-control" name="description" id="description" rows="8" style="resize:none;"></textarea>
-	        	</div>
-
-	        	<input type="submit" class="btn btn-primary pull-right" value="Submit" name="add_customer" style="margin-bottom:15px">
+	        	<input type="submit" class="btn btn-primary pull-right" value="add appointment" name="type" style="margin-bottom:15px">
 
 	        </form>
 	    </div>
