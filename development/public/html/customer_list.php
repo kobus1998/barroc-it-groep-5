@@ -25,7 +25,26 @@ if($user->username == 'Sales') {
     ?>
     <section class="customers">
         <div class="container">
-            <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
+            <?php if(!isset($_GET['messageDanger']) || $_GET['messageDanger'] == '') {
+            } else { ?>
+                <P class="alert-danger pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messageDanger'] ?>
+                </P>
+            <?php }
+
+            if(!isset($_GET['messagePrimary']) || $_GET['messagePrimary'] == '') {
+            } else { ?>
+                <P class="alert-primary pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messagePrimary'] ?>
+                </p>
+            <?php }
+
+            if(!isset($_GET['messageSuccess']) || $_GET['messageSuccess'] == '') {
+            } else { ?>
+                <P class="alert-success pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messageSuccess'] ?>
+                </P>
+            <?php } ?>
             <h2 class="text-center">Customer list</h2>
             <div class="search-customer col-md-5 col-md-offset-8">
                 <form method="get" action="">
@@ -93,6 +112,7 @@ if($user->username == 'Sales') {
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
                         echo '<td><a href="quotation/add_quotation.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-warning glyphicon glyphicon-plus"></a></td>';
+
                         echo '</tr>';
                     }
                 }
@@ -130,7 +150,26 @@ if($user->username == 'Finance') {
     <!--html-->
     <section class="customers">
         <div class="container">
-            <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
+            <?php if(!isset($_GET['messageDanger']) || $_GET['messageDanger'] == '') {
+            } else { ?>
+                <P class="alert-danger pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messageDanger'] ?>
+                </P>
+            <?php }
+
+            if(!isset($_GET['messagePrimary']) || $_GET['messagePrimary'] == '') {
+            } else { ?>
+                <P class="alert-primary pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messagePrimary'] ?>
+                </p>
+            <?php }
+
+            if(!isset($_GET['messageSuccess']) || $_GET['messageSuccess'] == '') {
+            } else { ?>
+                <P class="alert-success pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messageSuccess'] ?>
+                </P>
+            <?php } ?>
             <h2 class="text-center">Customer list</h2>
             <div class="search-customer col-md-5 col-md-offset-8">
                 <form method="get" action="">
@@ -229,7 +268,26 @@ if($user->username == 'Admin') {
     ?>
     <section class="customers">
         <div class="container">
-            <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
+            <?php if(!isset($_GET['messageDanger']) || $_GET['messageDanger'] == '') {
+            } else { ?>
+                <P class="alert-danger pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messageDanger'] ?>
+                </P>
+            <?php }
+
+            if(!isset($_GET['messagePrimary']) || $_GET['messagePrimary'] == '') {
+            } else { ?>
+                <P class="alert-primary pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messagePrimary'] ?>
+                </p>
+            <?php }
+
+            if(!isset($_GET['messageSuccess']) || $_GET['messageSuccess'] == '') {
+            } else { ?>
+                <P class="alert-success pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messageSuccess'] ?>
+                </P>
+            <?php } ?>
             <h2 class="text-center">Customer list</h2>
             <div class="search-customer col-md-5 col-md-offset-8">
                 <form method="get" action="">
@@ -320,7 +378,26 @@ if($user->username == 'Development') {
     <!--html-->
     <section class="customers">
         <div class="container">
-            <p class="alert-danger pull-right" style="padding: 7px!important;"><?php if(isset($_GET['message'])) {echo $_GET['message']; } ?></p>
+            <?php if(!isset($_GET['messageDanger']) || $_GET['messageDanger'] == '') {
+            } else { ?>
+                <P class="alert-danger pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messageDanger'] ?>
+                </P>
+            <?php }
+
+            if(!isset($_GET['messagePrimary']) || $_GET['messagePrimary'] == '') {
+            } else { ?>
+                <P class="alert-primary pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messagePrimary'] ?>
+                </p>
+            <?php }
+
+            if(!isset($_GET['messageSuccess']) || $_GET['messageSuccess'] == '') {
+            } else { ?>
+                <P class="alert-success pull-right" style="padding: 7px!important;">
+                    <?= $_GET['messageSuccess'] ?>
+                </P>
+            <?php } ?>
             <h2 class="text-center">Customer list</h2>
             <div class="search-customer col-md-5 col-md-offset-8">
                 <form method="get" action="">
