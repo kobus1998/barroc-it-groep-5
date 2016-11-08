@@ -14,10 +14,16 @@ if($user->username == 'Sales') {
 
     if(isset($_GET['search-project-list'])) {
         $searchGET = $_GET['search-project-list'];
+        $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
+        $searchQuery = '%'.$searchQuery.'%';
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` WHERE `tbl_projects`.project_name like '%:searchGET%'");
-        $stmt->bindParam(':searchGET', $searchGET);
-        $searchSales =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $searchSQL = "SELECT * FROM `tbl_projects` WHERE `project_name` LIKE :search_query";
+
+        $stmt = $db->pdo->prepare($searchSQL);
+        $stmt->bindParam(':search_query', $searchQuery);
+        $stmt->execute();
+
+        $searchResults = $stmt->fetchAll();
     }
     ?>
     <section class="projects">
@@ -47,7 +53,7 @@ if($user->username == 'Sales') {
                 <form method="get" action="">
                     <div class="form-group row">
                         <label>Search project name
-                            <input type="search" name="search-project-list">
+                            <input type="search" name="search-project-list" value="<?php if(isset($_GET['search-project-list'])){echo $_GET['search-project-list'];} ?>">
                         </label>
                         <button class="btn btn-warning glyphicon glyphicon-search" type="submit" name="type" value="search"></button>
                     </div>
@@ -65,7 +71,7 @@ if($user->username == 'Sales') {
                 <tbody>
 
                 <?php
-                if(!isset($_GET['type'])) {
+                if(!isset($_GET['type']) || $_GET['search-project-list'] == '') {
                     foreach ($projects as $item) {
                         echo '<tr>';
                         echo '<td>' . $item['customer_id'] . '</td>';
@@ -77,14 +83,15 @@ if($user->username == 'Sales') {
                     }
                 }
 
-                if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($searchSales as $item)
+                if(isset($_GET['type']) && $_GET['type'] == 'search' && $_GET['search-project-list'] != '') {
+                    foreach ($searchResults as $item)
                     {
                         echo '<tr>';
                         echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="project/edit_project.php?projectid=' . $item['project_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -105,10 +112,16 @@ if($user->username == 'Finance') {
 
     if(isset($_GET['search-project-list'])) {
         $searchGET = $_GET['search-project-list'];
+        $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
+        $searchQuery = '%'.$searchQuery.'%';
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` WHERE `tbl_projects`.project_name like '%:searchGET%'");
-        $stmt->bindParam(':searchGET', $searchGET);
-        $searchAdmin =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $searchSQL = "SELECT * FROM `tbl_projects` WHERE `project_name` LIKE :search_query";
+
+        $stmt = $db->pdo->prepare($searchSQL);
+        $stmt->bindParam(':search_query', $searchQuery);
+        $stmt->execute();
+
+        $searchResults = $stmt->fetchAll();
     }
     ?>
     <section class="projects">
@@ -138,7 +151,7 @@ if($user->username == 'Finance') {
                 <form method="get" action="">
                     <div class="form-group row">
                         <label>Search project name
-                            <input type="search" name="search-project-list">
+                            <input type="search" name="search-project-list" value="<?php if(isset($_GET['search-project-list'])){echo $_GET['search-project-list'];} ?>">
                         </label>
                         <button class="btn btn-warning glyphicon glyphicon-search" type="submit" name="type" value="search"></button>
                     </div>
@@ -157,7 +170,7 @@ if($user->username == 'Finance') {
                 <tbody>
 
                 <?php
-                if(!isset($_GET['type'])) {
+                if(!isset($_GET['type']) || $_GET['search-project-list'] == '') {
                     foreach ($projects as $item) {
                         echo '<tr>';
                         echo '<td>' . $item['customer_id'] . '</td>';
@@ -169,8 +182,8 @@ if($user->username == 'Finance') {
                     }
                 }
 
-                if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($searchAdmin as $item)
+                if(isset($_GET['type']) && $_GET['type'] == 'search' && $_GET['search-project-list'] != '') {
+                    foreach ($searchResults as $item)
                     {
                         echo '<tr>';
                         echo '<td>' . $item['customer_id'] . '</td>';
@@ -200,10 +213,16 @@ if($user->username == 'Admin') {
 
     if(isset($_GET['search-project-list'])) {
         $searchGET = $_GET['search-project-list'];
+        $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
+        $searchQuery = '%'.$searchQuery.'%';
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` WHERE `tbl_projects`.project_name like '%:searchGET%'");
-        $stmt->bindParam(':searchGET', $searchGET);
-        $searchAdmin =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $searchSQL = "SELECT * FROM `tbl_projects` WHERE `project_name` LIKE :search_query";
+
+        $stmt = $db->pdo->prepare($searchSQL);
+        $stmt->bindParam(':search_query', $searchQuery);
+        $stmt->execute();
+
+        $searchResults = $stmt->fetchAll();
     }
     ?>
     <section class="projects">
@@ -233,7 +252,7 @@ if($user->username == 'Admin') {
                 <form method="get" action="">
                     <div class="form-group row">
                         <label>Search project name
-                            <input type="search" name="search-project-list">
+                            <input type="search" name="search-project-list" value="<?php if(isset($_GET['search-project-list'])){echo $_GET['search-project-list'];} ?>">
                         </label>
                         <button class="btn btn-warning glyphicon glyphicon-search" type="submit" name="type" value="search"></button>
                     </div>
@@ -252,7 +271,7 @@ if($user->username == 'Admin') {
                 <tbody>
 
                 <?php
-                if(!isset($_GET['type'])) {
+                if(!isset($_GET['type']) || $_GET['search-project-list'] == '') {
                     foreach ($projects as $item) {
                         echo '<tr>';
                         echo '<td>' . $item['customer_id'] . '</td>';
@@ -264,8 +283,8 @@ if($user->username == 'Admin') {
                     }
                 }
 
-                if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($searchAdmin as $item)
+                if(isset($_GET['type']) && $_GET['type'] == 'search' && $_GET['search-project-list'] != '') {
+                    foreach ($searchResults as $item)
                     {
                         echo '<tr>';
                         echo '<td>' . $item['customer_id'] . '</td>';
@@ -292,16 +311,26 @@ if($user->username == 'Development') {
         SELECT * FROM tbl_projects
         INNER JOIN tbl_customers
           on tbl_projects.customer_id = tbl_customers.customer_id
-        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.limit
+        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit`
     ")
         ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-project-list'])) {
         $searchGET = $_GET['search-project-list'];
+        $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
+        $searchQuery = '%'.$searchQuery.'%';
 
-        $stmt = $db->pdo->query("SELECT * FROM `tbl_projects` WHERE `tbl_projects`.project_name like '%:searchGET%'");
-        $stmt->bindParam(':searchGET', $searchGET);
-        $searchDevelopment =  $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $searchSQL = "SELECT * FROM `tbl_projects` 
+        INNER JOIN tbl_customers
+          on tbl_projects.customer_id = tbl_customers.customer_id
+        WHERE `project_name` LIKE :search_query
+        AND tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit` ";
+
+        $stmt = $db->pdo->prepare($searchSQL);
+        $stmt->bindParam(':search_query', $searchQuery);
+        $stmt->execute();
+
+        $searchResults = $stmt->fetchAll();
     }
     ?>
     <section class="projects">
@@ -331,7 +360,7 @@ if($user->username == 'Development') {
                 <form method="get" action="">
                     <div class="form-group row">
                         <label>Search project name
-                            <input type="search" name="search-project-list">
+                            <input type="search" name="search-project-list" value="<?php if(isset($_GET['search-project-list'])){echo $_GET['search-project-list'];} ?>">
                         </label>
                         <button class="btn btn-warning glyphicon glyphicon-search" type="submit" name="type" value="search"></button>
                     </div>
@@ -350,7 +379,7 @@ if($user->username == 'Development') {
                 <tbody>
 
                 <?php
-                if(!isset($_GET['type'])) {
+                if(!isset($_GET['type']) || $_GET['search-project-list'] == '') {
                     foreach ($projects as $item) {
                         echo '<tr>';
                         echo '<td>' . $item['customer_id'] . '</td>';
@@ -361,8 +390,8 @@ if($user->username == 'Development') {
                     }
                 }
 
-                if(isset($_GET['type']) && $_GET['type'] == 'search') {
-                    foreach ($searchDevelopment as $item)
+                if(isset($_GET['type']) && $_GET['type'] == 'search' && $_GET['search-project-list'] != '') {
+                    foreach ($searchResults as $item)
                     {
                         echo '<tr>';
                         echo '<td>' . $item['customer_id'] . '</td>';
