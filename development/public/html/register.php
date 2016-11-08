@@ -67,7 +67,7 @@ query("SELECT * FROM `tbl_users`")
                         <?= $_GET['messageSuccess'] ?>
                     </P>
                 <?php } ?>
-                <input type="submit" name="type" value="login" class="btn btn-primary">
+                <input type="submit" name="type" value="register" class="btn btn-primary">
                 
             </form>
         </div>
