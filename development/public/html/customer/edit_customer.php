@@ -89,7 +89,7 @@ if($user->username == 'Sales') {
 
                 <form class="col-md-6 col-md-offset-3" method="post" action="<?php echo BASE_URL ?>/development/app/controller/customerController.php?customerid=<?php echo $customerID ?>">
 
-
+                    <input type="hidden" name="customer_id" value="<?= $sales[0]['customer_id'] ?>">
 
                     <div class="form-group">
 
@@ -178,6 +178,12 @@ if($user->username == 'Sales') {
 
                     </div>
                     <br>
+                    <div class="form-group">
+
+                        <label for="edit-invoice-number">Invoice number</label>
+                        <input type="text" name="edit-invoice-number" value="<?php echo $sales[0]['invoice_nr'] ?>" class="form-control">
+
+                    </div>
 
                     <div class="form-group">
 
@@ -223,6 +229,13 @@ if($user->username == 'Sales') {
 
                         <label for="edit-next-action">Next action</label>
                         <textarea name="edit-next-action" class="form-control"><?php echo $sales[0]['next_action'] ?></textarea>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="edit-bank_nr">Bank number</label>
+                        <input type="date" name="edit-bank_nr" value="<?php echo $sales[0]['bank_nr'] ?>" class="form-control">
 
                     </div>
                     <input type="submit" name="type" value="edit customer" class="btn btn-primary">
@@ -288,6 +301,8 @@ if($user->username == 'Finance') {
             <form class="col-md-6 col-md-offset-3" method="post"
                   action="<?php echo BASE_URL ?>/development/app/controller/customerController.php?customerid=<?php echo $customerID ?>">
 
+                    <input type="hidden" name="customer_id" value="<?= $finance[0]['customer_id'] ?>">
+
 
                     <div class="form-group">
 
@@ -302,6 +317,14 @@ if($user->username == 'Finance') {
                         <label for="edit-credit-balance">Credit balance</label>
                         <input type="text" name="edit-credit-balance" value="<?php echo $finance[0]['credit_balance'] ?>"
                                class="form-control">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="edit-number-invoices">Number of invoices</label>
+                        <input type="text" name="edit-number-invoices"
+                               value="<?php echo $finance[0]['number_of_invoices'] ?>" class="form-control">
 
                     </div>
 
@@ -338,14 +361,20 @@ if($user->username == 'Finance') {
                     </div>
 
                 <div class="form-group">
+
                     <p style="font-weight:bold">Credit Worthy</p>
-                    <select class="form-control" name="credit_worthy" id="credit_worthy">
-                        <?php if ($finance[1]['credit_worthy'] == 1) { ?>
-                            <option value="1" selected>Yes</option>
+                    <select class="form-control" name="credit_worthy" id="credit_worthy"><?php
+                        var_dump($sales[0]);
+                        if ($sales[0]['credit_worthy'] == 0) { ?>
+                            <option value="1">Yes</option>
+                            <option selected value="0">No</option>
+                        <?php } else if ($sales[0]['credit_worthy'] == 1) { ?>
+                            <option selected value="1">Yes</option>
                             <option value="0">No</option>
                         <?php } else { ?>
+                            <option selected disabled>Select an option</option>
                             <option value="1">Yes</option>
-                            <option value="0" selected>No</option>
+                            <option value="0">No</option>
                         <?php } ?>
                     </select>
 

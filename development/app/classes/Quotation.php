@@ -13,11 +13,18 @@ class Quotation {
 
     public function getQuotations()
     {
-        $sql = "SELECT * FROM tbl_quotations";
+        if (1 == 1) {
+            $sql = "SELECT *
+                FROM tbl_quotations
+                ORDER BY quotation_id DESC
+                LIMIT 30 ";
+        }
 
         $stmt = $this->db->pdo->prepare($sql);
-        $stmt->execute();
-        $GLOBALS['quotationData'] = $stmt->fetchAll();
+        if ($stmt->execute()){
+            return true;
+        }
+        return false;
     }
 
     public function addQuotation($quotation) {
