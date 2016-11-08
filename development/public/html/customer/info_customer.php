@@ -257,14 +257,15 @@ query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
         </div>
         <div class="col-md-12">
             <?php
-            $sql = "SELECT * FROM `tbl_projects` 
-            INNER JOIN `tbl_customers`
-              on `tbl_customers`.customer_id = `tbl_projects`.customer_id
-            WHERE `tbl_customers`.customer_id = :customerId";
+            $sql = "SELECT * FROM tbl_projects
+                LEFT JOIN tbl_customers
+                  on tbl_customers.customer_id = tbl_projects.customer_id
+                WHERE tbl_customers.customer_id = :customerId";
 
             $stmt = $db->pdo->prepare($sql);
             $stmt->bindParam(':customerId', $customerId);
-            $projects_customer = $stmt->fetchALL(PDO::FETCH_ASSOC);
+            $stmt->execute();
+            $projects_customer = $stmt->fetchAll(PDO::FETCH_ASSOC);
             ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
