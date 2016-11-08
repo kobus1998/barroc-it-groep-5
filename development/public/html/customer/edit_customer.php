@@ -32,7 +32,7 @@ if($user->username == 'Sales') {
             left join `tbl_projects`
                 on `tbl_projects`.`customer_id` = `tbl_customers`.`customer_id`
             left join `tbl_appointments`
-                on `tbl_appointments`.`project_id` = `tbl_projects`.`project_id`
+                on `tbl_appointments`.`customer_id` = `tbl_customers`.`customer_id`
             left join `tbl_invoices`
                 on `tbl_invoices`.`project_id` = `tbl_projects`.`project_id`
         where `tbl_customers`.customer_id = " . $customerID);
@@ -208,27 +208,6 @@ if($user->username == 'Sales') {
                                 <option value="0">No</option>
                             <?php } ?>
                         </select>
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label for="edit-appointment-day">Appointment day</label>
-                        <input type="date" name="edit-appointment-day" value="<?php echo $sales[0]['appointment_day'] ?>" class="form-control">
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label for="edit-last-contact-date">Last contact date</label>
-                        <input type="date" name="edit-last-contact-date" value="<?php echo $sales[0]['last_contact_date'] ?>" class="form-control">
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label for="edit-next-action">Next action</label>
-                        <textarea name="edit-next-action" class="form-control"><?php echo $sales[0]['next_action'] ?></textarea>
 
                     </div>
 
