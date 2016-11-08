@@ -53,7 +53,7 @@ $projectData = $GLOBALS['projectData'][0];
             </P>
         <?php } ?>
         
-        <h1 class="col-md-6 col-md-offset-3">Add project</h1>
+        <h1 class="col-md-6 col-md-offset-3">Edit project</h1>
         <h2 class="col-md-6 col-md-offset-3">Customer: <?php echo $projectData['company_name']; ?></h2>
 
         <form class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>\development\app\controller\projectController.php" method="POST">

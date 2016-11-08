@@ -71,7 +71,8 @@ if($user->username == 'Sales') {
                         echo '<td>' . $item['customer_id'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
-                        echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="project/edit_project.php?projectid=' . $item['project_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '</tr>';
                     }
                 }
