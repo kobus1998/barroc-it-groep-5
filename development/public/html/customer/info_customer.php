@@ -7,9 +7,18 @@ require realpath(__dir__ . '/../parts/header.php');
  *
  * */
 $customerId = $_GET['customerid'];
-$customer = $db->pdo->
-query("SELECT * FROM `tbl_customers` WHERE customer_id = ". $customerId)
-    ->fetchAll(PDO::FETCH_ASSOC);
+$sql = "SELECT * FROM `tbl_customers` WHERE customer_id = :customerid";
+
+$stmt = $db->pdo->prepare($sql);
+$stmt->bindParam(':customerid', $customerId);
+$stmt->execute();
+
+$customer = $stmt->fetchAll();
+
+if ($stmt->rowCount() == 0) {
+    $user->redirect('customer_list.php?message=No customer selected');
+    die;
+}
 
 ?>
 
