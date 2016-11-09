@@ -43,7 +43,7 @@ if (!isset($_GET['customerid'])) {
             <div class="form-group">
 
                 <label for="quotation_date">Quotation date</label>
-                <input class="form-control" type="text" name="quotation_date" id="quotation_date">
+                <input class="form-control" type="date" name="quotation_date" id="quotation_date">
 
             </div>
 

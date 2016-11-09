@@ -66,7 +66,9 @@ $projectDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             Maintenance contract
                         </div>
                         <div class="panel-body">
-                            <p><?php echo $projectDB[0]['maintenance_contract'] ?></p>
+                            <p><?php if($projectDB[0]['maintenance_contract'] == 1) {
+                                    echo 'yes';
+                                } else {echo 'no'; } ?></p>
                         </div>
                     </div>
                     <div class="panel panel-default col-md-6" style="padding: 0;">
