@@ -1,5 +1,9 @@
 <?php require realpath(__DIR__ . '/../init.php');
 
+use \Respect\Validation\Validator as Validator;
+
+$db = Database::getInstance();
+
 /*
  *  When request method is get
  */
@@ -131,5 +135,51 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST')
         $message = 'successful registered';
         $user->redirectMessage('register.php', $message);
         
+    }
+    
+    if ($_POST['type'] == 'change password') {
+
+        if
+        (
+            !Validator::numeric()->validate($_POST['user_id']) ||
+            !Validator::notEmpty()->validate($_POST['username']) ||
+            !Validator::notEmpty()->validate($_POST['password']) ||
+            !Validator::notEmpty()->validate($_POST['new-password']) ||
+            !Validator::notEmpty()->validate($_POST['new-password-repeat'] ||
+            !$_POST[0]['user_id'] == $oldUser[0]['user_id'] ||
+            !$_POST[0]['username'] == $oldUser[0]['username'])
+        ) {
+            $user->redirect("user_list.php?message=Something went wrong");
+            die;
+        }
+
+        $sqlUser = "SELECT * FROM `tbl_users` WHERE user_id = :user_id";
+
+        $stmtUser = $db->pdo->prepare($sqlUser);
+        $stmtUser->bindParam(':user_id', $_POST['user_id']);
+        $stmtUser->execute();
+
+        $oldUser = $stmtUser->fetch();
+
+        if (!password_verify($_POST['password'], $oldUser['password'])) {
+            $user->redirect("user_list.php?message=Old password does not match");
+            die;
+        }
+        if (!$_POST['new-password'] == $_POST['new-password-repeat']) {
+            $user->redirect("user_list.php?message=New password does not match");
+            die;
+        }
+        
+        $password = password_hash($_POST['new-password'], PASSWORD_DEFAULT);
+
+        $sql = "UPDATE tbl_users SET password = :password";
+
+        $stmt = $db->pdo->prepare($sql);
+        $stmt->bindParam(':password', $password);
+
+        if ($stmt->execute()) {
+            $user->redirect("user_list.php?message=Password changed");
+        }
+
     }
 }
