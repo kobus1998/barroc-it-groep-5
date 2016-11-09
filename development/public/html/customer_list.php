@@ -314,6 +314,7 @@ if($user->username == 'Admin') {
                     <th>Edit customer</th>
                     <th>Add project</th>
                     <th>Add quotation</th>
+                    <th>Add appointment</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -330,6 +331,7 @@ if($user->username == 'Admin') {
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $item['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
                         echo '<td><a href="quotation/add_quotation.php?customerid=' . $item['customer_id'] . '" class="btn btn-warning glyphicon glyphicon-plus"></a></td>';
+                        echo '<td><a href="Appointments/add_appointment.php?customerid=' . $item["customer_id"] . '"class="btn btn-primary glyphicon glyphicon-calendar"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -344,6 +346,7 @@ if($user->username == 'Admin') {
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
                         echo '<td><a href="quotation/add_quotation.php?customerid=' . $item['customer_id'] . '" class="btn btn-warning glyphicon glyphicon-plus"></a></td>';
+                        echo '<td><a href="Appointments/add_appointment.php?customerid=' . $item["customer_id"] . '"class="btn btn-primary glyphicon glyphicon-calendar"></a></td>';
                         echo '</tr>';
                     }
                 } else {
