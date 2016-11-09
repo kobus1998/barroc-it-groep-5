@@ -3,6 +3,7 @@
 $users = Database::getInstance()->pdo->
 query("SELECT * FROM `tbl_users`")
     ->fetchAll(PDO::FETCH_ASSOC);
+$user->checkPage($user->username);
 ?>
 
 <title>Home</title>
