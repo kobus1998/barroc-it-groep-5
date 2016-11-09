@@ -44,10 +44,10 @@ $quotationDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="panel panel-default col-md-6" style="padding: 0;">
                     <div class="panel-heading">
-                        Price
+                        Date
                     </div>
                     <div class="panel-body">
-                        <p>€ <?php echo $quotationDB[0]['quotation_date'] ?></p>
+                        <p> <?php echo $quotationDB[0]['quotation_date'] ?></p>
                     </div>
                 </div>
                 <div class="panel panel-default col-md-6" style="padding: 0;">
