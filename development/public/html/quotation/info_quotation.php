@@ -52,10 +52,18 @@ $quotationDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="panel panel-default col-md-6" style="padding: 0;">
                     <div class="panel-heading">
-                        Tax
+                        Order type
                     </div>
                     <div class="panel-body">
                         <p><?php echo $quotationDB[0]['order_type'] ?></p>
+                    </div>
+                </div>
+                <div class="panel panel-default col-md-6" style="padding: 0;">
+                    <div class="panel-heading">
+                        Description
+                    </div>
+                    <div class="panel-body">
+                        <p><?php echo $quotationDB[0]['description'] ?></p>
                     </div>
                 </div>
             </div>
