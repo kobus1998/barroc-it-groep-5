@@ -345,6 +345,39 @@ if ($stmt->rowCount() == 0) {
                     ?>
                     </tbody>
                     </table>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <?php
+                    $appointments = Database::getInstance()->pdo->query("SELECT * 
+                    FROM `tbl_appointments`
+                    WHERE customer_id = $customerId")->fetchAll(PDO::FETCH_ASSOC);
+
+                    ?>
+                    <div class="panel panel-default">
+
+                            <div class="panel-heading">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Appointment day</th>
+                                            <th>Next action</th>
+                                        </tr>
+                                    </thead>
+                            </div>
+                        <div class="panel-body"></div>
+                            <tbody>
+                        <?php
+                        foreach ($appointments as $item) {
+                            echo '<tr>';
+                            echo '<td>' . $item['appointment_day'] . '</td>';
+                            echo '<td>' . $item['next_action'] . '</td>';
+                            echo '</tr>';
+                        }
+                        ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
