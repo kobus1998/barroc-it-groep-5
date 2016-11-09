@@ -304,14 +304,6 @@ if($user->username == 'Finance') {
 
                     <div class="form-group">
 
-                        <label for="edit-number-invoices">Number of invoices</label>
-                        <input type="text" name="edit-number-invoices"
-                               value="<?php echo $finance[0]['number_of_invoices'] ?>" class="form-control">
-
-                    </div>
-
-                    <div class="form-group">
-
                         <label for="edit-gross-revenue">Gross revenue</label>
                         <input type="text" name="edit-gross-revenue" value="<?php echo $finance[0]['gross_revenue'] ?>"
                                class="form-control">
