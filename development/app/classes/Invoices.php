@@ -66,6 +66,49 @@ class Invoices  {
         $db->pdo->prepare($sql)->execute();
     }
 
+    public function increaseCustomerBalance($projectId, $price) {
+        $db = Database::getInstance();
+
+        $projectQuery = $db->pdo->query("SELECT * FROM tbl_projects WHERE project_id = $projectId")
+            ->fetchAll(PDO::FETCH_ASSOC);
+        
+        $customerId = $projectQuery[0]['customer_id'];
+        
+        $sql = "UPDATE `tbl_customers` 
+        LEFT JOIN tbl_projects
+          on tbl_projects.customer_id = tbl_customers.customer_id
+        SET tbl_customers.credit_balance = tbl_customers.credit_balance + :price
+        WHERE tbl_customers.customer_id = :id
+        ";
+
+        $stmt = $db->pdo->prepare($sql);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':id', $customerId);
+        $stmt->execute();
+
+    }
+
+    public function decreaseCustomerBalance($id) {
+        $db = Database::getInstance();
+        
+        $invoiceId = $db->pdo->query("SELECT project_id FROM tbl_invoices WHERE invoice_id = $id")->fetchAll(PDO::FETCH_ASSOC);
+        $projectId = $invoiceId[0]['project_id'];
+        $project = $db->pdo->query("SELECT * FROM tbl_projects WHERE project_id = $projectId")->fetchAll(PDO::FETCH_ASSOC);
+        $customerId = $project[0]['customer_id'];
+        
+        $sql = "UPDATE tbl_customers
+                left join tbl_projects
+	              on tbl_projects.customer_id = tbl_customers.customer_id
+                left join tbl_invoices
+	              on tbl_invoices.project_id = tbl_projects.project_id
+
+                SET tbl_customers.credit_balance = tbl_customers.credit_balance - tbl_invoices.price
+                WHERE tbl_customers.customer_id = :customerId";
+        $stmt = $db->pdo->prepare($sql);
+        $stmt->bindParam(':customerId', $customerId);
+        $stmt->execute();
+    }
+
     public function editInvoice($id) {
         $editPaid = $_POST['edit-paid'];
         $invoiceId = $_GET['invoiceid'];

@@ -24,6 +24,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $invoice->addInvoice($_POST, $projectId, $totalPrice);
         $invoice->increaseNrInvoices($projectId);
+        $invoice->increaseCustomerBalance($projectId, $totalPrice);
 
         $message = 'invoice added';
         $user->redirectMessage('invoice_list.php', $message);
@@ -33,6 +34,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST') {
     if($_POST['type'] == 'edit invoice') {
         var_dump($_POST);
         $invoice->editInvoice($invoiceId);
+        $invoice->decreaseCustomerBalance($invoiceId);
         $message = "Invoice is paid";
         $user->redirect("invoice_list.php?messageSuccess=$message");
     }
