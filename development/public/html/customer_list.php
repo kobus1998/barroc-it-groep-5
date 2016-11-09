@@ -70,9 +70,9 @@ if($user->username == 'Sales') {
                     <th>Credit worthy</th>
                     <th>Customer info</th>
                     <th>Edit customer</th>
-                    <th>Add appointment</th>
                     <th>Add project</th>
                     <th>Add quotation</th>
+                    <th>Add appointment</th>
                 </tr>
                 </thead>
                 <tbody>
