@@ -9,6 +9,10 @@ require realpath(__dir__ . '/../parts/header.php');
 $customerId = $_GET['customerid'];
 $sql = "SELECT * FROM `tbl_customers` WHERE customer_id = :customerid";
 
+if($user->getLoggedIn() != true) {
+    $user->redirect('index.php?messageDanger=Youre not logged in');
+}
+
 $stmt = $db->pdo->prepare($sql);
 $stmt->bindParam(':customerid', $customerId);
 $stmt->execute();

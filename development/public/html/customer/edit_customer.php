@@ -22,6 +22,9 @@ $customerID = $_GET['customerid'];
  * Query
  */
 
+if($user->getLoggedIn() != true) {
+    $user->redirect('index.php?messageDanger=Youre not logged in');
+}
 
 $db = Database::getInstance();
 

@@ -5,7 +5,13 @@ $customerId = $_GET['customerid'];
 $appointmentId = $_GET['appointmentid'];
 $customerName = Database::getInstance()->pdo->query("SELECT * FROM `tbl_customers` WHERE customer_id = $customerId")->fetchAll(PDO::FETCH_ASSOC);
 $appointments = Database::getInstance()->pdo->query("SELECT * FROM tbl_appointments WHERE customer_id = $customerId")->fetchAll(PDO::FETCH_ASSOC);
+
+if($user->getLoggedIn() != true) {
+	$user->redirect('index.php?messageDanger=Youre not logged in');
+}
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
