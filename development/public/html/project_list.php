@@ -8,7 +8,10 @@ if($user->username == 'Sales') {
     include realpath(__DIR__. '/parts/header_sales.php');
     $projects = $db->pdo->
     query("
-          SELECT * FROM tbl_projects
+                  SELECT * FROM tbl_projects
+        INNER JOIN tbl_customers
+          on tbl_projects.customer_id = tbl_customers.customer_id
+        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit`
            ")
         ->fetchAll(PDO::FETCH_ASSOC);
 
@@ -17,7 +20,10 @@ if($user->username == 'Sales') {
         $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
         $searchQuery = '%'.$searchQuery.'%';
 
-        $searchSQL = "SELECT * FROM `tbl_projects` WHERE `project_name` LIKE :search_query";
+        $searchSQL = "SELECT * FROM `tbl_projects` 
+                      INNER JOIN tbl_customers
+                      on tbl_projects.customer_id = tbl_customers.customer_id
+                      WHERE `project_name` LIKE :search_query";
 
         $stmt = $db->pdo->prepare($searchSQL);
         $stmt->bindParam(':search_query', $searchQuery);
@@ -62,7 +68,7 @@ if($user->username == 'Sales') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>Customer id</th>
+                    <th>Company name</th>
                     <th>Project name</th>
                     <th>Deadline</th>
                     <th>Project info</th>
@@ -74,7 +80,7 @@ if($user->username == 'Sales') {
                 if(!isset($_GET['type']) || $_GET['search-project-list'] == '') {
                     foreach ($projects as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
@@ -87,7 +93,7 @@ if($user->username == 'Sales') {
                     foreach ($searchResults as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
@@ -107,7 +113,10 @@ if($user->username == 'Sales') {
 if($user->username == 'Finance') {
     include realpath(__DIR__. '/parts/header_finance.php');
     $projects = $db->pdo->
-    query("SELECT * FROM `tbl_projects`")
+    query("        SELECT * FROM tbl_projects
+        INNER JOIN tbl_customers
+          on tbl_projects.customer_id = tbl_customers.customer_id
+        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit`")
         ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-project-list'])) {
@@ -115,7 +124,10 @@ if($user->username == 'Finance') {
         $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
         $searchQuery = '%'.$searchQuery.'%';
 
-        $searchSQL = "SELECT * FROM `tbl_projects` WHERE `project_name` LIKE :search_query";
+        $searchSQL = "SELECT * FROM `tbl_projects` 
+                      INNER JOIN tbl_customers
+                      on tbl_projects.customer_id = tbl_customers.customer_id
+                      WHERE `project_name` LIKE :search_query";
 
         $stmt = $db->pdo->prepare($searchSQL);
         $stmt->bindParam(':search_query', $searchQuery);
@@ -160,7 +172,7 @@ if($user->username == 'Finance') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>Customer id</th>
+                    <th>Company name</th>
                     <th>Project name</th>
                     <th>Deadline</th>
                     <th>Project info</th>
@@ -173,7 +185,7 @@ if($user->username == 'Finance') {
                 if(!isset($_GET['type']) || $_GET['search-project-list'] == '') {
                     foreach ($projects as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
@@ -186,7 +198,7 @@ if($user->username == 'Finance') {
                     foreach ($searchResults as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
@@ -208,7 +220,10 @@ if($user->username == 'Finance') {
 if($user->username == 'Admin') {
     include realpath(__DIR__. '/parts/header_admin.php');
     $projects = $db->pdo->
-    query("SELECT * FROM `tbl_projects`")
+    query("        SELECT * FROM tbl_projects
+        INNER JOIN tbl_customers
+          on tbl_projects.customer_id = tbl_customers.customer_id
+        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit`")
         ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-project-list'])) {
@@ -216,7 +231,10 @@ if($user->username == 'Admin') {
         $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
         $searchQuery = '%'.$searchQuery.'%';
 
-        $searchSQL = "SELECT * FROM `tbl_projects` WHERE `project_name` LIKE :search_query";
+        $searchSQL = "SELECT * FROM `tbl_projects` 
+                      INNER JOIN tbl_customers
+                      on tbl_projects.customer_id = tbl_customers.customer_id
+                      WHERE `project_name` LIKE :search_query";
 
         $stmt = $db->pdo->prepare($searchSQL);
         $stmt->bindParam(':search_query', $searchQuery);
@@ -261,7 +279,7 @@ if($user->username == 'Admin') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>Customer id</th>
+                    <th>Company name</th>
                     <th>Project name</th>
                     <th>Deadline</th>
                     <th>Project info</th>
@@ -274,7 +292,7 @@ if($user->username == 'Admin') {
                 if(!isset($_GET['type']) || $_GET['search-project-list'] == '') {
                     foreach ($projects as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
@@ -287,7 +305,7 @@ if($user->username == 'Admin') {
                     foreach ($searchResults as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
@@ -321,10 +339,9 @@ if($user->username == 'Development') {
         $searchQuery = '%'.$searchQuery.'%';
 
         $searchSQL = "SELECT * FROM `tbl_projects` 
-        INNER JOIN tbl_customers
-          on tbl_projects.customer_id = tbl_customers.customer_id
-        WHERE `project_name` LIKE :search_query
-        AND tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit` ";
+                      INNER JOIN tbl_customers
+                      on tbl_projects.customer_id = tbl_customers.customer_id
+                      WHERE `project_name` LIKE :search_query";
 
         $stmt = $db->pdo->prepare($searchSQL);
         $stmt->bindParam(':search_query', $searchQuery);
@@ -369,7 +386,7 @@ if($user->username == 'Development') {
             <table class="table ">
                 <thead>
                 <tr>
-                    <th>Customer id</th>
+                    <th>Company name</th>
                     <th>Project name</th>
                     <th>Deadline</th>
                     <th>Project info</th>
@@ -382,7 +399,7 @@ if($user->username == 'Development') {
                 if(!isset($_GET['type']) || $_GET['search-project-list'] == '') {
                     foreach ($projects as $item) {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
@@ -394,7 +411,7 @@ if($user->username == 'Development') {
                     foreach ($searchResults as $item)
                     {
                         echo '<tr>';
-                        echo '<td>' . $item['customer_id'] . '</td>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';

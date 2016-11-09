@@ -7,7 +7,10 @@ $user->checkPage($user->username);
 if($user->username == 'Sales') {
     include realpath(__DIR__. '/parts/header_sales.php');
     $quotations = $db->pdo->
-    query("SELECT * FROM `tbl_quotations`")
+    query("SELECT * FROM tbl_quotations
+        INNER JOIN tbl_customers
+          on tbl_quotations.customer_id = tbl_customers.customer_id
+        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit`")
         ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-quotation-list'])) {
@@ -16,7 +19,9 @@ if($user->username == 'Sales') {
         $searchQuery = '%'.$searchQuery.'%';
 
         $searchSQL = "SELECT * FROM `tbl_quotations` 
-                      WHERE tbl_quotations.quotation_number LIKE :search_query";
+                      INNER JOIN tbl_customers
+                      on tbl_quotations.customer_id = tbl_customers.customer_id
+                      WHERE `quotation_number` LIKE :search_query";
 
         $stmt = $db->pdo->prepare($searchSQL);
         $stmt->bindParam(':search_query', $searchQuery);
@@ -61,6 +66,7 @@ if($user->username == 'Sales') {
             <table class="table ">
                 <thead>
                 <tr>
+                    <th>Company name</th>
                     <th>Quotation number</th>
                     <th>Order type</th>
                     <th>Quotation info</th>
@@ -73,6 +79,7 @@ if($user->username == 'Sales') {
                 if(!isset($_GET['type'])) {
                     foreach ($quotations as $item) {
                         echo '<tr>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
                         echo '<td><a href="quotation/info_quotation.php?quotationid=' . $item["quotation_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
@@ -84,6 +91,7 @@ if($user->username == 'Sales') {
                     foreach ($searchResults as $item)
                     {
                         echo '<tr>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
                         echo '<td><a href="quotation/info_quotation.php?quotationid=' . $item["quotation_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
@@ -104,7 +112,10 @@ if($user->username == 'Sales') {
 if($user->username == 'Finance') {
     include realpath(__DIR__. '/parts/header_finance.php');
     $quotations = $db->pdo->
-    query("SELECT * FROM `tbl_quotations`")
+    query("SELECT * FROM tbl_quotations
+        INNER JOIN tbl_customers
+          on tbl_quotations.customer_id = tbl_customers.customer_id
+        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit`")
         ->fetchAll(PDO::FETCH_ASSOC);
 
 if(isset($_GET['search-quotation-list'])) {
@@ -113,7 +124,9 @@ if(isset($_GET['search-quotation-list'])) {
     $searchQuery = '%'.$searchQuery.'%';
 
     $searchSQL = "SELECT * FROM `tbl_quotations` 
-                      WHERE tbl_quotations.quotation_number LIKE :search_query";
+                      INNER JOIN tbl_customers
+                      on tbl_quotations.customer_id = tbl_customers.customer_id
+                      WHERE `quotation_number` LIKE :search_query";
 
     $stmt = $db->pdo->prepare($searchSQL);
     $stmt->bindParam(':search_query', $searchQuery);
@@ -158,6 +171,7 @@ if(isset($_GET['search-quotation-list'])) {
             <table class="table ">
                 <thead>
                 <tr>
+                    <th>Company name</th>
                     <th>Quotation number</th>
                     <th>Order type</th>
                     <th>Quotation info</th>
@@ -170,6 +184,7 @@ if(isset($_GET['search-quotation-list'])) {
                 if(!isset($_GET['type'])) {
                     foreach ($quotations as $item) {
                         echo '<tr>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
                         echo '<td><a href="quotation/info_quotation.php?customerid=' . $item["customer_id"] . '">Quotation info</a></td>';
@@ -181,6 +196,7 @@ if(isset($_GET['search-quotation-list'])) {
                     foreach ($searchResults as $item)
                     {
                         echo '<tr>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
                         echo '<td><a href="quotation/info_quotation.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
@@ -200,7 +216,10 @@ if(isset($_GET['search-quotation-list'])) {
 if($user->username == 'Admin') {
     include realpath(__DIR__. '/parts/header_admin.php');
     $quotations = $db->pdo->
-    query("SELECT * FROM `tbl_quotations`")
+    query("SELECT * FROM tbl_quotations
+        INNER JOIN tbl_customers
+          on tbl_quotations.customer_id = tbl_customers.customer_id
+        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit`")
         ->fetchAll(PDO::FETCH_ASSOC);
 
 if(isset($_GET['search-quotation-list'])) {
@@ -209,7 +228,9 @@ if(isset($_GET['search-quotation-list'])) {
     $searchQuery = '%'.$searchQuery.'%';
 
     $searchSQL = "SELECT * FROM `tbl_quotations` 
-                      WHERE tbl_quotations.quotation_number LIKE :search_query";
+                      INNER JOIN tbl_customers
+                      on tbl_quotations.customer_id = tbl_customers.customer_id
+                      WHERE `quotation_number` LIKE :search_query";
 
     $stmt = $db->pdo->prepare($searchSQL);
     $stmt->bindParam(':search_query', $searchQuery);
@@ -254,6 +275,7 @@ if(isset($_GET['search-quotation-list'])) {
             <table class="table ">
                 <thead>
                 <tr>
+                    <th>Company name</th>
                     <th>Quotation number</th>
                     <th>Order type</th>
                     <th>Quotation info</th>
@@ -266,6 +288,7 @@ if(isset($_GET['search-quotation-list'])) {
                 if(!isset($_GET['type'])) {
                     foreach ($quotations as $item) {
                         echo '<tr>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
                         echo '<td><a href="quotation/info_quotation.php?customerid=' . $item["customer_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
@@ -277,6 +300,7 @@ if(isset($_GET['search-quotation-list'])) {
                     foreach ($searchResults as $item)
                     {
                         echo '<tr>';
+                        echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['quotation_number'] . '</td>';
                         echo '<td>' . $item['order_type'] . '</td>';
                         echo '<td><a href="quotation/info_quotation.php?customerid=' . $item["customer_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
