@@ -21,7 +21,9 @@ if($user->username == 'Finance') {
         $searchQuery = '%'.$searchQuery.'%';
 
         $searchSQL = "SELECT * FROM `tbl_invoices` 
-                      WHERE tbl_invoices.invoice_nr LIKE :search_query 
+                      INNER JOIN tbl_projects
+                      on tbl_invoices.project_id = tbl_projects.project_id
+                      WHERE `project_name` LIKE :search_query 
                       AND tbl_invoices.paid = 0";
 
         $stmt = $db->pdo->prepare($searchSQL);
@@ -68,6 +70,7 @@ if($user->username == 'Finance') {
             <table class="table ">
                 <thead>
                 <tr>
+                    <th>Project name</th>
                     <th>Invoice number</th>
                     <th>Project id</th>
                     <th>Paid</th>
@@ -82,6 +85,7 @@ if($user->username == 'Finance') {
                 if(!isset($_GET['type']) || $_GET['search-invoice-list'] == '') {
                     foreach ($invoices as $item) {
                         echo '<tr>';
+                        echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['invoice_nr'] . '</td>';
                         echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['paid'] . '</td>';
@@ -95,6 +99,7 @@ if($user->username == 'Finance') {
                     foreach ($searchResults as $item)
                     {
                         echo '<tr>';
+                        echo '<td>' . $item['project_name'] . '</td>';
                         echo '<td>' . $item['invoice_nr'] . '</td>';
                         echo '<td>' . $item['project_id'] . '</td>';
                         echo '<td>' . $item['paid'] . '</td>';
@@ -132,7 +137,9 @@ if($user->username == 'Admin') {
         $searchQuery = '%'.$searchQuery.'%';
 
         $searchSQL = "SELECT * FROM `tbl_invoices` 
-                      WHERE tbl_invoices.invoice_nr LIKE :search_query 
+                      INNER JOIN tbl_projects
+                      on tbl_invoices.project_id = tbl_projects.project_id
+                      WHERE `project_name` LIKE :search_query 
                       AND tbl_invoices.paid = 0";
 
         $stmt = $db->pdo->prepare($searchSQL);
@@ -182,6 +189,7 @@ if($user->username == 'Admin') {
     <table class="table ">
     <thead>
     <tr>
+        <th>Project name</th>
         <th>Invoice number</th>
         <th>Project id</th>
         <th>Paid</th>
@@ -196,6 +204,7 @@ if($user->username == 'Admin') {
     if (!isset($_GET['type']) || $_GET['search-invoice-list'] == '') {
         foreach ($invoices as $item) {
             echo '<tr>';
+            echo '<td>' . $item['project_name'] . '</td>';
             echo '<td>' . $item['invoice_nr'] . '</td>';
             echo '<td>' . $item['project_id'] . '</td>';
             echo '<td>' . $item['paid'] . '</td>';
@@ -208,6 +217,7 @@ if($user->username == 'Admin') {
     if (isset($_GET['type']) && $_GET['type'] == 'search' && $_GET['search-invoice-list'] != '') {
         foreach ($searchResults as $item) {
             echo '<tr>';
+            echo '<td>' . $item['project_name'] . '</td>';
             echo '<td>' . $item['invoice_nr'] . '</td>';
             echo '<td>' . $item['project_id'] . '</td>';
             echo '<td>' . $item['paid'] . '</td>';
