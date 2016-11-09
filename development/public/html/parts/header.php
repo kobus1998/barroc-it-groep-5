@@ -20,4 +20,11 @@
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <!--<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
         <script>tinymce.init({ selector:'textarea' });</script>-->
+
+        <style>
+            h2, h1 {
+                color: #CFC1B5!important;
+                text-shadow: 1px 1px 1px black!important;
+            }
+        </style>
     </head>
