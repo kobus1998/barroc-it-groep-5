@@ -29,7 +29,17 @@ class Appointments
         $stmt->bindParam(':customerId', $_GET['customerid']);
         $stmt->execute();
     }
-
+    
+    public function editAppointment($method, $id) {
+        $sql = "UPDATE `tbl_appointments` SET `tbl_appointments`.appointment_day = :appointmentDay,
+        `tbl_appointments`.next_action = :nextAction WHERE appointment_id = $id";
+        $db = Database::getInstance();
+        $stmt = $db->pdo->prepare($sql);
+        $stmt->bindParam(':appointmentDay', $_POST['edit-appointment-day']);
+        $stmt->bindParam(':nextAction', $_POST['edit-next-action']);
+        $stmt->execute();
+    }
+    
     public function lastContactDate($id) {
         $db = Database::getInstance();
         $result = $db->pdo->query("SELECT appointment_day FROM `tbl_appointments` 
