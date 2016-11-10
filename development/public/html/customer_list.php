@@ -6,7 +6,7 @@ $user->checkPage($user->username);
 
 if($user->username == 'Sales') {
     include realpath(__DIR__. '/parts/header_sales.php');
-    $customers = $db->pdo->query("SELECT * FROM `tbl_customers`")
+    $customers = $db->pdo->query("SELECT * FROM `tbl_customers` ORDER BY `customer_id` DESC")
                                 ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-customer-list'])) {
@@ -14,7 +14,7 @@ if($user->username == 'Sales') {
         $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
         $searchQuery = '%'.$searchQuery.'%';
 
-        $searchSQL = "SELECT * FROM `tbl_customers` WHERE `company_name` LIKE :search_query";
+        $searchSQL = "SELECT * FROM `tbl_customers` WHERE `company_name` LIKE :search_query ORDER BY `customer_id` DESC";
 
         $stmt = $db->pdo->prepare($searchSQL);
         $stmt->bindParam(':search_query', $searchQuery);
@@ -94,7 +94,7 @@ if($user->username == 'Sales') {
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $item['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
                         echo '<td><a href="quotation/add_quotation.php?customerid=' . $item['customer_id'] . '" class="btn btn-warning glyphicon glyphicon-plus"></a></td>';
-                        echo '<td><a href="Appointments/add_appointment.php?customerid=' . $item["customer_id"] . '"class="btn btn-primary glyphicon glyphicon-calendar"></a></td>';
+                        echo '<td><a href="appointments/add_appointment.php?customerid=' . $item["customer_id"] . '"class="btn btn-primary glyphicon glyphicon-calendar"></a></td>';
                         echo '</tr>';
                         }
                 }
@@ -114,7 +114,7 @@ if($user->username == 'Sales') {
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
                         echo '<td><a href="quotation/add_quotation.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-warning glyphicon glyphicon-plus"></a></td>';
-                        echo '<td><a href="Appointments/add_appointment.php?customerid=' . $searchResults["customer_id"] . '"class="btn btn-primary glyphicon glyphicon-calendar"></a></td>';
+                        echo '<td><a href="appointments/add_appointment.php?customerid=' . $searchResults["customer_id"] . '"class="btn btn-primary glyphicon glyphicon-calendar"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -132,7 +132,7 @@ if($user->username == 'Sales') {
 if($user->username == 'Finance') {
     include realpath(__DIR__. '/parts/header_finance.php');
     $customers = $db->pdo->
-    query("SELECT * FROM `tbl_customers`")
+    query("SELECT * FROM `tbl_customers` ORDER BY `customer_id` DESC")
         ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-customer-list'])) {
@@ -140,7 +140,7 @@ if($user->username == 'Finance') {
         $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
         $searchQuery = '%'.$searchQuery.'%';
 
-        $searchSQL = "SELECT * FROM `tbl_customers` WHERE `company_name` LIKE :search_query";
+        $searchSQL = "SELECT * FROM `tbl_customers` WHERE `company_name` LIKE :search_query ORDER BY `customer_id` DESC";
 
         $stmt = $db->pdo->prepare($searchSQL);
         $stmt->bindParam(':search_query', $searchQuery);
@@ -251,7 +251,7 @@ if($user->username == 'Finance') {
 if($user->username == 'Admin') {
     include realpath(__DIR__. '/parts/header_admin.php');
     $customers = $db->pdo->
-    query("SELECT * FROM `tbl_customers`")
+    query("SELECT * FROM `tbl_customers` ORDER BY `customer_id` DESC")
         ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-customer-list'])) {
@@ -259,7 +259,7 @@ if($user->username == 'Admin') {
         $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
         $searchQuery = '%'.$searchQuery.'%';
 
-        $searchSQL = "SELECT * FROM `tbl_customers` WHERE `company_name` LIKE :search_query";
+        $searchSQL = "SELECT * FROM `tbl_customers` WHERE `company_name` LIKE :search_query ORDER BY `customer_id` DESC";
 
         $stmt = $db->pdo->prepare($searchSQL);
         $stmt->bindParam(':search_query', $searchQuery);
@@ -331,7 +331,7 @@ if($user->username == 'Admin') {
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $item['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
                         echo '<td><a href="quotation/add_quotation.php?customerid=' . $item['customer_id'] . '" class="btn btn-warning glyphicon glyphicon-plus"></a></td>';
-                        echo '<td><a href="Appointments/add_appointment.php?customerid=' . $item["customer_id"] . '"class="btn btn-primary glyphicon glyphicon-calendar"></a></td>';
+                        echo '<td><a href="appointments/add_appointment.php?customerid=' . $item["customer_id"] . '"class="btn btn-primary glyphicon glyphicon-calendar"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -346,7 +346,7 @@ if($user->username == 'Admin') {
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
                         echo '<td><a href="quotation/add_quotation.php?customerid=' . $item['customer_id'] . '" class="btn btn-warning glyphicon glyphicon-plus"></a></td>';
-                        echo '<td><a href="Appointments/add_appointment.php?customerid=' . $item["customer_id"] . '"class="btn btn-primary glyphicon glyphicon-calendar"></a></td>';
+                        echo '<td><a href="appointments/add_appointment.php?customerid=' . $item["customer_id"] . '"class="btn btn-primary glyphicon glyphicon-calendar"></a></td>';
                         echo '</tr>';
                     }
                 } else {
@@ -366,7 +366,7 @@ if($user->username == 'Admin') {
 if($user->username == 'Development') {
     include realpath(__DIR__. '/parts/header_development.php');
     $customers = $db->pdo->
-    query("SELECT * from tbl_customers WHERE (`credit_worthy` = 1) AND (`credit_balance` BETWEEN 0 AND `limit`)")
+    query("SELECT * from tbl_customers WHERE (`credit_worthy` = 1) AND (`credit_balance` BETWEEN 0 AND `limit`) ORDER BY `customer_id` DESC")
         ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-customer-list'])) {
@@ -374,7 +374,7 @@ if($user->username == 'Development') {
         $searchQuery = preg_replace("#[^0-9a-z]#i","",$searchGET);
         $searchQuery = '%'.$searchQuery.'%';
 
-        $searchSQL = "SELECT * FROM `tbl_customers` WHERE `company_name` LIKE :search_query";
+        $searchSQL = "SELECT * FROM `tbl_customers` WHERE `company_name` LIKE :search_query ORDER BY `customer_id` DESC";
 
         $stmt = $db->pdo->prepare($searchSQL);
         $stmt->bindParam(':search_query', $searchQuery);
