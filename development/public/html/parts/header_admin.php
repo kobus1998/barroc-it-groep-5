@@ -39,6 +39,13 @@
                             <li><a href="<?php echo BASE_URL ?>/development/public/html/project_list.php">Project list</a></li>
                         </ul>
                     </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Appointment<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?php echo BASE_URL ?>/development/public/html/appointment_list.php">Appointment list</a></li>
+                        </ul>
+                    </li>
                 </ul>
 
                 <ul class="nav navbar-right row">
