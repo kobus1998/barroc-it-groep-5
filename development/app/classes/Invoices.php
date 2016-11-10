@@ -69,14 +69,14 @@ class Invoices  {
             WHERE :projectid = tbl_customers.customer_id
             ";
         $stmt = $db->pdo->prepare($sql);
-        $stmt->bindParam(':projectid', $projectData);
+        $stmt->bindParam(':projectid', $projectData[0]['customer_id']);
         $stmt->execute();
     }
 
     public function increaseCustomerBalance($projectId, $price) {
         $db = Database::getInstance();
 
-        $projectQuery = $db->pdo->query("SELECT * FROM tbl_projects WHERE project_id = :projectid");
+        $projectQuery = "SELECT * FROM tbl_projects WHERE project_id = :projectid";
 
         $stmtProject = $db->pdo->prepare($projectQuery);
         $stmtProject->bindParam(':projectid', $projectId);

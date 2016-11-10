@@ -14,7 +14,7 @@ if(isset($_GET['invoiceid'])) {
 if( $_SERVER['REQUEST_METHOD'] == 'POST') {
     if($_POST['type'] == 'add invoice') {
         if( !Validator::numeric()->validate($_POST['invoice_nr']) ||
-            !Validator::numeric()->validate($_POST['price']) ||
+            !Validator::notEmpty()->validate($_POST['price']) ||
             !Validator::numeric()->validate($_POST['tax']))
         {
             $user->redirect("invoices/add_invoice.php?projectid=$projectId&message=Something is not filled it");
