@@ -11,7 +11,7 @@ if($user->username == 'Finance') {
             ON `tbl_projects`.project_id = `tbl_invoices`.project_id
           LEFT JOIN `tbl_customers`
             on `tbl_customers`.customer_id = `tbl_projects`.customer_id
-          WHERE tbl_invoices.paid = 0 ORDER BY `invoice_id` DESC
+          WHERE tbl_invoices.invoice_id ORDER BY `invoice_id` DESC
           ")
         ->fetchAll(PDO::FETCH_ASSOC);
 
@@ -24,7 +24,7 @@ if($user->username == 'Finance') {
                       INNER JOIN tbl_projects
                       on tbl_invoices.project_id = tbl_projects.project_id
                       WHERE `project_name` LIKE :search_query 
-                      AND tbl_invoices.paid = 0 ORDER BY `invoice_id` DESC";
+                      AND tbl_invoices.invoice_id ORDER BY `invoice_id` DESC";
 
         $stmt = $db->pdo->prepare($searchSQL);
         $stmt->bindParam(':search_query', $searchQuery);
@@ -126,7 +126,7 @@ if($user->username == 'Admin') {
             ON `tbl_projects`.project_id = `tbl_invoices`.project_id
           LEFT JOIN `tbl_customers`
             on `tbl_customers`.customer_id = `tbl_projects`.customer_id
-          WHERE tbl_invoices.paid = 0 ORDER BY `invoice_id` DESC
+          WHERE tbl_invoices.invoice_id ORDER BY `invoice_id` DESC
           ")
         ->fetchAll(PDO::FETCH_ASSOC);
 
@@ -139,7 +139,7 @@ if($user->username == 'Admin') {
                       INNER JOIN tbl_projects
                       on tbl_invoices.project_id = tbl_projects.project_id
                       WHERE `project_name` LIKE :search_query 
-                      AND tbl_invoices.paid = 0 ORDER BY `invoice_id` DESC";
+                      AND tbl_invoices.invoice_id ORDER BY `invoice_id` DESC";
 
         $stmt = $db->pdo->prepare($searchSQL);
         $stmt->bindParam(':search_query', $searchQuery);

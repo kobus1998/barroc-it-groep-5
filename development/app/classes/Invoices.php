@@ -113,7 +113,7 @@ class Invoices  {
         $projectId = $invoiceId[0]['project_id'];
 
         $projectSql = "SELECT * FROM tbl_projects WHERE project_id = :projectid";
-        $stmtIdProject = $db->pdo->prepare($projectIdSql);
+        $stmtIdProject = $db->pdo->prepare($projectSql);
         $stmtIdProject->bindParam(':projectid', $projectId);
         $stmtIdProject->execute();
         $project = $stmtIdProject->fetchAll(PDO::FETCH_ASSOC);
