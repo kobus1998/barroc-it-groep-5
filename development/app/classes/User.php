@@ -1,13 +1,14 @@
 <?php
 
-class User {
+class User
+{
 
     private $db;
     public $username;
     public $user_id;
     public $isLoggedIn = false;
-        
-    
+
+
     public function __construct()
     {
         // Start database instance when new user is created
@@ -18,7 +19,7 @@ class User {
     {
         $_SESSION['user_id'] = $info['user_id'];
         $_SESSION['username'] = $info['username'];
-        
+
         $this->redirect('../../app/router.php');
     }
 
@@ -30,8 +31,7 @@ class User {
          *  Make new row
          */
 
-        if($this->uniqueUser($username) == 0)
-        {
+        if ($this->uniqueUser($username) == 0) {
             $sql = "INSERT INTO `tbl_users` (`username`, `password`) VALUES (:username, :password)";
         } else {
             $sql = "UPDATE `tbl_users` SET `password` = :password Where :username = `username`";
@@ -42,10 +42,9 @@ class User {
         $stmt->execute();
     }
 
-    public function logout() 
+    public function logout()
     {
-        if( isset($_SESSION))
-        {
+        if (isset($_SESSION)) {
             session_destroy();
         }
         $this->redirect('index.php');
@@ -59,8 +58,7 @@ class User {
         $stmt->execute();
         $data = $stmt->rowCount();
 
-        if($data == 0)
-        {
+        if ($data == 0) {
             return false;
             die;
         } else {
@@ -68,21 +66,21 @@ class User {
             die;
         }
     }
-    
-    public function redirect($path) 
+
+    public function redirect($path)
     {
         header('location: ' . BASE_URL . '/development/public/html/' . $path);
     }
-    
-    public function redirectMessage($path, $message) 
+
+    public function redirectMessage($path, $message)
     {
         header('location: ' . BASE_URL . '/development/public/html/' . $path . '?message=' . $message . '&');
     }
-    
+
     public function checkPage($departments)
     {
 
-        if($this->getLoggedIn() != true || $this->username != "$departments" && $this->username != "Admin"){
+        if ($this->getLoggedIn() != true || $this->username != "$departments" && $this->username != "Admin") {
             $this->redirectMessage('index.php', 'Not logged in');
         }
     }
@@ -102,7 +100,6 @@ class User {
     }
 
 
-
     public function setUsername($username)
     {
         $this->username = $username;
@@ -114,7 +111,6 @@ class User {
     }
 
 
-    
     public function setLoggedIn($value)
     {
         $this->isLoggedIn = $value;
