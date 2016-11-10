@@ -30,7 +30,7 @@ $db = Database::getInstance();
 
 if($user->username == 'Sales') {
 
-    $stmt = $db->pdo->query("SELECT *
+    $sql = "SELECT *
         FROM `tbl_customers`
             left join `tbl_projects`
                 on `tbl_projects`.`customer_id` = `tbl_customers`.`customer_id`
@@ -38,8 +38,13 @@ if($user->username == 'Sales') {
                 on `tbl_appointments`.`customer_id` = `tbl_customers`.`customer_id`
             left join `tbl_invoices`
                 on `tbl_invoices`.`project_id` = `tbl_projects`.`project_id`
-        where `tbl_customers`.customer_id = " . $customerID);
-    $sales = $stmt->fetchALL(PDO::FETCH_ASSOC);
+        where `tbl_customers`.customer_id = :customerid";
+
+    $stmt = $db->pdo->prepare($sql);
+    $stmt->bindParam(':customerid', $customerID);
+    $stmt->execute();
+
+    $sales = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
     <div class="header">
@@ -232,15 +237,22 @@ if($user->username == 'Sales') {
     <?php
 }
 if($user->username == 'Finance') {
-    $finance = $db->pdo->query(" 
+    $sql = (" 
     SELECT *
     FROM `tbl_customers`
     left join `tbl_projects`
       on `tbl_projects`.customer_id = `tbl_customers`.customer_id
     left join `tbl_invoices`
       on `tbl_invoices`.project_id = `tbl_projects`.project_id
-    WHERE `tbl_customers`.customer_id = $customerID
-     ")->fetchAll(PDO::FETCH_ASSOC);
+    WHERE `tbl_customers`.customer_id = :customerid
+     ");
+
+    $stmt = $db->pdo->prepare($sql);
+    $stmt->bindParam(':customerid', $customerID);
+    $stmt->execute();
+
+    $finance = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
     ?>
     <div class="header">
         <?php require '../parts/header_finance.php'; ?>
@@ -370,11 +382,12 @@ if($user->username == 'Finance') {
    	  ON `tbl_invoices`.`project_id` = `tbl_projects`.`project_id`
     LEFT JOIN `tbl_appointments`
    	  ON `tbl_appointments`.`project_id` = `tbl_projects`.`project_id`
-    WHERE `tbl_customers`.customer_id = $customerID
+    WHERE `tbl_customers`.customer_id = :customerid
     ";
 
-        $stmt = $db->pdo->query($sql);
-        $adminSQL = $stmt->fetchALL(PDO::FETCH_ASSOC);
+        $stmt = $db->pdo->prepare($sql);
+        $stmt->bindParam(':customerid', $customerID);
+        $adminSQL = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         ?>
         <script>
