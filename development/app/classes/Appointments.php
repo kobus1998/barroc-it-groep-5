@@ -37,6 +37,7 @@ class Appointments
         $stmt = $db->pdo->prepare($sql);
         $stmt->bindParam(':appointmentDay', $_POST['edit-appointment-day']);
         $stmt->bindParam(':nextAction', $_POST['edit-next-action']);
+        // Kobus prepare je id's
         $stmt->execute();
     }
     
@@ -45,6 +46,7 @@ class Appointments
         $result = $db->pdo->query("SELECT appointment_day FROM `tbl_appointments` 
                 WHERE customer_id = $id ORDER BY appointment_day DESC limit 1")
             ->fetchAll(PDO::FETCH_ASSOC);
+        // Kobus prepare je id's
 
         var_dump($result);
 
@@ -52,6 +54,7 @@ class Appointments
 
         $sql = "UPDATE `tbl_customers` SET last_contact_date = '$lastContactDate'
                 WHERE customer_id = $id";
+        // Kobus prepare je id's
         $db->pdo->prepare($sql)->execute();
     }
 }
