@@ -84,6 +84,7 @@ if($user->username == 'Sales') {
                         echo '<tr>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
+                        echo '<td>' . $item['due_date'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
                         echo '<td><a href="project/edit_project.php?projectid=' . $item['project_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
@@ -97,6 +98,7 @@ if($user->username == 'Sales') {
                         echo '<tr>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
+                        echo '<td>' . $item['due_date'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                         echo '<td><a href="project/edit_project.php?projectid=' . $item['project_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
@@ -190,6 +192,7 @@ if($user->username == 'Finance') {
                         echo '<tr>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
+                        echo '<td>' . $item['due_date'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                         echo '<td><a href="invoices/add_invoice.php?projectid=' . $item['project_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
@@ -203,6 +206,7 @@ if($user->username == 'Finance') {
                         echo '<tr>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
+                        echo '<td>' . $item['due_date'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                         echo '<td><a href="invoices/add_invoice.php?projectid=' . $item['project_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
@@ -299,6 +303,7 @@ if($user->username == 'Admin') {
                         echo '<tr>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
+                        echo '<td>' . $item['due_date'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                         echo '<td><a href="invoices/add_invoice.php?projectid=' . $item['project_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
@@ -312,6 +317,7 @@ if($user->username == 'Admin') {
                         echo '<tr>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
+                        echo '<td>' . $item['due_date'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                         echo '<td><a href="invoices/add_invoice.php?projectid=' . $item['project_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
@@ -408,6 +414,7 @@ if($user->username == 'Development') {
                         echo '<tr>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
+                        echo '<td>' . $item['due_date'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                         echo '</tr>';
@@ -420,6 +427,7 @@ if($user->username == 'Development') {
                         echo '<tr>';
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['project_name'] . '</td>';
+                        echo '<td>' . $item['due_date'] . '</td>';
                         echo '<td>' . $item['deadline'] . '</td>';
                         echo '<td><a href="project/info_project.php?projectid=' . $item["project_id"] . '" class="btn btn-primary glyphicon glyphicon-eye-open"></a></td>';
                         echo '</tr>';
