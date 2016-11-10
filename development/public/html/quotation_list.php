@@ -10,7 +10,7 @@ if($user->username == 'Sales') {
     query("SELECT * FROM tbl_quotations
         INNER JOIN tbl_customers
           on tbl_quotations.customer_id = tbl_customers.customer_id
-        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit` ORDER BY `customer_id` DESC")
+        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit` ORDER BY `quotation_id` DESC")
         ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-quotation-list'])) {
@@ -21,7 +21,7 @@ if($user->username == 'Sales') {
         $searchSQL = "SELECT * FROM `tbl_quotations` 
                       INNER JOIN tbl_customers
                       on tbl_quotations.customer_id = tbl_customers.customer_id
-                      WHERE `quotation_number` LIKE :search_query ORDER BY `customer_id` DESC";
+                      WHERE `quotation_number` LIKE :search_query ORDER BY `quotation_id` DESC";
 
         $stmt = $db->pdo->prepare($searchSQL);
         $stmt->bindParam(':search_query', $searchQuery);
@@ -115,7 +115,7 @@ if($user->username == 'Finance') {
     query("SELECT * FROM tbl_quotations
         INNER JOIN tbl_customers
           on tbl_quotations.customer_id = tbl_customers.customer_id
-        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit` ORDER BY `customer_id` DESC")
+        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit` ORDER BY `quotation_id` DESC")
         ->fetchAll(PDO::FETCH_ASSOC);
 
 if(isset($_GET['search-quotation-list'])) {
@@ -126,7 +126,7 @@ if(isset($_GET['search-quotation-list'])) {
     $searchSQL = "SELECT * FROM `tbl_quotations` 
                       INNER JOIN tbl_customers
                       on tbl_quotations.customer_id = tbl_customers.customer_id
-                      WHERE `quotation_number` LIKE :search_query ORDER BY `customer_id` DESC";
+                      WHERE `quotation_number` LIKE :search_query ORDER BY `quotation_id` DESC";
 
     $stmt = $db->pdo->prepare($searchSQL);
     $stmt->bindParam(':search_query', $searchQuery);
@@ -219,7 +219,7 @@ if($user->username == 'Admin') {
     query("SELECT * FROM tbl_quotations
         INNER JOIN tbl_customers
           on tbl_quotations.customer_id = tbl_customers.customer_id
-        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit` ORDER BY `customer_id` DESC")
+        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit` ORDER BY `quotation_id` DESC")
         ->fetchAll(PDO::FETCH_ASSOC);
 
 if(isset($_GET['search-quotation-list'])) {
@@ -230,7 +230,7 @@ if(isset($_GET['search-quotation-list'])) {
     $searchSQL = "SELECT * FROM `tbl_quotations` 
                       INNER JOIN tbl_customers
                       on tbl_quotations.customer_id = tbl_customers.customer_id
-                      WHERE `quotation_number` LIKE :search_query ORDER BY `customer_id` DESC";
+                      WHERE `quotation_number` LIKE :search_query ORDER BY `quotation_id` DESC";
 
     $stmt = $db->pdo->prepare($searchSQL);
     $stmt->bindParam(':search_query', $searchQuery);
