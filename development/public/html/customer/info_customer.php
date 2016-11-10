@@ -377,7 +377,7 @@ if ($stmt->rowCount() == 0) {
                             echo '<tr>';
                             echo '<td>' . $item['appointment_day'] . '</td>';
                             echo '<td>' . $item['next_action'] . '</td>';
-                            echo '<td><a class="btn btn-primary glyphicon glyphicon-book" href="../Appointments/edit_appointment.php?appointmentid=' . $item["appointment_id"] . '&customerid=' . $item["customer_id"] . '"></a></td>';
+                            echo '<td><a class="btn btn-primary glyphicon glyphicon-book" href="../appointment/edit_appointment.php?appointmentid=' . $item["appointment_id"] . '&customerid=' . $item["customer_id"] . '"></a></td>';
                             echo '</tr>';
                         }
                         ?>
