@@ -90,7 +90,6 @@ if( $_POST['type'] == 'edit customer') {
 
             ) {
                 $message = 'some required fields are empty';
-                die;
                 $user->redirectMessage("customer_list.php", $message);
             }
 
