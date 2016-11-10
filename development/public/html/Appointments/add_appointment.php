@@ -48,7 +48,7 @@ $customerName = Database::getInstance()->pdo->query("SELECT * FROM `tbl_customer
 				</P>
 			<?php } ?>
     		<h1 class="col-md-6 col-md-offset-3">Add appointment</h1>
-	        <form method="post" class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>/development/app/controller/appointmentController.php?customerid=<?= $customerId; ?>">
+	        <form method="POST" class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>/development/app/controller/appointmentController.php?customerid=<?= $customerId; ?>">
 
 				<p><b>For user </b><?= $customerName[0]['company_name']; ?></p>
 

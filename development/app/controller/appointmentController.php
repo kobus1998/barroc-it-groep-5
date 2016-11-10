@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $appointments->addAppointment($_POST);
             $appointments->lastContactDate($customerid);
-            $user->redirect("customer/info_customer?customerid=$customerid");
+            $user->redirect("customer/info_customer.php?customerid=$customerid");
         }
     }
     if($_POST['type'] == 'edit appointment') {
@@ -30,7 +30,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $appointments->editAppointment($_POST, $appointmentid);
             $appointments->lastContactDate($customerid);
-            $user->redirect("customer/info_customer?customerid=$customerid");
+            $user->redirect("customer/info_customer.php?customerid=$customerid");
         }
     }
 }
