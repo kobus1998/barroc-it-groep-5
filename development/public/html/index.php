@@ -18,7 +18,7 @@ if($user->getLoggedIn() == true) {
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" style="text-shadow: 1px 1px 1px black; color: gray;">
                        <p>Barroc IT</p>
                     </a>
                 </div>
