@@ -179,6 +179,7 @@ if($user->username == 'Finance') {
                 <tr>
                     <th>Company name</th>
                     <th>Project name</th>
+                    <th>Due date</th>
                     <th>Deadline</th>
                     <th>Project info</th>
                     <th>Add invoice</th>
