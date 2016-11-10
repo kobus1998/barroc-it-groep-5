@@ -47,8 +47,6 @@ class Quotation {
         $stmt->bindParam(':customerId' , $quotation['customer_id']);
 
         if($stmt->execute()) {
-            
-            mail($to, $subject, $message);
             return true;
         }
 
