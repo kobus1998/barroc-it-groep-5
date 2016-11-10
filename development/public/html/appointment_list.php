@@ -85,8 +85,8 @@ if($user->username == 'Sales') {
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['appointment_day'] . '</td>';
                         echo '<td>' . $item['next_action'] . '</td>';
-                        echo '<td><a href="appointment/info_appointment.php?appointmentid=' . $item["appointment_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
-                        echo '<td><a href="appointment/edit_appointment.php?appointmentid=' . $item["appointment_id"] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
+                        echo '<td><a href="appointment/info_appointment.php?appointmentid=' . $item["appointment_id"] . '&customerid=' . $item['customer_id'] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="appointment/edit_appointment.php?appointmentid=' . $item["appointment_id"] . '&customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -98,8 +98,8 @@ if($user->username == 'Sales') {
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['appointment_day'] . '</td>';
                         echo '<td>' . $item['next_action'] . '</td>';
-                        echo '<td><a href="appointment/info_appointment.php?appointmentid=' . $item["appointment_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
-                        echo '<td><a href="appointment/edit_appointment.php?appointmentid=' . $item["appointment_id"] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
+                        echo '<td><a href="appointment/info_appointment.php?appointmentid=' . $item["appointment_id"] . '&customerid=' . $item['customer_id'] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="appointment/edit_appointment.php?appointmentid=' . $item["appointment_id"] . '&customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -193,8 +193,8 @@ if($user->username == 'Admin') {
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['appointment_day'] . '</td>';
                         echo '<td>' . $item['next_action'] . '</td>';
-                        echo '<td><a href="appointment/info_appointment.php?appointmentid=' . $item["appointment_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
-                        echo '<td><a href="appointment/edit_appointment.php?appointmentid=' . $item["appointment_id"] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
+                        echo '<td><a href="appointment/info_appointment.php?appointmentid=' . $item["appointment_id"] . '&customerid=' . $item['customer_id'] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="appointment/edit_appointment.php?appointmentid=' . $item["appointment_id"] . '&customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '</tr>';
                     }
                 }
@@ -206,8 +206,8 @@ if($user->username == 'Admin') {
                         echo '<td>' . $item['company_name'] . '</td>';
                         echo '<td>' . $item['appointment_day'] . '</td>';
                         echo '<td>' . $item['next_action'] . '</td>';
-                        echo '<td><a href="appointment/info_appointment.php?appointmentid=' . $item["appointment_id"] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
-                        echo '<td><a href="appointment/edit_appointment.php?appointmentid=' . $item["appointment_id"] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
+                        echo '<td><a href="appointment/info_appointment.php?appointmentid=' . $item["appointment_id"] . '&customerid=' . $item['customer_id'] . '" class="btn btn-info glyphicon glyphicon-eye-open"></a></td>';
+                        echo '<td><a href="appointment/edit_appointment.php?appointmentid=' . $item["appointment_id"] . '&customerid=' . $item['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '</tr>';
                     }
                 }

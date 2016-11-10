@@ -11,8 +11,13 @@ $db = Database::getInstance();
 $user->checkPage('Finance');
 $invoiceId = $_GET['invoiceid'];
 
-$getInvoice = Database::getInstance()->pdo->query("SELECT * FROM `tbl_invoices` WHERE invoice_id = $invoiceId")
-    ->fetchAll(PDO::FETCH_ASSOC);
+$sql = "SELECT * FROM `tbl_invoices` WHERE invoice_id = :invoiceid";
+    
+
+$stmt = $db->pdo->prepare($sql);
+$stmt->bindParam(':invoiceid', $invoiceId);
+
+$getInvoice = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if($user->getUsername() == 'Finance' || $user->getUsername() == 'Admin') {
     ?>

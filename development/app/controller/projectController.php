@@ -35,7 +35,7 @@ if ($_POST["type"] == "edit project") {
         !Validator::notEmpty()->validate($_POST['description']) ||
         !Validator::notEmpty()->validate($_POST['hardwaresoftware']))
     {
-        $user->redirect("project/project_list.php?message=Something went wrong");
+        $user->redirect("project_list.php?message=Something went wrong");
         die;
     }
     
@@ -47,7 +47,7 @@ if ($_POST["type"] == "edit project") {
         if ($project->editProject($_POST)) {
             $user->redirect('project_list.php?message=Project updated');
         } else {
-            $user->redirect("project/project_list.php?message=Something went wrong");
+            $user->redirect("project_list.php?message=Something went wrong");
             die;
         }
 
@@ -58,7 +58,7 @@ if ($_POST["type"] == "edit project") {
         if ($project->editProject($_POST) && $project->editProjectDate($_POST, $date)) {
             $user->redirect('project_list.php?message=Project updated');
         } else {
-            $user->redirect("project/project_list.php?message=Something went wrong");
+            $user->redirect("project_list.php?message=Something went wrong");
             die;
         }
     }

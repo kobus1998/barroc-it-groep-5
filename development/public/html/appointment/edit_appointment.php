@@ -1,10 +1,30 @@
 <?php
 require realpath(__dir__ . '/../parts/header.php');
 
+if (!isset($_GET['customerid']) || !isset($_GET['appointmentid'])) {
+	$user->redirect('appointment_list.php?message=No appointment selected');
+}
+
 $customerId = $_GET['customerid'];
 $appointmentId = $_GET['appointmentid'];
-$customerName = Database::getInstance()->pdo->query("SELECT * FROM `tbl_customers` WHERE customer_id = $customerId")->fetchAll(PDO::FETCH_ASSOC);
-$appointments = Database::getInstance()->pdo->query("SELECT * FROM tbl_appointments WHERE customer_id = $customerId")->fetchAll(PDO::FETCH_ASSOC);
+$db = Database::getInstance();
+
+$customerSql = ("SELECT * FROM `tbl_customers` WHERE customer_id = :customerid");
+
+$stmtCustomer = $db->pdo->prepare($customerSql);
+$stmtCustomer->bindParam(':customerid', $customerId);
+
+$stmtCustomer->execute();
+$customer = $stmtCustomer->fetchAll(PDO::FETCH_ASSOC);
+
+
+$appointmentSql = "SELECT * FROM tbl_appointments WHERE appointment_id = :appointmentid";
+
+$stmtAppointment = $db->pdo->prepare($appointmentSql);
+$stmtAppointment->bindParam(':appointmentid', $appointmentId);
+$stmtAppointment->execute();
+
+$appointments = $stmtAppointment->fetchAll(PDO::FETCH_ASSOC);
 
 if($user->getLoggedIn() != true) {
 	$user->redirect('index.php?messageDanger=Youre not logged in');
@@ -56,7 +76,7 @@ if($user->getLoggedIn() != true) {
 		<h1 class="col-md-6 col-md-offset-3">Edit appointment</h1>
 		<form method="post" class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>/development/app/controller/appointmentController.php?appointmentid=<?= $appointmentId; ?>&customerid=<?= $customerId ?>">
 
-			<p><b>For user </b><?= $customerName[0]['company_name']; ?></p>
+			<p><b>For user </b><?= $customer[0]['company_name']; ?></p>
 
 			<div class="form-group">
 				<label for="edit-appointment-day">Appointment day</label>

@@ -11,22 +11,6 @@ class Quotation {
         $this->db = Database::getInstance();
     }
 
-    public function getQuotations()
-    {
-        if (1 == 1) {
-            $sql = "SELECT *
-                FROM tbl_quotations
-                ORDER BY quotation_id DESC
-                LIMIT 30 ";
-        }
-
-        $stmt = $this->db->pdo->prepare($sql);
-        if ($stmt->execute()){
-            return true;
-        }
-        return false;
-    }
-
     public function addQuotation($quotation) {
 
         $db = Database::getInstance();
@@ -45,6 +29,28 @@ class Quotation {
             return true;
         }
         return false;
+    }
+    
+    public function editQuotation($quotation) {
+
+        $db = Database::getInstance();
+
+        $sql = "UPDATE `tbl_quotations`
+                SET `quotation_number` = :quotation_number, `quotation_date` = :quotation_date, `order_type` = :order_type, `description` = :description
+                WHERE `quotation_id` = :quotation_id";
+
+        $stmt = $db->pdo->prepare($sql);
+        $stmt->bindParam(':quotation_id', $quotation['quotation_id']);
+        $stmt->bindParam(':quotation_number', $quotation['quotation_number']);
+        $stmt->bindParam(':quotation_date', $quotation['quotation_date']);
+        $stmt->bindParam(':order_type', $quotation['order_type']);
+        $stmt->bindParam(':description', $quotation['description']);
+
+        if($stmt->execute()) {
+            return true;
+        }
+        return false;
+        
     }
 
 }
