@@ -4,6 +4,8 @@ require_once realpath(__DIR__ . '/../init.php');
 
 $db = Database::getInstance();
 
+
+
 $customer = new Customers();
 use \Respect\Validation\Validator as Validator;
 if ($_POST['type'] == 'add customer') {
@@ -76,17 +78,11 @@ if( $_POST['type'] == 'edit customer') {
             $user->redirectMessage('customer_list.php', $message);
         }
         if ($user->getUsername() === 'Finance') {
-            if (!isset($_POST['edit-credit-worthy'])) {
-                $editCreditWorthy = 0;
-            } else {
-                $editCreditWorthy = 1;
-            }
 
             if (
                 !Validator::numeric()->validate($_POST['customer_id']) ||
                 !Validator::notEmpty()->validate($_POST['edit-bank-account-number']) ||
                 !Validator::notEmpty()->validate($_POST['edit-credit-balance']) ||
-                !Validator::notEmpty()->validate($_POST['edit-number-invoices']) ||
                 !Validator::notEmpty()->validate($_POST['edit-gross-revenue']) ||
                 !Validator::notEmpty()->validate($_POST['edit-limit']) ||
                 !Validator::notEmpty()->validate($_POST['edit-ledger-account-number']) ||
@@ -94,6 +90,7 @@ if( $_POST['type'] == 'edit customer') {
 
             ) {
                 $message = 'some required fields are empty';
+                die;
                 $user->redirectMessage("customer_list.php", $message);
             }
 

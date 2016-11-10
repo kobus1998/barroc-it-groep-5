@@ -92,7 +92,7 @@ if($user->username == 'Sales') {
 
                 <form class="col-md-6 col-md-offset-3" method="post" action="<?php echo BASE_URL ?>/development/app/controller/customerController.php?customerid=<?php echo $customerID ?>">
 
-                    <input type="hidden" name="customer_id" value="<?= $sales[0]['customer_id'] ?>">
+                    <input type="hidden" name="customer_id" value="<?php echo $customerID ?>">
 
                     <div class="form-group">
 
@@ -283,7 +283,7 @@ if($user->username == 'Finance') {
             <form class="col-md-6 col-md-offset-3" method="post"
                   action="<?php echo BASE_URL ?>/development/app/controller/customerController.php?customerid=<?php echo $customerID ?>">
 
-                    <input type="hidden" name="customer_id" value="<?= $finance[0]['customer_id'] ?>">
+                    <input type="hidden" name="customer_id" value="<?= $customerID ?>">
 
 
                     <div class="form-group">
@@ -338,18 +338,15 @@ if($user->username == 'Finance') {
 
                     <p style="font-weight:bold">Credit Worthy</p>
                     <select class="form-control" name="credit_worthy" id="credit_worthy"><?php
-                        var_dump($sales[0]);
-                        if ($sales[0]['credit_worthy'] == 0) { ?>
-                            <option value="1">Yes</option>
-                            <option selected value="0">No</option>
-                        <?php } else if ($sales[0]['credit_worthy'] == 1) { ?>
-                            <option selected value="1">Yes</option>
-                            <option value="0">No</option>
-                        <?php } else { ?>
-                            <option selected disabled>Select an option</option>
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
-                        <?php } ?>
+                        if($finance[0]['credit_worthy'] == 0) {
+                            echo '<option value="1">Yes</option>';
+                            echo '<option selected value="0">No</option>';
+                        } else {
+                            echo '<option selected  value="1">Yes</option>';
+                            echo '<option value="0">No</option>';
+                        }
+
+                        ?>
                     </select>
 
                 </div>
