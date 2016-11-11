@@ -33,8 +33,11 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST') {
     
     if($_POST['type'] == 'edit invoice') {
         var_dump($_POST);
+
+        $totalPrice = $_POST['price'] / 100 * (100 + $_POST['tax']);
+        
         $invoice->editInvoice($invoiceId);
-        $invoice->decreaseCustomerBalance($invoiceId);
+        $invoice->decreaseCustomerBalance($invoiceId, $totalPrice);
         $message = "Invoice is paid";
         $user->redirect("invoice_list.php?messageSuccess=$message");
     }

@@ -100,7 +100,7 @@ class Invoices  {
 
     }
 
-    public function decreaseCustomerBalance($id) {
+    public function decreaseCustomerBalance($id, $price) {
         $db = Database::getInstance();
         
         $projectIdSql = "SELECT project_id FROM tbl_invoices WHERE invoice_id = :id";
@@ -126,10 +126,11 @@ class Invoices  {
                 left join tbl_invoices
 	              on tbl_invoices.project_id = tbl_projects.project_id
 
-                SET tbl_customers.credit_balance = tbl_customers.credit_balance - tbl_invoices.price
+                SET tbl_customers.credit_balance = tbl_customers.credit_balance - :price
                 WHERE tbl_customers.customer_id = :customerId";
         $stmt = $db->pdo->prepare($sql);
         $stmt->bindParam(':customerId', $customerId);
+        $stmt->bindParam(':price', $price);
         $stmt->execute();
     }
 

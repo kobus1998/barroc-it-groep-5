@@ -24,7 +24,7 @@ if($user->username == 'Finance') {
                       INNER JOIN tbl_projects
                       on tbl_invoices.project_id = tbl_projects.project_id
                       WHERE `project_name` LIKE :search_query 
-                      AND tbl_invoices.invoice_id ORDER BY `invoice_id` DESC";
+                      AND tbl_invoices.invoice_id ORDER BY `paid` DESC ";
 
         $stmt = $db->pdo->prepare($searchSQL);
         $stmt->bindParam(':search_query', $searchQuery);
@@ -73,7 +73,7 @@ if($user->username == 'Finance') {
                     <th>Project name</th>
                     <th>Invoice number</th>
                     <th>Project id</th>
-                    <th>Paid</th>
+                    <th><a href="invoice_list.php?filterPaid">Paid</a></th>
                     <th>Invoice info</th>
                     <th>Edit invoice</th>
 
@@ -191,7 +191,7 @@ if($user->username == 'Admin') {
         <th>Project name</th>
         <th>Invoice number</th>
         <th>Project id</th>
-        <th>Paid</th>
+        <th><a href="invoice_list.php?filterPaid">Paid</a></th>
         <th>Invoice info</th>
         <th>Edit invoice</th>
 
