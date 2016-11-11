@@ -341,6 +341,7 @@ if($user->username == 'Development') {
         SELECT * FROM tbl_projects
         INNER JOIN tbl_customers
           on tbl_projects.customer_id = tbl_customers.customer_id
+        WHERE tbl_customers.credit_worthy = 1
         ORDER BY `project_id` DESC
     ")
         ->fetchAll(PDO::FETCH_ASSOC);
