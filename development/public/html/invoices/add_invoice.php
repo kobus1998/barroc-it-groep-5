@@ -50,22 +50,22 @@ $projectId = $_GET['projectid'];
 		<form class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>\development\app\controller\invoiceController.php?projectid=<?= $projectId ?>" method="POST">
 			<div class="form-group">
 
-				<label for="invoice_nr">Invoice number</label>
-				<input class="form-control" type="number" name="invoice_nr" id="invoice_nr">
+				<label for="invoice_nr">Invoice number*</label>
+				<input class="form-control" type="number" name="invoice_nr" id="invoice_nr" required>
 
 			</div>
 
 			<div class="form-group">
 
-				<label for="price">Price</label>
-				<input class="form-control" type="text" name="price" id="price">
+				<label for="price">Price*</label>
+				<input class="form-control" type="text" name="price" id="price" required>
 
 			</div>
 
 			<div class="form-group">
 
-				<label for="tax">Tax</label>
-				<input class="form-control" type="text" name="tax" id="tax">
+				<label for="tax">Tax*</label>
+				<input class="form-control" type="text" name="tax" id="tax" required>
 
 			</div>
 

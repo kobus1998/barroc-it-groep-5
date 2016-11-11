@@ -50,26 +50,26 @@ $user->checkPage('Sales');
 	        <form class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>\development\app\controller\customerController.php" method="POST">
 	        	<div class="form-group">
 
-	        		<label for="company_name">company name</label>
-	        		<input class="form-control" type="text" name="company_name" id="company_name">
+	        		<label for="company_name">company name*</label>
+	        		<input class="form-control" type="text" name="company_name" id="company_name" required>
 
 	        	</div>
 	        	<div class="form-group">
 
-	        		<label for="address_1">address and housenumber</label>
-	        		<input class="form-control" type="text" name="address_1" id="address_1">
+	        		<label for="address_1">address and housenumber*</label>
+	        		<input class="form-control" type="text" name="address_1" id="address_1" required>
 
 	        	</div>
 				<div class="form-group">
 
-					<label for="zipcode">zipcode</label>
-					<input class="form-control" type="text" name="zipcode" id="zipcode">
+					<label for="zipcode">zipcode*</label>
+					<input class="form-control" type="text" name="zipcode" id="zipcode" required>
 
 				</div>
 				<div class="form-group">
 
-					<label for="city">city</label>
-					<input class="form-control" type="text" name="city" id="city">
+					<label for="city">city*</label>
+					<input class="form-control" type="text" name="city" id="city" required>
 
 				</div>
 
@@ -93,26 +93,26 @@ $user->checkPage('Sales');
 				</div>
 				<div class="form-group">
 
-					<label for="contact_person">contact person</label>
-					<input class="form-control" type="text" name="contact_person" id="contact_person">
+					<label for="contact_person">contact person*</label>
+					<input class="form-control" type="text" name="contact_person" id="contact_person" required>
 
 				</div>
 				<div class="form-group">
 
-					<label for="initials">Initials</label>
-					<input class="form-control" type="text" name="initials" id="initials">
+					<label for="initials">Initials*</label>
+					<input class="form-control" type="text" name="initials" id="initials" required>
 
 				</div>
 				<div class="form-group">
 
-					<label for="internal_contact_person">internal contact person</label>
-					<input class="form-control" type="text" name="internal_contact_person" id="internal_contact_person">
+					<label for="internal_contact_person">internal contact person*</label>
+					<input class="form-control" type="text" name="internal_contact_person" id="internal_contact_person" required>
 
 				</div>
 	        	<div class="form-group">
 
-	        		<label for="phone_number_1">phone number</label>
-	        		<input class="form-control" type="text" name="phone_number_1" id="phone_number_1">
+	        		<label for="phone_number_1">phone number*</label>
+	        		<input class="form-control" type="text" name="phone_number_1" id="phone_number_1" required>
 
 	        	</div>
 	        	<div class="form-group">
@@ -129,14 +129,14 @@ $user->checkPage('Sales');
 				</div>
 	        	<div class="form-group">
 
-	        		<label for="email">email</label>
-	        		<input class="form-control" type="text" name="email" id="email">
+	        		<label for="email">email*</label>
+	        		<input class="form-control" type="text" name="email" id="email" required>
 
 	        	</div>
 	        	<div class="form-group">
 
-	        		<label for="bank_nr">bank number</label>
-	        		<input class="form-control" type="text" name="bank_nr" id="bank_nr">
+	        		<label for="bank_nr">bank number*</label>
+	        		<input class="form-control" type="text" name="bank_nr" id="bank_nr" required>
 
 	        	</div>
 

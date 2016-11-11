@@ -35,29 +35,29 @@ if (!isset($_GET['customerid'])) {
 
             <div class="form-group">
 
-                <label for="quotation_number">Quotation number</label>
-                <input class="form-control" type="text" name="quotation_number" id="quotation_number">
+                <label for="quotation_number">Quotation number*</label>
+                <input class="form-control" type="text" name="quotation_number" id="quotation_number" required>
 
             </div>
 
             <div class="form-group">
 
-                <label for="quotation_date">Quotation date</label>
-                <input class="form-control" type="date" name="quotation_date" id="quotation_date">
+                <label for="quotation_date">Quotation date*</label>
+                <input class="form-control" type="date" name="quotation_date" id="quotation_date" required>
 
             </div>
 
             <div class="form-group">
 
-                <label for="order_type">Order type</label>
-                <input class="form-control" type="text" name="order_type" id="order_type">
+                <label for="order_type">Order type*</label>
+                <input class="form-control" type="text" name="order_type" id="order_type" required>
 
             </div>
 
             <div class="form-group">
 
-                <label for="description">Description</label>
-                <textarea style="resize:vertical" class="form-control" name="description" id="description"></textarea>
+                <label for="description">Description*</label>
+                <textarea style="resize:vertical" class="form-control" name="description" id="description" required></textarea>
 
             </div>
 

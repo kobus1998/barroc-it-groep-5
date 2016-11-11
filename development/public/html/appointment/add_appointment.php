@@ -53,14 +53,14 @@ $customerName = Database::getInstance()->pdo->query("SELECT * FROM `tbl_customer
 				<p><b>For user </b><?= $customerName[0]['company_name']; ?></p>
 
 				<div class="form-group">
-	        		<label for="appointment-day">Appointment day</label>
-	        		<input class="form-control" type="date" name="appointment-day" id="company_name">
+	        		<label for="appointment-day">Appointment day*</label>
+	        		<input class="form-control" type="date" name="appointment-day" id="company_name" required>
 
 	        	</div>
 
 				<div class="form-group">
-					<label for="next-action">Next action</label>
-					<textarea cols="5" rows="5" class="form-control" type="text" name="next-action"></textarea>
+					<label for="next-action">Next action*</label>
+					<textarea cols="5" rows="5" class="form-control" name="next-action" required></textarea>
 				</div>
 
 

@@ -60,26 +60,26 @@ $customerData = $GLOBALS['customerData'][0];
 
         <form class="col-md-6 col-md-offset-3" action="<?php echo BASE_URL ?>\development\app\controller\projectController.php" method="POST">
 
-            <input type="hidden" name="customer_id" value="<?php echo $customerData['customer_id']; ?>">
+            <input type="hidden" name="customer_id" value="<?php echo $customerData['customer_id']; ?>" required>
 
             <div class="form-group">
 
-                <label for="project_name">Project name</label>
-                <input class="form-control" type="text" name="project_name" id="project_name">
+                <label for="project_name">Project name*</label>
+                <input class="form-control" type="text" name="project_name" id="project_name" required>
 
             </div>
 
             <div class="form-group">
 
-                <label for="description">Description</label>
-                <textarea class="form-control" name="description" id="description" cols="30" rows="6" style="resize:vertical"></textarea>
+                <label for="description">Description*</label>
+                <textarea class="form-control" name="description" id="description" cols="30" rows="6" style="resize:vertical" required></textarea>
 
             </div>
 
             <div class="form-group">
 
-                <label for="hardwaresoftware">Used hardware and software</label>
-                <textarea class="form-control" name="hardwaresoftware" id="hardwaresoftware" cols="30" rows="6" placeholder="Example: hardware1, hardware2, software1" style="resize:vertical"></textarea>
+                <label for="hardwaresoftware">Used hardware and software*</label>
+                <textarea class="form-control" name="hardwaresoftware" id="hardwaresoftware" cols="30" rows="6" placeholder="Example: hardware1, hardware2, software1" style="resize:vertical" required></textarea>
 
             </div>
 
@@ -97,10 +97,10 @@ $customerData = $GLOBALS['customerData'][0];
 
             <div class="form-group">
 
-                <p style="font-weight:bold">Deadline</p>
-                <input style="width:33%" class="form-control col-md-2" type="text" placeholder="yyyy" name="year" id="deadline">
-                <input style="width:33%" class="form-control col-md-2" type="text" placeholder="mm" name="month" id="deadline">
-                <input style="width:33%" class="form-control" type="text" placeholder="dd" name="day" id="deadline">
+                <p style="font-weight:bold">Deadline*</p>
+                <input style="width:33%" class="form-control col-md-2" type="text" placeholder="yyyy" name="year" id="deadline" required>
+                <input style="width:33%" class="form-control col-md-2" type="text" placeholder="mm" name="month" id="deadline" required>
+                <input style="width:33%" class="form-control" type="text" placeholder="dd" name="day" id="deadline" required>
 
 
             </div>
