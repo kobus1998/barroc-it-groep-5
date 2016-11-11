@@ -82,7 +82,6 @@ if( $_POST['type'] == 'edit customer') {
             if (
                 !Validator::numeric()->validate($_POST['customer_id']) ||
                 !Validator::notEmpty()->validate($_POST['edit-bank-account-number']) ||
-                !Validator::notEmpty()->validate($_POST['edit-credit-balance']) ||
                 !Validator::notEmpty()->validate($_POST['edit-gross-revenue']) ||
                 !Validator::notEmpty()->validate($_POST['edit-limit']) ||
                 !Validator::notEmpty()->validate($_POST['edit-ledger-account-number']) ||

@@ -305,15 +305,7 @@ if($user->username == 'Finance') {
                                class="form-control">
 
                     </div>
-
-                    <div class="form-group">
-
-                        <label for="edit-credit-balance">Credit balance</label>
-                        <input type="text" name="edit-credit-balance" value="<?php echo $finance[0]['credit_balance'] ?>"
-                               class="form-control">
-
-                    </div>
-
+                
                     <div class="form-group">
 
                         <label for="edit-gross-revenue">Gross revenue</label>
