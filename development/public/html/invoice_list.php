@@ -73,7 +73,7 @@ if($user->username == 'Finance') {
                     <th>Project name</th>
                     <th>Invoice number</th>
                     <th>Project id</th>
-                    <th><a href="invoice_list.php?filterPaid">Paid</a></th>
+                    <th>Paid</th>
                     <th>Invoice info</th>
                     <th>Edit invoice</th>
 
@@ -191,7 +191,7 @@ if($user->username == 'Admin') {
         <th>Project name</th>
         <th>Invoice number</th>
         <th>Project id</th>
-        <th><a href="invoice_list.php?filterPaid">Paid</a></th>
+        <th>Paid</th>
         <th>Invoice info</th>
         <th>Edit invoice</th>
 
