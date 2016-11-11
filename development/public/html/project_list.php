@@ -341,7 +341,6 @@ if($user->username == 'Development') {
         SELECT * FROM tbl_projects
         INNER JOIN tbl_customers
           on tbl_projects.customer_id = tbl_customers.customer_id
-        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit`
         ORDER BY `project_id` DESC
     ")
         ->fetchAll(PDO::FETCH_ASSOC);
