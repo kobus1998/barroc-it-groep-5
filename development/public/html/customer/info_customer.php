@@ -353,9 +353,14 @@ if ($stmt->rowCount() == 0) {
                 </div>
                 <div class="col-md-12">
                     <?php
-                    $appointments = Database::getInstance()->pdo->query("SELECT * 
-                    FROM `tbl_appointments`
-                    WHERE customer_id = $customerId order by appointment_id DESC")->fetchAll(PDO::FETCH_ASSOC);
+                    $appointments = ("SELECT * 
+                                      FROM `tbl_appointments`
+                                      WHERE customer_id = :customerid order by appointment_id DESC");
+                    
+                    $stmtAppointment = $db->pdo->prepare($appointments);
+                    $stmtAppointment->bindParam(':customerid', $customerId);
+                    
+                    $appointments = $stmtAppointment->fetchAll(PDO::FETCH_ASSOC);
 
                     ?>
                     <div class="panel panel-default">

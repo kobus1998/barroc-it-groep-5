@@ -3,7 +3,12 @@ require_once realpath(__DIR__ . '/../parts/header.php');
 
 $projectId = $_GET['projectid'];
 
-$stmt =$db->pdo->query("SELECT * FROM `tbl_projects` WHERE project_id = $projectId");
+$sql = "SELECT * FROM `tbl_projects` WHERE project_id = :projectid";
+
+$stmt = $db->pdo->prepare($sql);
+$stmt->bindParam(':projectid', $projectId);
+$stmt->execute();
+
 $projectDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -80,6 +85,57 @@ $projectDB = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <?php
+                    $appointments = ("SELECT * 
+                                      FROM `tbl_invoices`
+                                      WHERE project_id = :projectid order by invoice_id DESC");
+
+                    $stmtAppointment = $db->pdo->prepare($appointments);
+                    $stmtAppointment->bindParam(':projectid', $projectId);
+                    $stmtAppointment->execute();
+
+                    $appointments = $stmtAppointment->fetchAll(PDO::FETCH_ASSOC);
+
+                    ?>
+                    <div class="panel panel-default">
+
+
+                        <div class="panel-heading">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Invoice number</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                    <th>Paid</th>
+                                    <th>Edit invoice</th>
+                                </tr>
+                                </thead>
+                        </div>
+                        <div class="panel-body"></div>
+                        <tbody>
+                        <?php
+                        foreach ($appointments as $item) {
+                            echo '<tr>';
+                            echo '<td>' . $item['invoice_nr'] . '</td>';
+                            echo '<td>' . $item['price'] . '</td>';
+                            echo '<td>' . $item['total'] . '</td>';
+                            if ($item['paid'] == 0) {
+                                echo '<td>No</td>';
+                            } else if ($item['paid'] == 1) {
+                                echo '<td>Yes</td>';
+                            }
+
+                            echo '<td><a class="btn btn-primary glyphicon glyphicon-book" href="../invoices/edit_invoice.php?invoiceid=' . $item["invoice_id"] . '"></a></td>';
+                            echo '</tr>';
+                        }
+                        ?>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
