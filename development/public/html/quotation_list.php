@@ -70,6 +70,7 @@ if($user->username == 'Sales') {
                     <th>Quotation number</th>
                     <th>Order type</th>
                     <th>Quotation info</th>
+                    <th>Edit quotation</th>
 
                 </tr>
                 </thead>
@@ -179,7 +180,7 @@ if(isset($_GET['search-quotation-list'])) {
                     <th>Quotation number</th>
                     <th>Order type</th>
                     <th>Quotation info</th>
-                    <th>edit quotation</th>
+                    <th>Edit quotation</th>
 
                 </tr>
                 </thead>
