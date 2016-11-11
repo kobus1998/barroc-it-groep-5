@@ -130,7 +130,6 @@ class Customers {
             on `tbl_invoices`.project_id = `tbl_projects`.project_id
         set 
             `tbl_customers`.bank_nr = :bankNr,
-            `tbl_customers`.credit_balance = :creditBalance,
             `tbl_customers`.gross_revenue = :grossRevenue,
             `tbl_customers`.limit = :limit,
             `tbl_customers`.ledger_account_number = :ledgerNr,
@@ -141,7 +140,6 @@ class Customers {
 
         $stmt = $this->db->pdo->prepare($sql);
         $stmt->bindParam(':bankNr', $method['edit-bank-account-number']);
-        $stmt->bindParam(':creditBalance', $method['edit-credit-balance']);
         $stmt->bindParam(':grossRevenue', $method['edit-gross-revenue']);
         $stmt->bindParam(':limit', $method['edit-limit']);
         $stmt->bindParam(':ledgerNr', $method['edit-ledger-account-number']);
