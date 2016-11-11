@@ -10,7 +10,7 @@ if($user->username == 'Sales') {
     query("SELECT * FROM tbl_quotations
         INNER JOIN tbl_customers
           on tbl_quotations.customer_id = tbl_customers.customer_id
-        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit` ORDER BY `quotation_id` DESC")
+        WHERE tbl_customers.customer_id ORDER BY `quotation_id` DESC")
         ->fetchAll(PDO::FETCH_ASSOC);
 
     if(isset($_GET['search-quotation-list'])) {
@@ -120,7 +120,7 @@ if($user->username == 'Finance') {
     query("SELECT * FROM tbl_quotations
         INNER JOIN tbl_customers
           on tbl_quotations.customer_id = tbl_customers.customer_id
-        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit` ORDER BY `quotation_id` DESC")
+        WHERE tbl_customers.customer_id ORDER BY `quotation_id` DESC")
         ->fetchAll(PDO::FETCH_ASSOC);
 
 if(isset($_GET['search-quotation-list'])) {
@@ -227,7 +227,7 @@ if($user->username == 'Admin') {
     query("SELECT * FROM tbl_quotations
         INNER JOIN tbl_customers
           on tbl_quotations.customer_id = tbl_customers.customer_id
-        WHERE tbl_customers.credit_balance BETWEEN 0 AND tbl_customers.`limit` ORDER BY `quotation_id` DESC")
+        WHERE tbl_customers.customer_id DESC")
         ->fetchAll(PDO::FETCH_ASSOC);
 
 if(isset($_GET['search-quotation-list'])) {
