@@ -114,7 +114,7 @@ if($user->username == 'Sales') {
                         echo '<td><a href="customer/edit_customer.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-primary glyphicon glyphicon-pencil"></a></td>';
                         echo '<td><a href="project/add_project.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-success glyphicon glyphicon-plus"></a></td>';
                         echo '<td><a href="quotation/add_quotation.php?customerid=' . $searchResult['customer_id'] . '" class="btn btn-warning glyphicon glyphicon-plus"></a></td>';
-                        echo '<td><a href="appointment/add_appointment.php?customerid=' . $searchResults["customer_id"] . '"class="btn btn-primary glyphicon glyphicon-calendar"></a></td>';
+                        echo '<td><a href="appointment/add_appointment.php?customerid=' . $searchResult["customer_id"] . '"class="btn btn-primary glyphicon glyphicon-calendar"></a></td>';
                         echo '</tr>';
                     }
                 }
